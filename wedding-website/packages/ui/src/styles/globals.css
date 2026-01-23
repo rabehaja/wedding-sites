@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Wedding Color Palette - WCAG Compliant */
+@theme {
+  /* Primary Colors */
+  --color-wedding-black: #000000;
+  --color-wedding-white: #ffffff;
+
+  /* Purple Scale */
+  --color-wedding-purple-50: #faf5fc;
+  --color-wedding-purple-100: #f3e7f8;
+  --color-wedding-purple-200: #e9b6f7;
+  --color-wedding-purple-300: #d88aee;
+  --color-wedding-purple-400: #c45fe3;
+  --color-wedding-purple-500: #a63ccc;
+  --color-wedding-purple-600: #8a2eb0;
+
+  /* Coral Scale */
+  --color-wedding-coral-50: #fef4f1;
+  --color-wedding-coral-100: #fde6df;
+  --color-wedding-coral-200: #f9c4b3;
+  --color-wedding-coral-300: #f3967a;
+  --color-wedding-coral-400: #e66b3d;
+  --color-wedding-coral-500: #d4531f;
+  --color-wedding-coral-600: #b33f12;
+
+  /* Neutral Scale */
+  --color-wedding-neutral-50: #fafaf9;
+  --color-wedding-neutral-100: #f1f1ec;
+  --color-wedding-neutral-200: #e8e8e0;
+  --color-wedding-neutral-300: #d4d4c8;
+  --color-wedding-neutral-400: #a3a396;
+  --color-wedding-neutral-500: #737365;
+  --color-wedding-neutral-600: #52524a;
+  --color-wedding-neutral-700: #3c3333;
+
+  /* Font Family */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "DM Serif Display", ui-serif, Georgia, serif;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-wedding-purple-500);
+  outline-offset: 2px;
+}

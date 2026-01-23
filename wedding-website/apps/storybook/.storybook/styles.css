@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* Wedding Color Palette - WCAG 2.1 AA Compliant */
+  --color-wedding-black: #000000;
+  --color-wedding-purple-200: #e9b6f7;
+  --color-wedding-purple-500: #a63ccc;
+  --color-wedding-coral-400: #e66b3d;
+  --color-wedding-coral-600: #b33f12;
+  --color-wedding-neutral-50: #f7f7f5;
+  --color-wedding-neutral-100: #f1f1ec;
+  --color-wedding-neutral-600: #52524a;
+  --color-wedding-neutral-700: #3c3333;
+
+  /* Font Configuration */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-serif: "DM Serif Display", ui-serif, Georgia, Cambria, "Times New Roman",
+    Times, serif;
+}
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=DM+Serif+Display&display=swap");

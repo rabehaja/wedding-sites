@@ -1,0 +1,39 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js
+.next/
+out/
+
+# Build outputs
+build
+dist
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Env files
+.env
+.env.*
+
+# Testing
+coverage
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+*storybook.log
+storybook-static

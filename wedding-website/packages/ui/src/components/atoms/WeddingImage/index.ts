@@ -1,0 +1,1 @@
+export { WeddingImage } from "./WeddingImage";

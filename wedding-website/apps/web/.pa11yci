@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "runners": ["axe"],
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    }
+  },
+  "urls": [
+    "http://localhost:3000",
+    "http://localhost:3000/venue",
+    "http://localhost:3000/wedding",
+    "http://localhost:3000/weekend",
+    "http://localhost:3000/accommodation",
+    "http://localhost:3000/surrounding",
+    "http://localhost:3000/programme"
+  ]
+}

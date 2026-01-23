@@ -1,0 +1,9 @@
+{
+  "http://localhost:3000/": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153586398-33773.report.html",
+  "http://localhost:3000/venue": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153587200-16396.report.html",
+  "http://localhost:3000/wedding": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153588102-57937.report.html",
+  "http://localhost:3000/weekend": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153588900-59992.report.html",
+  "http://localhost:3000/accommodation": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153589789-20129.report.html",
+  "http://localhost:3000/surrounding": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153590695-93012.report.html",
+  "http://localhost:3000/programme": "https://storage.googleapis.com/lighthouse-infrastructure.appspot.com/reports/1769153591132-34642.report.html"
+}
