@@ -99,7 +99,7 @@ export function HeroSection({
           }}
         >
           {/* Content inside purple container */}
-          <div className="flex flex-col items-center justify-center h-full pl-[20%] pr-8 text-center">
+          <div className="flex flex-col items-center justify-center h-full text-center gap-20 pl-[50px]">
             {/* Date display - 18 july 26 */}
             <div className="flex flex-col items-center">
               {/* 18 */}
@@ -123,10 +123,10 @@ export function HeroSection({
             </div>
 
             {/* Location */}
-            <div className="mt-8 text-center relative">
+            <div className="mt-[50px] text-center relative">
               <span className="font-script text-[60px] text-white absolute -left-8 -top-6">at</span>
               <p
-                className="text-2xl md:text-3xl lg:text-4xl text-wedding-coral uppercase tracking-wider leading-tight"
+                className="text-[30px] text-wedding-coral uppercase tracking-wider leading-tight"
                 style={{ fontFamily: "var(--font-thin-serif)" }}
               >
                 CHATEAU<br />DE BLIER,<br />BELGIUM
