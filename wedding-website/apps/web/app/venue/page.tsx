@@ -7,7 +7,7 @@ export default function VenuePage(): React.ReactElement {
     <>
       <Navbar />
       <main id="main-content">
-        <PageHero title="The Venue" subtitle="Chateau de Blier, Belgium" />
+        <PageHero title="The Venue" subtitle="Chateau de Blier, Belgium" shape="diagonal" />
 
         <ContentSection
           title="About the Chateau"

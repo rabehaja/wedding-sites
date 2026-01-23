@@ -23,7 +23,8 @@ const navItems: NavItem[] = [
   { href: "/wedding", label: "THE WEDDING" },
   { href: "/weekend", label: "THE WEEKEND" },
   { href: "/accommodation", label: "ACCOMMODATION" },
-  { href: "/madagascar", label: "MADAGASCAR" },
+  { href: "/surrounding", label: "SURROUNDING" },
+  { href: "/programme", label: "PROGRAMME" },
 ];
 
 function MenuIcon(): React.ReactElement {

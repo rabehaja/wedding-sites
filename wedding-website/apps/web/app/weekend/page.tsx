@@ -10,6 +10,8 @@ export default function WeekendPage(): React.ReactElement {
         <PageHero
           title="The Weekend"
           subtitle="Join us for a full weekend of celebration"
+          shape="wave"
+          invertColors
         />
 
         <ContentSection>

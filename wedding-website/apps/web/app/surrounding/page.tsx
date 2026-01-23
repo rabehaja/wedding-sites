@@ -1,4 +1,4 @@
-import { Navbar, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, ContentSection, Footer, PageHero } from "@repo/ui/organisms";
 import { Typography, WeddingImage } from "@repo/ui/atoms";
 import { SectionHeader } from "@repo/ui/molecules";
 
@@ -45,14 +45,9 @@ export default function SurroundingPage(): React.ReactElement {
     <>
       <Navbar />
       <main>
-        <section className="py-20 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
-            <SectionHeader
-              title="The Surrounding"
-              subtitle="Things to do in the Belgian Ardennes"
-            />
-          </div>
-        </section>
+                <PageHero title="The Surrounding" subtitle="Things to do in the Belgian Ardennes" shape="wave" />
+        
+
 
         <ContentSection>
           <Typography variant="body" color="muted" className="text-center">

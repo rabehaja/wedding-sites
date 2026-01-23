@@ -1,4 +1,4 @@
-import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, VideoHero, ContentSection, Footer } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
 import { SectionHeader, TimelineItem } from "@repo/ui/molecules";
 
@@ -7,10 +7,7 @@ export default function WeddingPage(): React.ReactElement {
     <>
       <Navbar />
       <main id="main-content">
-        <PageHero
-          title="The Wedding"
-          subtitle="We are looking forward to celebrating with you!"
-        />
+        <VideoHero videoSrc="/videos/castle_video.mp4" />
 
         <section className="py-16">
           <div className="container max-w-7xl mx-auto px-4">

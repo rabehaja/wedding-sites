@@ -1,4 +1,4 @@
-import { Navbar, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, ContentSection, Footer, PageHero } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
 import { SectionHeader, AccommodationCard } from "@repo/ui/molecules";
 
@@ -47,14 +47,8 @@ export default function AccommodationPage(): React.ReactElement {
     <>
       <Navbar />
       <main>
-        <section className="py-20 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
-            <SectionHeader
-              title="Accommodation"
-              subtitle="Where to stay during the wedding weekend"
-            />
-          </div>
-        </section>
+                <PageHero title="Accommodation" subtitle="Where to stay during the wedding weekend" shape="diagonal" />
+       
 
         <ContentSection>
           <Typography variant="body" color="muted" className="text-center">
