@@ -28,7 +28,7 @@ export function HeroSection({
 }: HeroSectionProps): React.ReactElement {
   return (
     <section
-      className={cn("relative min-h-screen bg-wedding-coral overflow-hidden", className)}
+      className={cn("relative h-[60vh] bg-wedding-coral overflow-hidden", className)}
       aria-label="Wedding hero section"
     >
       {/* Decorative floral image - top right */}
@@ -54,7 +54,7 @@ export function HeroSection({
       </svg>
 
       {/* Main container with two overlapping rectangles */}
-      <div className="relative w-full h-screen flex items-center">
+      <div className="relative w-full h-[60vh] flex items-center">
         {/* Centered text overlay */}
         <div className="absolute top-[70px] md:top-[80px] left-0 right-0 flex justify-center z-30 pointer-events-none">
           <div className="text-center text-white [font-kerning:normal] relative">
@@ -74,7 +74,7 @@ export function HeroSection({
 
         {/* Left container - Image with quarter-circle cutout in top-right corner */}
         <div
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-[55%] h-[70%] z-10"
+          className="absolute left-0 bottom-0 w-[55%] h-[70%] z-10"
           style={{
             clipPath: "url(#leftClip)",
           }}
@@ -93,7 +93,7 @@ export function HeroSection({
 
         {/* Right container - Purple background with quarter-circle cutout in top-left corner */}
         <div
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[55%] h-[70%] bg-wedding-purple"
+          className="absolute right-0 bottom-0 w-[55%] h-[70%] bg-wedding-purple"
           style={{
             clipPath: "url(#rightClip)",
           }}
@@ -123,8 +123,8 @@ export function HeroSection({
             </div>
 
             {/* Location */}
-            <div className="mt-8 text-center">
-              <span className="font-script text-2xl md:text-3xl text-white">at</span>
+            <div className="mt-8 text-center relative">
+              <span className="font-script text-[60px] text-white absolute -left-8 -top-6">at</span>
               <p
                 className="text-2xl md:text-3xl lg:text-4xl text-wedding-coral uppercase tracking-wider leading-tight"
                 style={{ fontFamily: "var(--font-thin-serif)" }}
