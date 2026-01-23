@@ -1,4 +1,4 @@
-import { Navbar, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
 import { SectionHeader, LocationCard } from "@repo/ui/molecules";
 
@@ -7,14 +7,7 @@ export default function VenuePage(): React.ReactElement {
     <>
       <Navbar />
       <main id="main-content">
-        <section className="py-20 bg-wedding-neutral-50">
-          <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader
-              title="The Venue"
-              subtitle="Chateau de Blier, Belgium"
-            />
-          </div>
-        </section>
+        <PageHero title="The Venue" subtitle="Chateau de Blier, Belgium" />
 
         <ContentSection
           title="About the Chateau"

@@ -1,20 +1,16 @@
-import { Navbar, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
-import { SectionHeader, TimelineItem } from "@repo/ui/molecules";
+import { TimelineItem } from "@repo/ui/molecules";
 
 export default function WeekendPage(): React.ReactElement {
   return (
     <>
       <Navbar />
       <main id="main-content">
-        <section className="py-20 bg-wedding-neutral-50">
-          <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader
-              title="The Weekend"
-              subtitle="Join us for a full weekend of celebration"
-            />
-          </div>
-        </section>
+        <PageHero
+          title="The Weekend"
+          subtitle="Join us for a full weekend of celebration"
+        />
 
         <ContentSection>
           <Typography variant="body" color="muted" className="text-center">

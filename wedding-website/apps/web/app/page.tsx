@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function HomePage(): React.ReactElement {
   return (
     <>
-  
+    <Navbar />
       <main id="main-content" className="flex justify-center">
         <div className="container max-w-7xl mx-auto">
           <HeroSection
@@ -19,7 +19,7 @@ export default function HomePage(): React.ReactElement {
           location="Chateau de Blier, Belgium"
           imageSrc="/images/hero-couple.jpg"
         />
-    <Navbar />
+  
           {/* Join us section */}
           <section className="relative py-16 px-8 md:px-16 lg:px-24 mt-12">
             {/* Section title */}

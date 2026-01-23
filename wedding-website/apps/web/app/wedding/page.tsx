@@ -1,4 +1,4 @@
-import { Navbar, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
 import { SectionHeader, TimelineItem } from "@repo/ui/molecules";
 
@@ -7,14 +7,10 @@ export default function WeddingPage(): React.ReactElement {
     <>
       <Navbar />
       <main id="main-content">
-        <section className="py-20 bg-wedding-neutral-50">
-          <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader
-              title="The Wedding"
-              subtitle="We are looking forward to celebrating with you!"
-            />
-          </div>
-        </section>
+        <PageHero
+          title="The Wedding"
+          subtitle="We are looking forward to celebrating with you!"
+        />
 
         <section className="py-16">
           <div className="container max-w-7xl mx-auto px-4">
