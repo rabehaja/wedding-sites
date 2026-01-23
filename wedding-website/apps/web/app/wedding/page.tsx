@@ -1,5 +1,12 @@
 import { Navbar, VideoHero, ContentSection, Footer } from "@repo/ui/organisms";
-import { Typography } from "@repo/ui/atoms";
+import {
+  Typography,
+  RingsIcon,
+  ChampagneIcon,
+  UtensilsIcon,
+  CakeIcon,
+  MusicIcon,
+} from "@repo/ui/atoms";
 import { SectionHeader, TimelineItem } from "@repo/ui/molecules";
 
 export default function WeddingPage(): React.ReactElement {
@@ -16,34 +23,39 @@ export default function WeddingPage(): React.ReactElement {
                 July 18, 2026 - Schedule
               </Typography>
 
-              <div className="mt-8">
+              <ol className="mt-8" aria-label="Wedding day schedule">
                 <TimelineItem
                   time="3:00 PM"
                   title="Ceremony"
+                  icon={<RingsIcon />}
                   description="Our ceremony will take place in the chateau's enchanting garden if the weather agrees, surrounded by all our loved ones."
                 />
                 <TimelineItem
                   time="3:30 PM"
                   title="Cocktail Reception"
+                  icon={<ChampagneIcon />}
                   description="Following the ceremony, join us on the terrace for some champagne! There will be the possibility to play some awesome games and to make some photos."
                 />
                 <TimelineItem
                   time="6:00 PM"
                   title="Dinner Time"
+                  icon={<UtensilsIcon />}
                   description="You can enjoy the buffet from a local gourmet chef, either seated in the festive dining room inside or on one of the picnic tables outside while enjoying the sun."
                 />
                 <TimelineItem
                   time="8:00 PM"
                   title="Dessert Time"
+                  icon={<CakeIcon />}
                   description="We will be cutting our wedding cake and you will get your piece of it! Yumm!!"
                 />
                 <TimelineItem
                   time="8:15 PM"
                   title="Dancing the Night Away"
+                  icon={<MusicIcon />}
                   description="Lots of time for dancing and having fun! Drinks are on us!"
                   isLast
                 />
-              </div>
+              </ol>
             </div>
           </div>
         </section>
