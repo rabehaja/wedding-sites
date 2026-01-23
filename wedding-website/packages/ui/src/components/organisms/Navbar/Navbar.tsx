@@ -23,6 +23,7 @@ const navItems: NavItem[] = [
   { href: "/wedding", label: "THE WEDDING" },
   { href: "/weekend", label: "THE WEEKEND" },
   { href: "/accommodation", label: "ACCOMMODATION" },
+  { href: "/madagascar", label: "MADAGASCAR" },
 ];
 
 function MenuIcon(): React.ReactElement {
@@ -93,9 +94,10 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
         className="container mx-auto px-4 py-4"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-evenly">
           {/* Logo - Script font */}
-          <Link
+          <div className="flex justify-left"> 
+            <Link
             href="/"
             className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple focus-visible:ring-offset-2 rounded"
           >
@@ -103,43 +105,48 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
               L&W
             </span>
           </Link>
+          </div>
+          
 
-          {/* Desktop Navigation - using shadcn NavigationMenu */}
-          <NavigationMenu className="hidden lg:flex" viewport={false}>
-            <NavigationMenuList className="gap-6">
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "text-sm tracking-widest transition-colors px-2 py-1 rounded-sm",
-                        "hover:text-wedding-purple hover:bg-transparent focus:bg-transparent",
-                        pathname === item.href
-                          ? "text-wedding-purple font-medium"
-                          : "text-wedding-coral"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
+          <div>
+            {/* Desktop Navigation - using shadcn NavigationMenu */}
+            <NavigationMenu className="hidden lg:flex" viewport={false}>
+              <NavigationMenuList className="gap-6">
+                {navItems.map((item) => (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "text-sm tracking-widest transition-colors px-2 py-1 rounded-sm",
+                          "hover:text-wedding-purple hover:bg-transparent focus:bg-transparent",
+                          pathname === item.href
+                            ? "text-wedding-purple font-medium"
+                            : "text-wedding-coral"
+                        )}
+                        style={{ fontFamily: "var(--font-thin-serif)" }}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
 
-          {/* Mobile Menu Button - using shadcn Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden text-wedding-coral hover:text-wedding-purple hover:bg-wedding-lavender/20"
-            onClick={toggleMobileMenu}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
-          </Button>
+            {/* Mobile Menu Button - using shadcn Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden text-wedding-coral hover:text-wedding-purple hover:bg-wedding-lavender/20"
+              onClick={toggleMobileMenu}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -163,6 +170,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
                       ? "bg-wedding-lavender/30 text-wedding-purple font-medium"
                       : "text-wedding-coral hover:bg-wedding-lavender/20"
                   )}
+                  style={{ fontFamily: "var(--font-thin-serif)" }}
                 >
                   {item.label}
                 </Link>

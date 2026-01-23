@@ -4,7 +4,7 @@ import { FillImage } from "@repo/ui/atoms";
 export default function HomePage(): React.ReactElement {
   return (
     <>
-      <Navbar />
+    
       <main className="flex justify-center">
         <div className="container"> 
           <HeroSection
@@ -17,7 +17,9 @@ export default function HomePage(): React.ReactElement {
           }}
           location="Chateau de Blier, Belgium"
           imageSrc="/images/hero-couple.jpg"
-        /></div>
+        />
+          <Navbar />
+        </div>
        
 
        

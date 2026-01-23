@@ -85,7 +85,7 @@ export function HeroSection({
               alt="Couple photo"
               fill
               priority
-              className="object-cover object-center"
+              className="object-cover object-center scale-[2] translate-y-[120px]"
               containerClassName="w-full h-full"
             />
           </div>
