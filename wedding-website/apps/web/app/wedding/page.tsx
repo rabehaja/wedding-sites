@@ -6,9 +6,9 @@ export default function WeddingPage(): React.ReactElement {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <section className="py-20 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader
               title="The Wedding"
               subtitle="We are looking forward to celebrating with you!"
@@ -17,7 +17,7 @@ export default function WeddingPage(): React.ReactElement {
         </section>
 
         <section className="py-16">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <Typography variant="h3" className="text-center mb-8">
                 July 18, 2026 - Schedule
@@ -56,7 +56,7 @@ export default function WeddingPage(): React.ReactElement {
         </section>
 
         <section className="py-16 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader title="Dress Code" />
             <div className="max-w-2xl mx-auto mt-8">
               <Typography variant="body" color="muted" className="text-center">
@@ -82,7 +82,7 @@ export default function WeddingPage(): React.ReactElement {
         </ContentSection>
 
         <section className="py-16 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader title="Gifts" />
             <div className="max-w-2xl mx-auto mt-8">
               <Typography variant="body" color="muted" className="text-center">

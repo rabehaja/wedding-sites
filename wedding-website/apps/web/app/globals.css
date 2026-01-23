@@ -56,6 +56,9 @@
   --color-wedding-neutral-600: #52524a;
   --color-wedding-neutral-700: #3c3333;
 
+  /* Accent Colors */
+  --color-wedding-green: #4A7C59;
+
   /* Font Family */
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
@@ -81,8 +84,6 @@ body {
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {

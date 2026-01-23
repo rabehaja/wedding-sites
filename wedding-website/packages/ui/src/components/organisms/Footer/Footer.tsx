@@ -18,11 +18,18 @@ export function Footer({
   return (
     <footer
       className={cn(
-        "bg-wedding-neutral-700 text-white py-12",
+        "relative bg-wedding-neutral-700 text-white py-12 overflow-hidden",
         className
       )}
     >
-      <div className="container mx-auto px-4">
+      {/* Floral decoration - bottom left */}
+      <img
+        src="/images/floral-decoration.png"
+        alt=""
+        className="absolute bottom-0 left-0 w-48 md:w-64 lg:w-80 h-auto z-0 rotate-90 "
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center gap-6 text-center">
           <Typography variant="h4" as="p" color="white" className="font-serif">
             {coupleNames}

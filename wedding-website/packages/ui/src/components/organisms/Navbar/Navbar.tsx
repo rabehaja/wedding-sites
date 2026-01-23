@@ -101,7 +101,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             href="/"
             className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple focus-visible:ring-offset-2 rounded"
           >
-            <span className="font-script text-3xl md:text-4xl text-[#4A7C59]">
+            <span className="font-script text-3xl md:text-4xl text-wedding-green">
               L&W
             </span>
           </Link>
@@ -117,14 +117,23 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
                     <NavigationMenuLink asChild>
                       <Link
                         href={item.href}
+                        aria-current={pathname === item.href ? "page" : undefined}
                         className={cn(
-                          "text-sm tracking-widest transition-colors px-2 py-1 rounded-sm",
-                          "hover:text-wedding-purple hover:bg-transparent focus:bg-transparent",
+                          // Base styles
+                          "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif",
+                          // Transitions
+                          "transition-colors duration-300 motion-reduce:transition-none",
+                          // Focus accessibility
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                          "hover:bg-transparent focus:bg-transparent",
+                          // Underline pseudo-element
+                          "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-wedding-purple-600",
+                          "after:transition-all after:duration-300 after:ease-out motion-reduce:after:transition-none",
+                          // Conditional styles
                           pathname === item.href
-                            ? "text-wedding-purple font-medium"
-                            : "text-wedding-coral"
+                            ? "text-wedding-purple-600 font-medium after:w-full"
+                            : "text-wedding-purple-500 hover:text-wedding-purple-600 after:w-0 hover:after:w-full"
                         )}
-                        style={{ fontFamily: "var(--font-thin-serif)" }}
                       >
                         {item.label}
                       </Link>
@@ -138,7 +147,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden text-wedding-coral hover:text-wedding-purple hover:bg-wedding-lavender/20"
+              className="lg:hidden text-wedding-purple-500 hover:text-wedding-purple-600 hover:bg-wedding-purple-50"
               onClick={toggleMobileMenu}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
@@ -163,14 +172,19 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
                 <Link
                   href={item.href}
                   onClick={closeMobileMenu}
+                  aria-current={pathname === item.href ? "page" : undefined}
                   className={cn(
-                    "block py-2 px-4 rounded-md transition-colors text-sm tracking-widest",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple",
+                    // Base styles
+                    "block py-2 px-4 rounded-md text-sm tracking-widest font-thin-serif",
+                    // Transitions
+                    "transition-all duration-300 motion-reduce:transition-none",
+                    // Focus accessibility
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                    // Conditional styles
                     pathname === item.href
-                      ? "bg-wedding-lavender/30 text-wedding-purple font-medium"
-                      : "text-wedding-coral hover:bg-wedding-lavender/20"
+                      ? "bg-wedding-purple-100 text-wedding-purple-600 font-medium border-l-4 border-wedding-purple-500"
+                      : "text-wedding-purple-500 hover:bg-wedding-purple-50 hover:text-wedding-purple-600"
                   )}
-                  style={{ fontFamily: "var(--font-thin-serif)" }}
                 >
                   {item.label}
                 </Link>

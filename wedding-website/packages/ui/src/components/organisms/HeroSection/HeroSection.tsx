@@ -58,15 +58,14 @@ export function HeroSection({
         {/* Centered text overlay */}
         <div className="absolute top-[70px] md:top-[80px] left-0 right-0 flex justify-center z-30 pointer-events-none">
           <div className="text-center text-white [font-kerning:normal] relative">
+            <h1 className="sr-only">{coupleNames} - Wedding Celebration</h1>
             <p
-              className="text-[6rem] md:text-[8rem] lg:text-[10rem] uppercase tracking-widest leading-[0.75] font-light text-wedding-purple"
-              style={{
-                fontFamily: "var(--font-thin-serif)",
-              }}
+              className="text-[6rem] md:text-[8rem] lg:text-[10rem] uppercase tracking-widest leading-[0.75] font-light text-wedding-purple font-thin-serif"
+              aria-hidden="true"
             >
               WE
             </p>
-            <p className="font-script text-6xl md:text-7xl lg:text-8xl font-medium absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/4 whitespace-nowrap">
+            <p className="font-script text-6xl md:text-7xl lg:text-8xl font-medium absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/4 whitespace-nowrap" aria-hidden="true">
               are getting married
             </p>
           </div>
@@ -82,7 +81,7 @@ export function HeroSection({
           <div className="relative w-full h-full overflow-hidden">
             <WeddingImage
               src={imageSrc}
-              alt="Couple photo"
+              alt={`${coupleNames} photo`}
               fill
               priority
               className="object-cover object-center scale-[2] translate-y-[120px]"
@@ -104,8 +103,7 @@ export function HeroSection({
             <div className="flex flex-col items-center">
               {/* 18 */}
               <span
-                className="text-[46px] font-light text-wedding-coral leading-none"
-                style={{ fontFamily: "var(--font-tenor)" }}
+                className="text-[46px] font-light text-wedding-coral leading-none font-tenor"
               >
                 {date.day}
               </span>
@@ -115,8 +113,7 @@ export function HeroSection({
               </span>
               {/* 26 */}
               <span
-                className="text-[46px] font-light text-wedding-coral leading-none -mt-6"
-                style={{ fontFamily: "var(--font-tenor)" }}
+                className="text-[46px] font-light text-wedding-coral leading-none -mt-6 font-tenor"
               >
                 {String(date.year).slice(-2)}
               </span>
@@ -126,8 +123,7 @@ export function HeroSection({
             <div className="mt-[50px] text-center relative">
               <span className="font-script text-[60px] text-white absolute -left-8 -top-6">at</span>
               <p
-                className="text-[30px] text-wedding-coral uppercase tracking-wider leading-tight"
-                style={{ fontFamily: "var(--font-thin-serif)" }}
+                className="text-[30px] text-wedding-coral uppercase tracking-wider leading-tight font-thin-serif"
               >
                 CHATEAU<br />DE BLIER,<br />BELGIUM
               </p>

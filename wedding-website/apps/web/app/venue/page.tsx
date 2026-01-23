@@ -6,9 +6,9 @@ export default function VenuePage(): React.ReactElement {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <section className="py-20 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader
               title="The Venue"
               subtitle="Chateau de Blier, Belgium"
@@ -36,7 +36,7 @@ export default function VenuePage(): React.ReactElement {
         </ContentSection>
 
         <section className="py-16 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader title="Location" />
             <div className="max-w-xl mx-auto mt-8">
               <LocationCard

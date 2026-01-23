@@ -6,9 +6,9 @@ export default function WeekendPage(): React.ReactElement {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <section className="py-20 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <SectionHeader
               title="The Weekend"
               subtitle="Join us for a full weekend of celebration"
@@ -25,7 +25,7 @@ export default function WeekendPage(): React.ReactElement {
         </ContentSection>
 
         <section className="py-16 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <Typography variant="h3" className="text-center mb-8">
                 Friday, July 17
@@ -46,7 +46,7 @@ export default function WeekendPage(): React.ReactElement {
         </section>
 
         <section className="py-16">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <Typography variant="h3" className="text-center mb-8">
                 Saturday, July 18
@@ -72,7 +72,7 @@ export default function WeekendPage(): React.ReactElement {
         </section>
 
         <section className="py-16 bg-wedding-neutral-50">
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <Typography variant="h3" className="text-center mb-8">
                 Sunday, July 19
