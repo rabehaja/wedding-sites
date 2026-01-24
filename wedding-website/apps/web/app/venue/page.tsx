@@ -9,7 +9,7 @@ export default function VenuePage(): React.ReactElement {
       <main id="main-content">
         <PageHero
           title="The Venue"
-          subtitle="Chateau de Blier, Belgium"
+          subtitle="Château de Blier, Belgium"
           shape="diagonal"
         />
 
@@ -25,7 +25,7 @@ export default function VenuePage(): React.ReactElement {
                   Why <span className="font-script text-7xl">This</span> Place
                 </Typography>
                 <Typography variant="body" color="muted">
-                  During a trip to Belgium, we stumbled upon Chateau de Blier—and the
+                  During a trip to Belgium, we stumbled upon Château de Blier—and the
                   moment we stepped through the gates, we felt something magical.
                   There's an atmosphere here that's impossible to describe: the way
                   the light filters through the ancient trees, the quiet elegance of
@@ -41,7 +41,7 @@ export default function VenuePage(): React.ReactElement {
               <div className="order-1 md:order-2">
                 <img
                   src="/images/interior-castle.jpg"
-                  alt="Chateau de Blier interior view"
+                  alt="Château de Blier interior view"
                   className="rounded-xl shadow-lg w-full"
                 />
               </div>
@@ -49,23 +49,23 @@ export default function VenuePage(): React.ReactElement {
           </div>
         </section>
 
-        {/* About the Chateau */}
+        {/* About the Château */}
         <section className="py-16 bg-wedding-neutral-50">
           <div className="container max-w-7xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <img
-                  src="/images/chateau-interior.jpg"
-                  alt="Chateau de Blier interior"
+                  src="/images/château-interior.jpg"
+                  alt="Château de Blier interior"
                   className="rounded-xl shadow-lg w-full"
                 />
               </div>
               <div>
                 <Typography variant="h2" className="font-serif mb-6">
-                  About <span className="font-script text-7xl">the</span> Chateau
+                  About <span className="font-script text-7xl">the</span> Château
                 </Typography>
                 <Typography variant="body" color="muted">
-                  Chateau de Blier is a 19th-century castle nestled in the heart of
+                  Château de Blier is a 19th-century castle nestled in the heart of
                   the Belgian Ardennes. With its timeless architecture, peaceful
                   gardens, and sweeping views of the countryside, it offers an
                   atmosphere of romance and elegance that captivated us from the first
@@ -95,7 +95,7 @@ export default function VenuePage(): React.ReactElement {
             </div>
             <div className="max-w-xl mx-auto mt-10">
               <RoutePlanner
-                destinationName="Chateau de Blier"
+                destinationName="Château de Blier"
                 destinationAddress="Rue Croix Henquin 6, 6997 Blier, Erezee, Belgium"
               />
             </div>
@@ -217,11 +217,11 @@ export default function VenuePage(): React.ReactElement {
             </div>
             <div className="max-w-xl mx-auto mt-8">
               <LocationCard
-                name="Chateau de Blier"
+                name="Château de Blier"
                 address="Rue Croix Henquin 6"
                 city="6997 Blier, Erezee"
                 country="Belgium"
-                mapUrl="https://maps.google.com/?q=Chateau+de+Blier+Belgium"
+                mapUrl="https://maps.google.com/?q=Château+de+Blier+Belgium"
               />
               <Typography
                 variant="small"

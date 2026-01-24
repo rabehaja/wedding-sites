@@ -25,7 +25,7 @@ export default function HomePage(): React.ReactElement {
             month: "July",
             year: 2026,
           }}
-          location="Chateau de Blier, Belgium"
+          location="Château de Blier, Belgium"
           imageSrc="/images/hero-couple.jpg"
         />
 

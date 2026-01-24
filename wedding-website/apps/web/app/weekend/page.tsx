@@ -31,7 +31,7 @@ export default function WeekendPage(): React.ReactElement {
 
         <ContentSection>
           <Typography variant="body" color="muted" className="text-center">
-            We would love for you to join us for the entire weekend! The chateau
+            We would love for you to join us for the entire weekend! The château
             and surrounding area offer plenty of opportunities for relaxation
             and fun activities.
           </Typography>
@@ -145,7 +145,7 @@ export default function WeekendPage(): React.ReactElement {
                 color="muted"
                 className="mt-4 text-center max-w-xl mx-auto"
               >
-                Arrive at Chateau de Blier from 5PM onwards. We'd really
+                Arrive at Château de Blier from 5PM onwards. We'd really
                 appreciate it if you could lend us a hand to organize the venue
                 — and we'll dine together afterwards!
               </Typography>
@@ -217,7 +217,7 @@ export default function WeekendPage(): React.ReactElement {
                 <TimelineItem
                   time="3:00 PM"
                   title="Wedding Ceremony"
-                  description="Our ceremony will take place in the chateau's enchanting garden (weather permitting), surrounded by all our loved ones."
+                  description="Our ceremony will take place in the château's enchanting garden (weather permitting), surrounded by all our loved ones."
                   icon={<RingsIcon />}
                 />
                 <TimelineItem

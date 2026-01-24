@@ -46,7 +46,7 @@ export const Heading2: Story = {
 export const Heading3: Story = {
   args: {
     variant: "h3",
-    children: "Chateau de Blier",
+    children: "Château de Blier",
   },
 };
 
@@ -61,7 +61,7 @@ export const Body: Story = {
   args: {
     variant: "body",
     children:
-      "Join us for our wedding celebration on July 18, 2026 at Chateau de Blier, Belgium. We are looking forward to celebrating with all our loved ones.",
+      "Join us for our wedding celebration on July 18, 2026 at Château de Blier, Belgium. We are looking forward to celebrating with all our loved ones.",
   },
 };
 
@@ -69,7 +69,7 @@ export const BodyLarge: Story = {
   args: {
     variant: "bodyLarge",
     children:
-      "Join us for our wedding celebration on July 18, 2026 at Chateau de Blier, Belgium.",
+      "Join us for our wedding celebration on July 18, 2026 at Château de Blier, Belgium.",
   },
 };
 
@@ -123,7 +123,7 @@ export const AllVariants: Story = {
     <div className="space-y-4">
       <Typography variant="h1">Heading 1 - Loic & Wiebke</Typography>
       <Typography variant="h2">Heading 2 - The Venue</Typography>
-      <Typography variant="h3">Heading 3 - Chateau de Blier</Typography>
+      <Typography variant="h3">Heading 3 - Château de Blier</Typography>
       <Typography variant="h4">Heading 4 - Getting There</Typography>
       <Typography variant="bodyLarge">Body Large - Important info</Typography>
       <Typography variant="body">Body - Regular paragraph text</Typography>

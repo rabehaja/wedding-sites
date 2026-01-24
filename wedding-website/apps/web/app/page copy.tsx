@@ -72,7 +72,7 @@ export default function HomePage(): React.ReactElement {
 
         {/* Venue */}
         <p className="font-serif text-lg md:text-xl lg:text-2xl tracking-wide text-[#3c3333] mb-6 md:mb-8">
-          Chateau de Blier, Belgium
+          Château de Blier, Belgium
         </p>
 
         {/* Description paragraph */}

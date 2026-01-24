@@ -38,13 +38,13 @@ const tenorsans = localFont({
 export const metadata: Metadata = {
   title: "Loic & Wiebke Wedding",
   description:
-    "Join us for our wedding celebration on July 18, 2026 at Chateau de Blier, Belgium",
-  keywords: ["wedding", "Loic", "Wiebke", "Chateau de Blier", "Belgium"],
+    "Join us for our wedding celebration on July 18, 2026 at Château de Blier, Belgium",
+  keywords: ["wedding", "Loic", "Wiebke", "Château de Blier", "Belgium"],
   authors: [{ name: "Loic & Wiebke" }],
   openGraph: {
     title: "Loic & Wiebke Wedding",
     description:
-      "Join us for our wedding celebration on July 18, 2026 at Chateau de Blier, Belgium",
+      "Join us for our wedding celebration on July 18, 2026 at Château de Blier, Belgium",
     type: "website",
     locale: "en_US",
   },

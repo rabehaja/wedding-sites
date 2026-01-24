@@ -55,7 +55,7 @@ export const WithoutDivider: Story = {
 export const AllPages: Story = {
   render: () => (
     <div className="space-y-12">
-      <SectionHeader title="The Venue" subtitle="Chateau de Blier, Belgium" />
+      <SectionHeader title="The Venue" subtitle="Château de Blier, Belgium" />
       <SectionHeader title="The Wedding" subtitle="July 18, 2026" />
       <SectionHeader title="The Weekend" />
       <SectionHeader title="Accommodation" subtitle="Where to stay" />

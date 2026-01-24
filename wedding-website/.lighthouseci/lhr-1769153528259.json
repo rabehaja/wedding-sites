@@ -382,7 +382,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
             "node": {
               "type": "node",
               "lhId": "1-25-IMG",
@@ -396,8 +396,8 @@
                 "width": 640,
                 "height": 480
               },
-              "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-              "nodeLabel": "Chateau de Blier interior"
+              "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+              "nodeLabel": "Château de Blier interior"
             },
             "displayedAspectRatio": "640 x 480\n        (1.33)",
             "actualAspectRatio": "750 x 500\n        (1.50)",
@@ -902,7 +902,7 @@
             "entity": "localhost"
           },
           {
-            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
             "sessionTargetType": "page",
             "protocol": "http/1.1",
             "rendererStartTime": 39.224999994039536,
@@ -1730,8 +1730,8 @@
                     "width": 640,
                     "height": 480
                   },
-                  "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-                  "nodeLabel": "Chateau de Blier interior"
+                  "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+                  "nodeLabel": "Château de Blier interior"
                 }
               }
             ]
@@ -1815,8 +1815,8 @@
                 "width": 640,
                 "height": 480
               },
-              "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-              "nodeLabel": "Chateau de Blier interior"
+              "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+              "nodeLabel": "Château de Blier interior"
             }
           }
         ]
@@ -1928,7 +1928,7 @@
           "type": "debugdata",
           "initiatorPath": [
             {
-              "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+              "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
               "initiatorType": "parser"
             },
             {
@@ -2554,7 +2554,7 @@
                 "height": 24
               },
               "snippet": "<h4 class=\"font-sans text-xl md:text-2xl font-semibold leading-snug text-wedding-neut…\">",
-              "nodeLabel": "Chateau de Blier",
+              "nodeLabel": "Château de Blier",
               "explanation": "Fix any of the following:\n  Heading order invalid"
             }
           }
@@ -2679,7 +2679,7 @@
                 "width": 96,
                 "height": 21
               },
-              "snippet": "<a href=\"https://maps.google.com/?q=Chateau+de+Blier+Belgium\" class=\"inline-flex items-center min-h-8 py-1.5 focus-visible:outline-none focus-v…\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"View Chateau de Blier on map\">",
+              "snippet": "<a href=\"https://maps.google.com/?q=Château+de+Blier+Belgium\" class=\"inline-flex items-center min-h-8 py-1.5 focus-visible:outline-none focus-v…\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"View Château de Blier on map\">",
               "nodeLabel": "View on map",
               "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
             }
@@ -3044,7 +3044,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
             "totalBytes": 103081
           },
           {
@@ -3461,10 +3461,10 @@
                 "width": 640,
                 "height": 480
               },
-              "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-              "nodeLabel": "Chateau de Blier interior"
+              "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+              "nodeLabel": "Château de Blier interior"
             },
-            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
             "totalBytes": 102648,
             "wastedBytes": 18559,
             "wastedPercent": 18.079999999999995
@@ -4242,7 +4242,7 @@
         ],
         "items": [
           {
-            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&w=1920&q=75",
+            "url": "http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&w=1920&q=75",
             "totalBytes": 102648,
             "wastedBytes": 51448,
             "subItems": {
@@ -4326,8 +4326,8 @@
               "width": 640,
               "height": 480
             },
-            "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-            "nodeLabel": "Chateau de Blier interior"
+            "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+            "nodeLabel": "Château de Blier interior"
           }
         ]
       },
@@ -4399,8 +4399,8 @@
               "width": 640,
               "height": 480
             },
-            "snippet": "<img alt=\"Chateau de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchateau-interior.jpg&amp;w=1…\">",
-            "nodeLabel": "Chateau de Blier interior"
+            "snippet": "<img alt=\"Château de Blier interior\" loading=\"lazy\" decoding=\"async\" data-nimg=\"fill\" class=\"object-cover rounded-lg\" style=\"position: absolute; height: 100%; width: 100%; inset: 0px;\" sizes=\"100vw\" srcset=\"/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=640&amp;q=75 640w, /_next/…\" src=\"http://localhost:3000/_next/image?url=%2Fimages%2Fchâteau-interior.jpg&amp;w=1…\">",
+            "nodeLabel": "Château de Blier interior"
           }
         ]
       },

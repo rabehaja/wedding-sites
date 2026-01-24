@@ -19,7 +19,7 @@ export const TextOnly: Story = {
     title: "About the Venue",
     children: (
       <Typography variant="body" color="muted">
-        Chateau de Blier is a beautiful 19th-century castle nestled in the
+        Château de Blier is a beautiful 19th-century castle nestled in the
         heart of the Belgian Ardennes. The castle features stunning gardens,
         elegant reception rooms, and breathtaking views of the surrounding
         countryside.
@@ -32,8 +32,8 @@ export const ImageLeft: Story = {
   args: {
     title: "The Castle Gardens",
     layout: "image-left",
-    imageSrc: "/images/chateau-interior.jpg",
-    imageAlt: "Chateau de Blier gardens",
+    imageSrc: "/images/château-interior.jpg",
+    imageAlt: "Château de Blier gardens",
     children: (
       <Typography variant="body" color="muted">
         Our ceremony will take place in the enchanting gardens of the castle.

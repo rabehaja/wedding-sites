@@ -28,7 +28,7 @@ export default function WeddingPage(): React.ReactElement {
                   time="3:00 PM"
                   title="Ceremony"
                   icon={<RingsIcon />}
-                  description="Our ceremony will take place in the chateau's enchanting garden if the weather agrees, surrounded by all our loved ones."
+                  description="Our ceremony will take place in the château's enchanting garden if the weather agrees, surrounded by all our loved ones."
                 />
                 <TimelineItem
                   time="3:30 PM"

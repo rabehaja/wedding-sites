@@ -15,7 +15,7 @@ type Story = StoryObj<typeof LocationCard>;
 
 export const Default: Story = {
   args: {
-    name: "Chateau de Blier",
+    name: "Château de Blier",
     address: "Rue Croix Henquin 6",
     city: "6997 Blier, Erezee",
     country: "Belgium",
@@ -24,7 +24,7 @@ export const Default: Story = {
 
 export const WithMap: Story = {
   args: {
-    name: "Chateau de Blier",
+    name: "Château de Blier",
     address: "Rue Croix Henquin 6",
     city: "6997 Blier, Erezee",
     country: "Belgium",

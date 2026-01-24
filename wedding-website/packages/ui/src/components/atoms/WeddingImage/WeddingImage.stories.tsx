@@ -44,8 +44,8 @@ export const Default: Story = {
 
 export const Rounded: Story = {
   args: {
-    src: "/images/chateau-interior.jpg",
-    alt: "Chateau de Blier interior",
+    src: "/images/château-interior.jpg",
+    alt: "Château de Blier interior",
     width: 400,
     height: 300,
     radius: "lg",
