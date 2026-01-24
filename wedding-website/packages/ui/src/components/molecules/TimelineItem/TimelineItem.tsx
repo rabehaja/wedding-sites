@@ -3,7 +3,7 @@ import { cn } from "../../../lib/utils";
 
 interface TimelineItemProps {
   readonly time: string;
-  readonly title: string;
+  readonly title: React.ReactNode;
   readonly description?: string;
   readonly icon?: React.ReactNode;
   readonly isLast?: boolean;
@@ -25,7 +25,7 @@ export function TimelineItem({
         "group",
         className
       )}
-      aria-label={`${time}: ${title}`}
+      aria-label={`${time} event`}
     >
       {/* Timeline line and icon/dot */}
       <div className="flex flex-col items-center">

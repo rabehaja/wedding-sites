@@ -20,11 +20,11 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: "/", label: "HOME" },
   { href: "/venue", label: "THE VENUE" },
-  { href: "/wedding", label: "THE WEDDING" },
+  { href: "/rsvp", label: "RSVP" },
   { href: "/weekend", label: "THE WEEKEND" },
   { href: "/accommodation", label: "ACCOMMODATION" },
   { href: "/surrounding", label: "SURROUNDING" },
-  { href: "/programme", label: "PROGRAMME" },
+  // { href: "/programme", label: "PROGRAMME" },
 ];
 
 function MenuIcon(): React.ReactElement {

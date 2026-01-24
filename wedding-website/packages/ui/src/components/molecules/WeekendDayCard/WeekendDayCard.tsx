@@ -54,9 +54,9 @@ export function WeekendDayCard({
         >
           {dayName}
         </Typography>
-        <Typography variant="h4" className="mt-1 font-serif">
+        <p className="mt-1 font-script text-8xl text-wedding-neutral-700">
           {date}
-        </Typography>
+        </p>
       </div>
 
       <div className="border-t border-wedding-neutral-200 pt-4">

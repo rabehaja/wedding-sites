@@ -35,7 +35,7 @@ export function HeroSection({
       <img
         src="/images/floral-decoration.png"
         alt=""
-        className="absolute -top-10 right-0 w-64 md:w-80 lg:w-96 h-auto z-20 -rotate-50"
+        className="absolute -top-10 right-0 w-64 md:w-80 lg:w-100 h-auto z-20 -rotate-60"
         aria-hidden="true"
       />
 

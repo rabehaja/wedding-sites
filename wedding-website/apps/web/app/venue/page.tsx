@@ -1,6 +1,6 @@
-import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
+import { Navbar, PageHero, Footer, VideoHero } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
-import { SectionHeader, LocationCard, RoutePlanner } from "@repo/ui/molecules";
+import { LocationCard, RoutePlanner } from "@repo/ui/molecules";
 
 export default function VenuePage(): React.ReactElement {
   return (
@@ -13,58 +13,86 @@ export default function VenuePage(): React.ReactElement {
           shape="diagonal"
         />
 
+                <VideoHero videoSrc="/videos/castle_video.mp4" />
+        
+
         {/* Why This Place - Personal Story */}
-        <ContentSection
-          title="Why This Place"
-          layout="image-right"
-          imageSrc="/images/castle-exterior.png"
-          imageAlt="Chateau de Blier exterior view"
-        >
-          <Typography variant="body" color="muted">
-            During a trip to Belgium, we stumbled upon Chateau de Blier—and the
-            moment we stepped through the gates, we felt something magical.
-            There's an atmosphere here that's impossible to describe: the way
-            the light filters through the ancient trees, the quiet elegance of
-            the stone walls, and a sense that this place has been waiting for
-            love stories like ours.
-          </Typography>
-          <Typography variant="body" color="muted" className="mt-4">
-            We knew instantly this was where we wanted to celebrate with the
-            people who matter most to us. We can't wait to share this feeling
-            with you.
-          </Typography>
-        </ContentSection>
+        <section className="py-16">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <Typography variant="h2" className="font-serif mb-6">
+                  Why <span className="font-script text-7xl">This</span> Place
+                </Typography>
+                <Typography variant="body" color="muted">
+                  During a trip to Belgium, we stumbled upon Chateau de Blier—and the
+                  moment we stepped through the gates, we felt something magical.
+                  There's an atmosphere here that's impossible to describe: the way
+                  the light filters through the ancient trees, the quiet elegance of
+                  the stone walls, and a sense that this place has been waiting for
+                  love stories like ours.
+                </Typography>
+                <Typography variant="body" color="muted" className="mt-4">
+                  We knew instantly this was where we wanted to celebrate with the
+                  people who matter most to us. We can't wait to share this feeling
+                  with you.
+                </Typography>
+              </div>
+              <div className="order-1 md:order-2">
+                <img
+                  src="/images/interior-castle.jpg"
+                  alt="Chateau de Blier interior view"
+                  className="rounded-xl shadow-lg w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* About the Chateau */}
-        <ContentSection
-          title="About the Chateau"
-          layout="image-left"
-          imageSrc="/images/chateau-interior.jpg"
-          imageAlt="Chateau de Blier interior"
-          className="bg-wedding-neutral-50"
-        >
-          <Typography variant="body" color="muted">
-            Chateau de Blier is a 19th-century castle nestled in the heart of
-            the Belgian Ardennes. With its timeless architecture, peaceful
-            gardens, and sweeping views of the countryside, it offers an
-            atmosphere of romance and elegance that captivated us from the first
-            moment.
-          </Typography>
-          <Typography variant="body" color="muted" className="mt-4">
-            The estate features grand reception halls for celebrating, intimate
-            garden corners for quiet conversations, and comfortable
-            accommodations so you can stay close to the festivities. Every
-            detail of this place feels like it was designed for making memories.
-          </Typography>
-        </ContentSection>
+        <section className="py-16 bg-wedding-neutral-50">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <img
+                  src="/images/chateau-interior.jpg"
+                  alt="Chateau de Blier interior"
+                  className="rounded-xl shadow-lg w-full"
+                />
+              </div>
+              <div>
+                <Typography variant="h2" className="font-serif mb-6">
+                  About <span className="font-script text-7xl">the</span> Chateau
+                </Typography>
+                <Typography variant="body" color="muted">
+                  Chateau de Blier is a 19th-century castle nestled in the heart of
+                  the Belgian Ardennes. With its timeless architecture, peaceful
+                  gardens, and sweeping views of the countryside, it offers an
+                  atmosphere of romance and elegance that captivated us from the first
+                  moment.
+                </Typography>
+                <Typography variant="body" color="muted" className="mt-4">
+                  The estate features grand reception halls for celebrating, intimate
+                  garden corners for quiet conversations, and comfortable
+                  accommodations so you can stay close to the festivities. Every
+                  detail of this place feels like it was designed for making memories.
+                </Typography>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Plan Your Journey */}
         <section className="py-16">
           <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader
-              title="Plan Your Journey"
-              subtitle="Let us help you find your way to us"
-            />
+            <div className="text-center mb-8">
+              <Typography variant="h2" className="font-serif">
+                Plan <span className="font-script text-7xl">Your</span> Journey
+              </Typography>
+              <Typography variant="body" color="muted" className="mt-2">
+                Let us help you find your way to us
+              </Typography>
+            </div>
             <div className="max-w-xl mx-auto mt-10">
               <RoutePlanner
                 destinationName="Chateau de Blier"
@@ -77,7 +105,11 @@ export default function VenuePage(): React.ReactElement {
         {/* Getting There Options */}
         <section className="py-16 bg-wedding-neutral-50">
           <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader title="Travel Options" />
+            <div className="text-center mb-8">
+              <Typography variant="h2" className="font-serif">
+                Travel <span className="font-script text-7xl">Options</span>
+              </Typography>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-10">
               {/* By Car */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -137,12 +169,12 @@ export default function VenuePage(): React.ReactElement {
                 </Typography>
                 <Typography variant="body" color="muted">
                   The nearest station is Marche-en-Famenne. From there, taxi
-                  service is available, or we can help arrange a shuttle for
+                  service is available, or consider car pooling with other
                   guests.
                 </Typography>
               </div>
 
-              {/* Shuttle Service */}
+              {/* Car Pooling */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-wedding-coral-600 mb-4">
                   <svg
@@ -156,21 +188,19 @@ export default function VenuePage(): React.ReactElement {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M8 6v6" />
-                    <path d="M15 6v6" />
-                    <path d="M2 12h19.6" />
-                    <path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
-                    <circle cx="7" cy="18" r="2" />
-                    <path d="M9 18h5" />
-                    <circle cx="16" cy="18" r="2" />
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
                 </div>
                 <Typography variant="h4" className="mb-2">
-                  Shuttle Service
+                  Car Pooling
                 </Typography>
                 <Typography variant="body" color="muted">
-                  We're arranging shuttle service from nearby accommodations.
-                  Details will be shared closer to the wedding date.
+                  Consider coordinating with other guests traveling from the
+                  same area to share rides. It's a great way to meet fellow
+                  guests before the celebration!
                 </Typography>
               </div>
             </div>
@@ -180,7 +210,11 @@ export default function VenuePage(): React.ReactElement {
         {/* Location Details */}
         <section className="py-16">
           <div className="container max-w-7xl mx-auto px-4">
-            <SectionHeader title="Location" />
+            <div className="text-center mb-8">
+              <Typography variant="h2" className="font-serif">
+                <span className="font-script text-7xl">Location</span>
+              </Typography>
+            </div>
             <div className="max-w-xl mx-auto mt-8">
               <LocationCard
                 name="Chateau de Blier"

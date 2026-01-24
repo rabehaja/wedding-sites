@@ -7,4 +7,8 @@ export {
   MapPinIcon,
   SunIcon,
   WaveIcon,
+  DressCodeIcon,
+  CameraIcon,
+  GiftIcon,
+  ChecklistIcon,
 } from "./WeddingIcons";
