@@ -98,6 +98,11 @@ export default function RSVPPage(): React.ReactElement {
     try {
       const googleSheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
+      // Calculate pricing
+      const selectedRoom = ROOM_TYPES.find((r) => r.id === formData.roomType);
+      const unitPrice = selectedRoom ? selectedRoom.pricePerNight : 0;
+      const totalPrice = selectedRoom ? selectedRoom.pricePerNight * 2 : 0; // 2 nights
+
       if (googleSheetsUrl) {
         await fetch(googleSheetsUrl, {
           method: "POST",
@@ -105,6 +110,8 @@ export default function RSVPPage(): React.ReactElement {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             ...formData,
+            unitPrice,
+            totalPrice,
             timestamp: new Date().toISOString(),
           }),
         });

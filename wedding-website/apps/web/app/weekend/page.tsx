@@ -280,7 +280,7 @@ export default function WeekendPage(): React.ReactElement {
                 />
                 <TimelineItem
                   time="11:00 AM"
-                  title={<>Check-out & <span className="font-script text-4xl text-wedding-purple-500">Farewell</span></>}
+                  title={<>Check-out & <span className="font-script text-6xl font-light text-wedding-purple-500">Farewell</span></>}
                   description="Time to say goodbye! If you have time afterwards, explore the region."
                   icon={<WaveIcon />}
                   isLast
