@@ -404,7 +404,7 @@ export default function HomePage(): React.ReactElement {
                 </div>
                 <Link
                   href="/venue#getting-there"
-                  className="mt-4 inline-flex items-center gap-2 text-wedding-coral-500 hover:text-wedding-coral-600 font-medium text-sm transition-colors"
+                  className="mt-5 inline-flex items-center gap-2 px-4 py-2 border-2 border-wedding-coral-500 text-wedding-coral-500 rounded-full font-medium text-sm hover:bg-wedding-coral-500 hover:text-white transition-colors"
                 >
                   Get directions
                   <svg
@@ -454,7 +454,7 @@ export default function HomePage(): React.ReactElement {
                 </div>
                 <Link
                   href="/accommodation"
-                  className="mt-4 inline-flex items-center gap-2 text-wedding-purple-500 hover:text-wedding-purple-600 font-medium text-sm transition-colors"
+                  className="mt-5 inline-flex items-center gap-2 px-4 py-2 border-2 border-wedding-purple-500 text-wedding-purple-500 rounded-full font-medium text-sm hover:bg-wedding-purple-500 hover:text-white transition-colors"
                 >
                   View all rooms
                   <svg
