@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { SectionHeader } from "../../molecules/SectionHeader";
 import { cn } from "../../../lib/utils";
 
@@ -41,9 +42,10 @@ export function PageHero({
   invertColors = false,
   className,
 }: PageHeroProps): React.ReactElement {
+  const uniqueId = useId();
   const topColor = invertColors ? "bg-wedding-coral" : "bg-wedding-purple";
   const bottomColor = invertColors ? "bg-wedding-purple" : "bg-wedding-coral";
-  const clipId = `pageHeroClip-${shape}-${Math.random().toString(36).slice(2, 9)}`;
+  const clipId = `pageHeroClip-${shape}-${uniqueId.replace(/:/g, "")}`;
 
   return (
     <section

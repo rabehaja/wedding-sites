@@ -2,14 +2,52 @@ import { Navbar, Footer, PageHero } from "@repo/ui/organisms";
 import { Typography, BackToTop } from "@repo/ui/atoms";
 import { AccommodationNav } from "./AccommodationNav";
 import { AccommodationOverview } from "./AccommodationOverview";
+import { ImageSlider } from "./ImageSlider";
 
 const roomPrices = [
-  { quantity: 1, type: "single room", price: 60, perBed: 60 },
-  { quantity: 7, type: "two-bed room", price: 100, perBed: 50 },
-  { quantity: 2, type: "three-bed room", price: 150, perBed: 50 },
-  { quantity: 8, type: "four-bed room", price: 160, perBed: 40 },
-  { quantity: 1, type: "five-bed room", price: 200, perBed: 40 },
+  { quantity: 1, type: "Single room", beds: 1, price: 60, perBed: 60 },
+  { quantity: 7, type: "Two-bed room", beds: 2, price: 100, perBed: 50 },
+  { quantity: 2, type: "Three-bed room", beds: 3, price: 150, perBed: 50 },
+  { quantity: 8, type: "Four-bed room", beds: 4, price: 160, perBed: 40 },
+  { quantity: 1, type: "Five-bed room", beds: 5, price: 200, perBed: 40 },
 ];
+
+const chateauImages = [
+  { src: "/images/accommodation-7.png", alt: "Château interior" },
+  { src: "/images/accommodation-8.png", alt: "Château bedroom" },
+  { src: "/images/accommodation-1.png", alt: "Château room" },
+  { src: "/images/accommodation-3.png", alt: "Château dining" },
+  { src: "/images/accommodation-4.png", alt: "Château living" },
+];
+
+const chateauFeatures = [
+  { icon: "🚿", label: "Shared Showers", description: "On the corridor" },
+  { icon: "🚽", label: "Shared Toilets", description: "Like a holiday home" },
+  { icon: "🛏️", label: "Shared Rooms", description: "With amazing roomies" },
+  { icon: "🌳", label: "Big Garden", description: "Beautiful grounds" },
+  { icon: "👨‍👩‍👧‍👦", label: "Family Spirit", description: "All together" },
+  { icon: "🏰", label: "Historic Rooms", description: "Rustic & charming" },
+];
+
+function BedIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 12h20" />
+      <path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6" />
+      <path d="M2 18v2" />
+      <path d="M22 18v2" />
+      <path d="M6 12v-2a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2" />
+    </svg>
+  );
+}
 
 export default function AccommodationPage(): React.ReactElement {
   return (
@@ -45,26 +83,31 @@ export default function AccommodationPage(): React.ReactElement {
                   let us know, we might still have room for you.
                 </Typography>
 
+                {/* Details of your stay - USP Cards */}
                 <div className="mt-8">
-                  <h3 className="text-lg font-semibold text-wedding-neutral-700 underline mb-4">
-                    Details of your stay:
+                  <h3 className="text-lg font-semibold text-wedding-neutral-700 mb-4">
+                    What to expect
                   </h3>
-                  <Typography
-                    variant="body"
-                    color="muted"
-                    className="leading-relaxed"
-                  >
-                    We will all be a big family for the duration of the stay at
-                    the Château, so be prepared to share a rustic and historic
-                    room with a few roomies. But do not worry, we invited the
-                    most amazing people, so I am sure you will get along just
-                    fine! There will be shared showers on the corridor as well
-                    as shared toilets, just like in a big holiday home. You can
-                    indicate your preferences regarding room size and preferred
-                    roomies when RSVP-ing. We will take it into account as much
-                    as possible. Please see the prices below for your
-                    information.
-                  </Typography>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {chateauFeatures.map((feature) => (
+                      <div
+                        key={feature.label}
+                        className="bg-wedding-coral-50/50 rounded-lg p-4 text-center"
+                      >
+                        <div className="text-2xl mb-2">{feature.icon}</div>
+                        <p className="font-medium text-sm text-wedding-neutral-700">
+                          {feature.label}
+                        </p>
+                        <p className="text-xs text-wedding-neutral-500">
+                          {feature.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-sm text-wedding-neutral-500 italic">
+                    Indicate your room preferences when RSVP-ing — we'll do our
+                    best to accommodate!
+                  </p>
                 </div>
               </div>
 
@@ -78,68 +121,65 @@ export default function AccommodationPage(): React.ReactElement {
               </div>
             </div>
 
-            {/* Room Prices */}
+            {/* Room Prices & Image Slider - Two Column Layout */}
             <div className="mt-12 grid md:grid-cols-2 gap-8">
+              {/* Left: Room Prices Card */}
               <div className="bg-white rounded-xl p-6 shadow-sm border border-wedding-neutral-100">
-                <h3 className="text-lg font-semibold text-wedding-neutral-700 underline mb-4">
-                  Room prices:
+                <h3 className="text-lg font-semibold text-wedding-neutral-700 mb-6">
+                  Room prices
                 </h3>
-                <ul className="space-y-3">
+                <div className="space-y-3">
                   {roomPrices.map((room) => (
-                    <li key={room.type} className="text-wedding-neutral-600">
-                      <span className="font-medium">
-                        {room.quantity} x {room.type}:
-                      </span>
-                      <br />
-                      {room.price} EUR{" "}
-                      {room.quantity > 1 && `(${room.perBed} EUR per bed)`} per
-                      night
-                    </li>
+                    <div
+                      key={room.type}
+                      className="flex items-center justify-between py-2 border-b border-wedding-neutral-100 last:border-0"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm font-medium text-wedding-neutral-500 w-6">
+                          {room.quantity}x
+                        </span>
+                        <div className="flex items-center gap-1 text-wedding-coral-400">
+                          {Array.from({ length: room.beds }).map((_, i) => (
+                            <BedIcon key={i} className="w-4 h-4" />
+                          ))}
+                        </div>
+                        <span className="text-wedding-neutral-700 font-medium text-sm">
+                          {room.type}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-semibold text-wedding-neutral-700">
+                          €{room.price}
+                        </span>
+                        <span className="text-wedding-neutral-500 text-xs">
+                          /night
+                        </span>
+                        {room.beds > 1 && (
+                          <p className="text-xs text-wedding-neutral-400">
+                            €{room.perBed}/bed
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
-                <div className="mt-6 pt-4 border-t border-wedding-neutral-200">
+                <div className="mt-5 pt-4 border-t border-wedding-neutral-200">
                   <Typography
                     variant="body"
                     color="muted"
-                    className="text-sm italic"
+                    className="text-xs italic"
                   >
                     *If you wish to camp in tents on the property (or with your
                     caravan), please let us know in advance so that we can
-                    verify with the owners whether this is possible. We might
-                    have to pay some extra cost, so be prepared to chip in with
-                    a few euros.
+                    verify with the owners whether this is possible.
                   </Typography>
                 </div>
               </div>
 
-              {/* Interior Images Grid */}
-              <div className="grid grid-cols-3 gap-3">
-                <img
-                  src="/images/château-interior-1.jpg"
-                  alt="Château interior"
-                  className="rounded-lg object-cover w-full h-32"
-                />
-                <img
-                  src="/images/château-interior-2.jpg"
-                  alt="Château bedroom"
-                  className="rounded-lg object-cover w-full h-32"
-                />
-                <img
-                  src="/images/château-interior-3.jpg"
-                  alt="Château room"
-                  className="rounded-lg object-cover w-full h-32"
-                />
-                <img
-                  src="/images/château-interior-4.jpg"
-                  alt="Château dining"
-                  className="rounded-lg object-cover w-full h-32 col-span-1"
-                />
-                <img
-                  src="/images/château-interior-5.jpg"
-                  alt="Château living"
-                  className="rounded-lg object-cover w-full h-32 col-span-2"
-                />
+              {/* Right: Image Slider Card */}
+              <div>
+                <ImageSlider images={chateauImages} />
               </div>
             </div>
           </div>

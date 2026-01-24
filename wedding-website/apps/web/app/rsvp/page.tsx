@@ -79,6 +79,7 @@ export default function RSVPPage(): React.ReactElement {
     name: "",
     email: "",
     guestCount: 1,
+    guestNames: [] as string[],
     attendance: "",
     roomType: "",
     camping: false,
@@ -233,15 +234,62 @@ export default function RSVPPage(): React.ReactElement {
                     max="10"
                     required
                     value={formData.guestCount}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      const newCount = parseInt(e.target.value) || 1;
+                      const additionalGuests = Math.max(0, newCount - 1);
+
+                      // Resize guestNames array, preserving existing names
+                      const newGuestNames = [...formData.guestNames];
+                      if (newGuestNames.length < additionalGuests) {
+                        while (newGuestNames.length < additionalGuests) {
+                          newGuestNames.push("");
+                        }
+                      } else {
+                        newGuestNames.length = additionalGuests;
+                      }
+
                       setFormData({
                         ...formData,
-                        guestCount: parseInt(e.target.value) || 1,
-                      })
-                    }
+                        guestCount: newCount,
+                        guestNames: newGuestNames,
+                      });
+                    }}
                     className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all"
                   />
                 </div>
+
+                {/* Additional Guest Names - show when guestCount > 1 */}
+                {formData.guestCount > 1 && (
+                  <div className="space-y-3 mt-4 p-4 bg-wedding-neutral-50 rounded-lg border border-wedding-neutral-200">
+                    <p className="text-sm font-medium text-wedding-neutral-700">
+                      Please enter the names of your additional guests:
+                    </p>
+                    {Array.from({ length: formData.guestCount - 1 }).map(
+                      (_, index) => (
+                        <div key={index}>
+                          <label className="block text-sm text-wedding-neutral-600 mb-1">
+                            Guest {index + 2}
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.guestNames[index] || ""}
+                            onChange={(e) => {
+                              const newGuestNames = [...formData.guestNames];
+                              newGuestNames[index] = e.target.value;
+                              setFormData({
+                                ...formData,
+                                guestNames: newGuestNames,
+                              });
+                            }}
+                            placeholder={`Full name of guest ${index + 2}`}
+                            className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all"
+                          />
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Attendance */}

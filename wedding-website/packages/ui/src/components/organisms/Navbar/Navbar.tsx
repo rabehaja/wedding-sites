@@ -20,12 +20,13 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: "/", label: "HOME" },
   { href: "/venue", label: "THE VENUE" },
-  { href: "/rsvp", label: "RSVP" },
   { href: "/weekend", label: "THE WEEKEND" },
   { href: "/accommodation", label: "ACCOMMODATION" },
   { href: "/surrounding", label: "SURROUNDING" },
-  // { href: "/programme", label: "PROGRAMME" },
 ];
+
+// RSVP as a separate prominent CTA
+const rsvpItem: NavItem = { href: "/rsvp", label: "RSVP" };
 
 function MenuIcon(): React.ReactElement {
   return (
@@ -95,10 +96,9 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
         className="container mx-auto px-4 py-4"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-evenly">
+        <div className="flex items-center justify-between">
           {/* Logo - Script font */}
-          <div className="flex justify-left"> 
-            <Link
+          <Link
             href="/"
             className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple focus-visible:ring-offset-2 rounded"
           >
@@ -106,43 +106,57 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
               L&W
             </span>
           </Link>
-          </div>
-          
 
-          <div>
-            {/* Desktop Navigation - using shadcn NavigationMenu */}
-            <NavigationMenu className="hidden lg:flex" viewport={false}>
-              <NavigationMenuList className="gap-6">
-                {navItems.map((item) => (
-                  <NavigationMenuItem key={item.href}>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        href={item.href}
-                        aria-current={pathname === item.href ? "page" : undefined}
-                        className={cn(
-                          // Base styles
-                          "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif",
-                          // Transitions
-                          "transition-colors duration-300 motion-reduce:transition-none",
-                          // Focus accessibility
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
-                          "hover:bg-transparent focus:bg-transparent",
-                          // Underline pseudo-element
-                          "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-wedding-purple-600",
-                          "after:transition-all after:duration-300 after:ease-out motion-reduce:after:transition-none",
-                          // Conditional styles
-                          pathname === item.href
-                            ? "text-wedding-purple-600 font-medium after:w-full"
-                            : "text-wedding-purple-500 hover:text-wedding-purple-600 after:w-0 hover:after:w-full"
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+          {/* Desktop Navigation - using shadcn NavigationMenu */}
+          <NavigationMenu className="hidden lg:flex" viewport={false}>
+            <NavigationMenuList className="gap-6">
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={item.href}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      className={cn(
+                        // Base styles
+                        "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif",
+                        // Transitions
+                        "transition-colors duration-300 motion-reduce:transition-none",
+                        // Focus accessibility
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                        "hover:bg-transparent focus:bg-transparent",
+                        // Underline pseudo-element
+                        "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-wedding-purple-600",
+                        "after:transition-all after:duration-300 after:ease-out motion-reduce:after:transition-none",
+                        // Conditional styles
+                        pathname === item.href
+                          ? "text-wedding-purple-600 font-medium after:w-full"
+                          : "text-wedding-purple-500 hover:text-wedding-purple-600 after:w-0 hover:after:w-full"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Right side: RSVP CTA + Mobile Menu Button */}
+          <div className="flex items-center gap-4">
+            {/* RSVP CTA Button - Desktop */}
+            <Link
+              href={rsvpItem.href}
+              className={cn(
+                "hidden lg:inline-flex px-5 py-2 rounded-full font-medium text-sm tracking-wide",
+                "transition-all duration-300",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
+                pathname === rsvpItem.href
+                  ? "bg-wedding-coral-600 text-white"
+                  : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600 hover:scale-105"
+              )}
+            >
+              {rsvpItem.label}
+            </Link>
 
             {/* Mobile Menu Button - using shadcn Button */}
             <Button
@@ -164,7 +178,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
           id="mobile-menu"
           className={cn(
             "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
-            isMobileMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+            isMobileMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
           )}
         >
           <ul className="flex flex-col gap-2 pb-4">
@@ -191,6 +205,24 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
                 </Link>
               </li>
             ))}
+
+            {/* RSVP as highlighted CTA button */}
+            <li className="mt-4 pt-4 border-t border-wedding-neutral-200">
+              <Link
+                href={rsvpItem.href}
+                onClick={closeMobileMenu}
+                className={cn(
+                  "block py-3 px-4 rounded-lg text-center font-medium text-sm tracking-widest",
+                  "transition-all duration-300",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
+                  pathname === rsvpItem.href
+                    ? "bg-wedding-coral-600 text-white"
+                    : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600"
+                )}
+              >
+                {rsvpItem.label}
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
