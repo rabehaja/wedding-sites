@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import "plyr/dist/plyr.css";
 import { cn } from "../../../lib/utils";
 
 interface VideoHeroProps {
@@ -15,36 +13,6 @@ export function VideoHero({
   posterSrc,
   className,
 }: VideoHeroProps): React.ReactElement {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const playerRef = useRef<unknown>(null);
-
-  useEffect(() => {
-    // Dynamic import to avoid SSR issues with Plyr accessing document
-    const initPlyr = async () => {
-      if (videoRef.current && !playerRef.current) {
-        const Plyr = (await import("plyr")).default;
-
-        playerRef.current = new Plyr(videoRef.current, {
-          controls: [],
-          muted: true,
-          autoplay: true,
-          loop: { active: true },
-          clickToPlay: false,
-          hideControls: true,
-          fullscreen: { enabled: false },
-        });
-      }
-    };
-
-    initPlyr();
-
-    return () => {
-      if (playerRef.current) {
-        (playerRef.current as { destroy: () => void }).destroy();
-      }
-    };
-  }, []);
-
   return (
     <section
       className={cn(
@@ -52,20 +20,16 @@ export function VideoHero({
         className
       )}
     >
-      {/* Video container */}
-      <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          className="w-full h-full object-cover"
-          poster={posterSrc}
-          muted
-          autoPlay
-          loop
-          playsInline
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
-      </div>
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        poster={posterSrc}
+        muted
+        autoPlay
+        loop
+        playsInline
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
 
       {/* Dark overlay for better contrast */}
       <div
