@@ -232,10 +232,7 @@ export default function RSVPPage(): React.ReactElement {
                   <label className="block text-sm font-medium text-wedding-neutral-700 mb-2">
                     {t("guestCount")}
                   </label>
-                  <input
-                    type="number"
-                    min="1"
-                    max="10"
+                  <select
                     required
                     value={formData.guestCount}
                     onChange={(e) => {
@@ -258,8 +255,14 @@ export default function RSVPPage(): React.ReactElement {
                         guestNames: newGuestNames,
                       });
                     }}
-                    className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all"
-                  />
+                    className="w-full px-4 py-3 border-2 border-wedding-purple-200 rounded-xl bg-white text-wedding-neutral-700 focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-wedding-purple-400 transition-all cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239b87f5%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:24px] bg-[right_12px_center] bg-no-repeat pr-12"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num}>
+                        {num}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Additional Guest Names - show when guestCount > 1 */}

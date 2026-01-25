@@ -1,7 +1,7 @@
 "use client";
 
 import { Navbar, Footer, PageHero } from "@repo/ui/organisms";
-import { Typography, BackToTop } from "@repo/ui/atoms";
+import { Typography, BackToTop, InfoBanner } from "@repo/ui/atoms";
 import { AccommodationNav } from "./AccommodationNav";
 import { AccommodationOverview } from "./AccommodationOverview";
 import { ImageSlider } from "./ImageSlider";
@@ -80,6 +80,12 @@ export default function AccommodationPage(): React.ReactElement {
                 <Typography variant="body" color="muted" className="leading-relaxed">
                   {t("chateauIntro")}
                 </Typography>
+
+                <InfoBanner
+                  title={t("preferenceNoticeTitle")}
+                  description={t("preferenceNoticeDesc")}
+                  className="mt-4"
+                />
 
                 {/* Details of your stay - USP Cards */}
                 <div className="mt-8">

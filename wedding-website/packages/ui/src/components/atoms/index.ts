@@ -21,3 +21,4 @@ export {
 } from "./Icons";
 export { BackToTop } from "./BackToTop";
 export { Countdown } from "./Countdown";
+export { InfoBanner } from "./InfoBanner";
