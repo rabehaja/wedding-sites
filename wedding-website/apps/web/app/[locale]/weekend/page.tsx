@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar, PageHero, ContentSection, Footer } from "@repo/ui/organisms";
 import {
   Typography,
@@ -16,24 +18,26 @@ import {
   SectionHeader,
   WeekendDayCard,
 } from "@repo/ui/molecules";
+import { useTranslations } from "next-intl";
 
 export default function WeekendPage(): React.ReactElement {
+  const t = useTranslations("weekend");
+  const tHome = useTranslations("home");
+
   return (
     <>
       <Navbar />
       <main id="main-content">
         <PageHero
-          title="The Weekend"
-          subtitle="Join us for a full weekend of celebration"
+          title={t("title")}
+          subtitle={t("subtitle")}
           shape="wave"
           invertColors
         />
 
         <ContentSection>
           <Typography variant="body" color="muted" className="text-center">
-            We would love for you to join us for the entire weekend! The château
-            and surrounding area offer plenty of opportunities for relaxation
-            and fun activities.
+            {t("introText")}
           </Typography>
         </ContentSection>
 
@@ -42,40 +46,42 @@ export default function WeekendPage(): React.ReactElement {
           <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-4">
               <Typography variant="h2" className="font-serif">
-                <span className="font-script text-7xl text-wedding-purple-500">At a</span> Glance
+                {t.rich("atAGlance", {
+                  ata: () => <span className="font-script text-7xl text-wedding-purple-500">{t("ata")}</span>,
+                })}
               </Typography>
               <Typography variant="body" color="muted" className="mt-2">
-                Your weekend schedule overview
+                {t("scheduleOverview")}
               </Typography>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-8">
               <WeekendDayCard
-                dayName="Friday"
-                date="July 17"
+                dayName={tHome("friday")}
+                date={`${tHome("month")} 17`}
                 href="#friday"
                 highlights={[
-                  { icon: <MapPinIcon />, text: "Arrival & Check-in" },
-                  { icon: <ChampagneIcon />, text: "Welcome Drinks" },
+                  { icon: <MapPinIcon />, text: t("arrivalCheckin") },
+                  { icon: <ChampagneIcon />, text: t("welcomeDrinks") },
                 ]}
               />
               <WeekendDayCard
-                dayName="Saturday"
-                date="July 18"
+                dayName={tHome("saturday")}
+                date={`${tHome("month")} 18`}
                 featured
                 href="#saturday"
                 highlights={[
-                  { icon: <SunIcon />, text: "Free Time & Breakfast" },
-                  { icon: <RingsIcon />, text: "Ceremony & Reception" },
-                  { icon: <MusicIcon />, text: "Dancing All Night" },
+                  { icon: <SunIcon />, text: t("freeTimeBreakfast") },
+                  { icon: <RingsIcon />, text: t("ceremonyReception") },
+                  { icon: <MusicIcon />, text: t("dancingAllNight") },
                 ]}
               />
               <WeekendDayCard
-                dayName="Sunday"
-                date="July 19"
+                dayName={tHome("sunday")}
+                date={`${tHome("month")} 19`}
                 href="#sunday"
                 highlights={[
-                  { icon: <UtensilsIcon />, text: "Farewell Brunch" },
-                  { icon: <WaveIcon />, text: "Departure" },
+                  { icon: <UtensilsIcon />, text: t("farewellBrunch") },
+                  { icon: <WaveIcon />, text: t("departure") },
                 ]}
               />
             </div>
@@ -86,35 +92,35 @@ export default function WeekendPage(): React.ReactElement {
         <section id="packlist" className="py-16">
           <div className="container max-w-3xl mx-auto px-4">
             <SectionHeader
-              title="Packlist"
-              subtitle="What to bring for the weekend"
+              title={t("packlist")}
+              subtitle={t("packlistSubtitle")}
             />
             <ul className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-wedding-neutral-700">
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
-                <span>Your fancy outfit</span>
+                <span>{t("packlistItem1")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
-                <span>Toiletries</span>
+                <span>{t("packlistItem2")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
-                <span>Change of clothes for two nights</span>
+                <span>{t("packlistItem3")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
                 <span>
-                  <strong>Your own towels</strong>
+                  <strong>{t("packlistItem4")}</strong>
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
-                <span>Contribution to Sunday's breakfast</span>
+                <span>{t("packlistItem5")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-wedding-coral-500 mt-0.5">✓</span>
-                <span>Hiking boots (optional)</span>
+                <span>{t("packlistItem6")}</span>
               </li>
             </ul>
             <Typography
@@ -122,8 +128,7 @@ export default function WeekendPage(): React.ReactElement {
               color="muted"
               className="mt-6 text-sm italic"
             >
-              It might be hot! Don't forget to bring enough water for the
-              weekend.
+              {t("packlistNote")}
             </Typography>
           </div>
         </section>
@@ -134,10 +139,10 @@ export default function WeekendPage(): React.ReactElement {
             <div className="max-w-2xl mx-auto">
               <div className="text-center">
                 <Typography variant="h2" className="font-serif">
-                  Friday, <span className="font-script text-7xl">July 17</span>
+                  {t.rich("fridayTitle", { date: () => <span className="font-script text-7xl">{tHome("month")} 17</span> })}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-2">
-                  Arrival Day
+                  {t("arrivalDay")}
                 </Typography>
               </div>
               <Typography
@@ -145,21 +150,19 @@ export default function WeekendPage(): React.ReactElement {
                 color="muted"
                 className="mt-4 text-center max-w-xl mx-auto"
               >
-                Arrive at Château de Blier from 5PM onwards. We'd really
-                appreciate it if you could lend us a hand to organize the venue
-                — and we'll dine together afterwards!
+                {t("fridayIntro")}
               </Typography>
               <ol className="mt-8" aria-label="Friday schedule">
                 <TimelineItem
                   time="From 5:00 PM"
-                  title="Arrival & Check-in"
-                  description="Check into your accommodation and take time to explore the beautiful grounds."
+                  title={t("arrivalCheckin")}
+                  description={t("arrivalCheckinDesc")}
                   icon={<MapPinIcon />}
                 />
                 <TimelineItem
                   time="7:00 PM"
-                  title="Welcome Drinks & Dinner"
-                  description="Join us for casual drinks and dinner together. If you'd like to help prepare the castle for the wedding, we'd love the extra hands!"
+                  title={t("welcomeDrinksDinnerTitle")}
+                  description={t("welcomeDrinksDinnerDesc")}
                   icon={<ChampagneIcon />}
                   isLast
                 />
@@ -174,10 +177,10 @@ export default function WeekendPage(): React.ReactElement {
             <div className="max-w-2xl mx-auto">
               <div className="text-center">
                 <Typography variant="h2" className="font-serif">
-                  Saturday, <span className="font-script text-7xl">July 18</span>
+                  {t.rich("saturdayTitle", { date: () => <span className="font-script text-7xl">{tHome("month")} 18</span> })}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-2">
-                  The Wedding Day
+                  {t("weddingDay")}
                 </Typography>
               </div>
               <Typography
@@ -185,8 +188,7 @@ export default function WeekendPage(): React.ReactElement {
                 color="muted"
                 className="mt-4 text-center max-w-xl mx-auto"
               >
-                The wedding day — let's start with brunch from 9:30 AM before
-                getting ready for the festivities.
+                {t("saturdayIntro")}
               </Typography>
 
               {/* Quick reference banner */}
@@ -197,12 +199,12 @@ export default function WeekendPage(): React.ReactElement {
                 >
                   <span className="text-wedding-neutral-600">
                     <span className="font-medium text-wedding-neutral-700">
-                      Quick reference:
+                      {t("quickReference")}
                     </span>{" "}
-                    Dress code, photography & gifts
+                    {t("dressCodePhotoGifts")}
                   </span>
                   <span className="text-wedding-coral-500 group-hover:text-wedding-coral-600 transition-colors">
-                    View →
+                    {t("view")} →
                   </span>
                 </a>
               </div>
@@ -210,38 +212,38 @@ export default function WeekendPage(): React.ReactElement {
               <ol aria-label="Saturday schedule">
                 <TimelineItem
                   time="9:30 - 11:00 AM"
-                  title="Brunch"
-                  description="A leisurely brunch together before getting ready for the festivities."
+                  title={t("brunch")}
+                  description={t("brunchDesc")}
                   icon={<UtensilsIcon />}
                 />
                 <TimelineItem
                   time="3:00 PM"
-                  title="Wedding Ceremony"
-                  description="Our ceremony will take place in the château's enchanting garden (weather permitting), surrounded by all our loved ones."
+                  title={t("weddingCeremony")}
+                  description={t("weddingCeremonyDesc")}
                   icon={<RingsIcon />}
                 />
                 <TimelineItem
                   time="3:30 PM"
-                  title="Cocktail Reception"
-                  description="Following the ceremony, join us on the terrace for champagne, canapes, and games. Don't forget to take some photos!"
+                  title={t("cocktailReception")}
+                  description={t("cocktailReceptionDesc")}
                   icon={<ChampagneIcon />}
                 />
                 <TimelineItem
                   time="6:00 PM"
-                  title="Dinner"
-                  description="Enjoy a delicious buffet from a local gourmet chef. Dine in the festive dining room or at the picnic tables outside."
+                  title={t("dinner")}
+                  description={t("dinnerDesc")}
                   icon={<UtensilsIcon />}
                 />
                 <TimelineItem
                   time="8:00 PM"
-                  title="Cake Cutting"
-                  description="Time to cut the wedding cake! Make sure you save room for a piece."
+                  title={t("cakeCutting")}
+                  description={t("cakeCuttingDesc")}
                   icon={<CakeIcon />}
                 />
                 <TimelineItem
                   time="8:15 PM"
-                  title="First Dance & Party"
-                  description="Watch our first dance, then dance the night away! The bar will be open and drinks are on us!"
+                  title={t("firstDanceParty")}
+                  description={t("firstDancePartyDesc")}
                   icon={<MusicIcon />}
                   isLast
                 />
@@ -256,10 +258,10 @@ export default function WeekendPage(): React.ReactElement {
             <div className="max-w-2xl mx-auto">
               <div className="text-center">
                 <Typography variant="h2" className="font-serif">
-                  Sunday, <span className="font-script text-7xl">July 19</span>
+                  {t.rich("sundayTitle", { date: () => <span className="font-script text-7xl">{tHome("month")} 19</span> })}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-2">
-                  Farewell Day
+                  {t("farewellDay")}
                 </Typography>
               </div>
               <Typography
@@ -267,21 +269,21 @@ export default function WeekendPage(): React.ReactElement {
                 color="muted"
                 className="mt-4 text-center max-w-xl mx-auto"
               >
-                A big communal breakfast where everyone contributes — it's
-                early, but we need to check out by 11 AM. It was great
-                celebrating with you!
+                {t("sundayIntro")}
               </Typography>
               <ol className="mt-8" aria-label="Sunday schedule">
                 <TimelineItem
                   time="9:00 - 10:30 AM"
-                  title="Post-Wedding Breakfast"
-                  description="A big communal breakfast where everyone contributes. Bring something to share!"
+                  title={t("postWeddingBreakfast")}
+                  description={t("postWeddingBreakfastDesc")}
                   icon={<UtensilsIcon />}
                 />
                 <TimelineItem
                   time="11:00 AM"
-                  title={<>Check-out & <span className="font-script text-6xl font-light text-wedding-purple-500">Farewell</span></>}
-                  description="Time to say goodbye! If you have time afterwards, explore the region."
+                  title={t.rich("checkoutFarewell", {
+                    farewell: () => <span className="font-script text-6xl font-light text-wedding-purple-500">{t("farewell")}</span>,
+                  })}
+                  description={t("checkoutFarewellDesc")}
                   icon={<WaveIcon />}
                   isLast
                 />

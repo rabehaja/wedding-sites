@@ -38,6 +38,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
+    "next-intl": "^4.7.0",
     "plyr": "^3.8.4",
     "plyr-react": "^6.0.0",
     "tailwind-merge": "^2.5.5"

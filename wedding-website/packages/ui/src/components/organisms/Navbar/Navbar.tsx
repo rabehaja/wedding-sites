@@ -11,6 +11,7 @@ import {
 } from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
 import { cn } from "../../../lib/utils";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 interface NavItem {
   readonly href: string;
@@ -141,8 +142,13 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Right side: RSVP CTA + Mobile Menu Button */}
+          {/* Right side: Language Switcher + RSVP CTA + Mobile Menu Button */}
           <div className="flex items-center gap-4">
+            {/* Language Switcher - Desktop */}
+            <div className="hidden lg:block">
+              <LanguageSwitcher />
+            </div>
+
             {/* RSVP CTA Button - Desktop */}
             <Link
               href={rsvpItem.href}
@@ -206,8 +212,15 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
               </li>
             ))}
 
-            {/* RSVP as highlighted CTA button */}
+            {/* Language Switcher - Mobile */}
             <li className="mt-4 pt-4 border-t border-wedding-neutral-200">
+              <div className="px-4 py-2">
+                <LanguageSwitcher />
+              </div>
+            </li>
+
+            {/* RSVP as highlighted CTA button */}
+            <li className="mt-2">
               <Link
                 href={rsvpItem.href}
                 onClick={closeMobileMenu}

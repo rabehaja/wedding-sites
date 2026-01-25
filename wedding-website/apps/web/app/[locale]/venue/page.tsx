@@ -1,15 +1,20 @@
+"use client";
+
 import { Navbar, PageHero, Footer, VideoHero } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
 import { LocationCard, RoutePlanner } from "@repo/ui/molecules";
+import { useTranslations } from "next-intl";
 
 export default function VenuePage(): React.ReactElement {
+  const t = useTranslations("venue");
+
   return (
     <>
       <Navbar />
       <main id="main-content">
         <PageHero
-          title="The Venue"
-          subtitle="Château de Blier, Belgium"
+          title={t("title")}
+          subtitle={t("subtitle")}
           shape="diagonal"
         />
 
@@ -22,20 +27,15 @@ export default function VenuePage(): React.ReactElement {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <Typography variant="h2" className="font-serif mb-6">
-                  Why <span className="font-script text-7xl">This</span> Place
+                  {t.rich("whyThisPlace", {
+                    this: () => <span className="font-script text-7xl">{t("this")}</span>,
+                  })}
                 </Typography>
                 <Typography variant="body" color="muted">
-                  During a trip to Belgium, we stumbled upon Château de Blier—and the
-                  moment we stepped through the gates, we felt something magical.
-                  There's an atmosphere here that's impossible to describe: the way
-                  the light filters through the ancient trees, the quiet elegance of
-                  the stone walls, and a sense that this place has been waiting for
-                  love stories like ours.
+                  {t("whyThisPlaceText1")}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-4">
-                  We knew instantly this was where we wanted to celebrate with the
-                  people who matter most to us. We can't wait to share this feeling
-                  with you.
+                  {t("whyThisPlaceText2")}
                 </Typography>
               </div>
               <div className="order-1 md:order-2">
@@ -55,27 +55,22 @@ export default function VenuePage(): React.ReactElement {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <img
-                  src="/images/château-interior.jpg"
+                  src="/images/chateau-interior.jpg"
                   alt="Château de Blier interior"
                   className="rounded-xl shadow-lg w-full"
                 />
               </div>
               <div>
                 <Typography variant="h2" className="font-serif mb-6">
-                  About <span className="font-script text-7xl">the</span> Château
+                  {t.rich("aboutChateau", {
+                    the: () => <span className="font-script text-7xl">{t("the")}</span>,
+                  })}
                 </Typography>
                 <Typography variant="body" color="muted">
-                  Château de Blier is a 19th-century castle nestled in the heart of
-                  the Belgian Ardennes. With its timeless architecture, peaceful
-                  gardens, and sweeping views of the countryside, it offers an
-                  atmosphere of romance and elegance that captivated us from the first
-                  moment.
+                  {t("aboutChateauText1")}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-4">
-                  The estate features grand reception halls for celebrating, intimate
-                  garden corners for quiet conversations, and comfortable
-                  accommodations so you can stay close to the festivities. Every
-                  detail of this place feels like it was designed for making memories.
+                  {t("aboutChateauText2")}
                 </Typography>
               </div>
             </div>
@@ -87,10 +82,12 @@ export default function VenuePage(): React.ReactElement {
           <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
               <Typography variant="h2" className="font-serif">
-                Plan <span className="font-script text-7xl">Your</span> Journey
+                {t.rich("planYourJourney", {
+                  your: () => <span className="font-script text-7xl">{t("your")}</span>,
+                })}
               </Typography>
               <Typography variant="body" color="muted" className="mt-2">
-                Let us help you find your way to us
+                {t("planYourJourneyText")}
               </Typography>
             </div>
             <div className="max-w-xl mx-auto mt-10">
@@ -107,7 +104,9 @@ export default function VenuePage(): React.ReactElement {
           <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
               <Typography variant="h2" className="font-serif">
-                Travel <span className="font-script text-7xl">Options</span>
+                {t.rich("travelOptions", {
+                  options: () => <span className="font-script text-7xl">{t("options")}</span>,
+                })}
               </Typography>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-10">
@@ -132,12 +131,10 @@ export default function VenuePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="mb-2">
-                  By Car
+                  {t("byCar")}
                 </Typography>
                 <Typography variant="body" color="muted">
-                  From Brussels, take the E411 towards Luxembourg. Exit at
-                  Marche-en-Famenne and follow signs to Erezee. Free parking is
-                  available at the venue.
+                  {t("byCarText")}
                 </Typography>
               </div>
 
@@ -165,12 +162,10 @@ export default function VenuePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="mb-2">
-                  By Train
+                  {t("byTrain")}
                 </Typography>
                 <Typography variant="body" color="muted">
-                  The nearest station is Marche-en-Famenne. From there, taxi
-                  service is available, or consider car pooling with other
-                  guests.
+                  {t("byTrainText")}
                 </Typography>
               </div>
 
@@ -195,12 +190,10 @@ export default function VenuePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="mb-2">
-                  Car Pooling
+                  {t("carPooling")}
                 </Typography>
                 <Typography variant="body" color="muted">
-                  Consider coordinating with other guests traveling from the
-                  same area to share rides. It's a great way to meet fellow
-                  guests before the celebration!
+                  {t("carPoolingText")}
                 </Typography>
               </div>
             </div>
@@ -212,7 +205,7 @@ export default function VenuePage(): React.ReactElement {
           <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-8">
               <Typography variant="h2" className="font-serif">
-                <span className="font-script text-7xl">Location</span>
+                <span className="font-script text-7xl">{t("location")}</span>
               </Typography>
             </div>
             <div className="max-w-xl mx-auto mt-8">
@@ -228,7 +221,7 @@ export default function VenuePage(): React.ReactElement {
                 color="muted"
                 className="text-center mt-4"
               >
-                Free parking is available at the venue for all guests.
+                {t("freeParking")}
               </Typography>
             </div>
           </div>

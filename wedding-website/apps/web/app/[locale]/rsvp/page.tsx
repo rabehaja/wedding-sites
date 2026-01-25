@@ -3,78 +3,80 @@
 import { useState } from "react";
 import { Navbar, PageHero, Footer } from "@repo/ui/organisms";
 import { Typography } from "@repo/ui/atoms";
-
-const ROOM_TYPES = [
-  {
-    id: "single",
-    name: "Single Room",
-    beds: 1,
-    quantity: 1,
-    pricePerNight: 60,
-    pricePerBed: 60,
-  },
-  {
-    id: "double",
-    name: "Two-Bed Room",
-    beds: 2,
-    quantity: 7,
-    pricePerNight: 100,
-    pricePerBed: 50,
-  },
-  {
-    id: "triple",
-    name: "Three-Bed Room",
-    beds: 3,
-    quantity: 2,
-    pricePerNight: 150,
-    pricePerBed: 50,
-  },
-  {
-    id: "quad",
-    name: "Four-Bed Room",
-    beds: 4,
-    quantity: 8,
-    pricePerNight: 160,
-    pricePerBed: 40,
-  },
-  {
-    id: "five",
-    name: "Five-Bed Room",
-    beds: 5,
-    quantity: 1,
-    pricePerNight: 200,
-    pricePerBed: 40,
-  },
-];
-
-const ATTENDANCE_OPTIONS = [
-  {
-    value: "full-weekend",
-    label: "Yes, for the full weekend!",
-    sub: "Friday evening to Sunday morning",
-  },
-  {
-    value: "saturday",
-    label: "Yes, but only Saturday",
-    sub: "Just the wedding day",
-  },
-  {
-    value: "no",
-    label: "Unfortunately, I can't make it",
-    sub: "We'll miss you!",
-  },
-];
-
-const DIETARY_OPTIONS = [
-  { id: "vegetarian", label: "Vegetarian" },
-  { id: "vegan", label: "Vegan" },
-  { id: "gluten-free", label: "Gluten-free" },
-  { id: "dairy-free", label: "Dairy-free" },
-  { id: "nut-allergy", label: "Nut allergy" },
-  { id: "other", label: "Other (please specify)" },
-];
+import { useTranslations } from "next-intl";
 
 export default function RSVPPage(): React.ReactElement {
+  const t = useTranslations("rsvp");
+
+  const ROOM_TYPES = [
+    {
+      id: "single",
+      name: t("singleRoom", { defaultValue: "Single Room" }),
+      beds: 1,
+      quantity: 1,
+      pricePerNight: 60,
+      pricePerBed: 60,
+    },
+    {
+      id: "double",
+      name: t("twoBedRoom", { defaultValue: "Two-Bed Room" }),
+      beds: 2,
+      quantity: 7,
+      pricePerNight: 100,
+      pricePerBed: 50,
+    },
+    {
+      id: "triple",
+      name: t("threeBedRoom", { defaultValue: "Three-Bed Room" }),
+      beds: 3,
+      quantity: 2,
+      pricePerNight: 150,
+      pricePerBed: 50,
+    },
+    {
+      id: "quad",
+      name: t("fourBedRoom", { defaultValue: "Four-Bed Room" }),
+      beds: 4,
+      quantity: 8,
+      pricePerNight: 160,
+      pricePerBed: 40,
+    },
+    {
+      id: "five",
+      name: t("fiveBedRoom", { defaultValue: "Five-Bed Room" }),
+      beds: 5,
+      quantity: 1,
+      pricePerNight: 200,
+      pricePerBed: 40,
+    },
+  ];
+
+  const ATTENDANCE_OPTIONS = [
+    {
+      value: "full-weekend",
+      label: t("fullWeekend"),
+      sub: t("fullWeekendSub"),
+    },
+    {
+      value: "saturday",
+      label: t("saturdayOnly"),
+      sub: t("saturdayOnlySub"),
+    },
+    {
+      value: "no",
+      label: t("cantMakeIt"),
+      sub: t("cantMakeItSub"),
+    },
+  ];
+
+  const DIETARY_OPTIONS = [
+    { id: "vegetarian", label: t("vegetarian") },
+    { id: "vegan", label: t("vegan") },
+    { id: "gluten-free", label: t("glutenFree") },
+    { id: "dairy-free", label: t("dairyFree") },
+    { id: "nut-allergy", label: t("nutAllergy") },
+    { id: "other", label: t("other") },
+  ];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -121,7 +123,7 @@ export default function RSVPPage(): React.ReactElement {
       setIsSubmitted(true);
     } catch (err) {
       console.error("Error submitting form:", err);
-      setError("Something went wrong. Please try again or contact us directly.");
+      setError(t("errorMessage"));
     } finally {
       setIsSubmitting(false);
     }
@@ -134,8 +136,8 @@ export default function RSVPPage(): React.ReactElement {
         <Navbar />
         <main id="main-content">
           <PageHero
-            title="Thank You!"
-            subtitle="We've received your RSVP"
+            title={t("thankYou")}
+            subtitle={t("receivedRsvp")}
             shape="wave"
           />
           <section className="py-16">
@@ -143,15 +145,17 @@ export default function RSVPPage(): React.ReactElement {
               <div className="p-8 bg-wedding-purple/10 rounded-xl">
                 <Typography variant="h3" className="font-serif mb-4">
                   {formData.attendance === "no" ? (
-                    "We'll miss you!"
+                    t("missYou")
                   ) : (
-                    <>See you <span className="font-script text-6xl">in</span> July!</>
+                    t.rich("seeYouJuly", {
+                      in: () => <span className="font-script text-6xl">{t("in")}</span>,
+                    })
                   )}
                 </Typography>
                 <Typography variant="body" color="muted">
                   {formData.attendance === "no"
-                    ? "Thank you for letting us know. We hope to celebrate with you another time!"
-                    : "We're so excited to celebrate with you at Château de Blier. We'll be in touch with more details soon!"}
+                    ? t("missYouText")
+                    : t("seeYouText")}
                 </Typography>
               </div>
             </div>
@@ -167,8 +171,8 @@ export default function RSVPPage(): React.ReactElement {
       <Navbar />
       <main id="main-content">
         <PageHero
-          title="RSVP"
-          subtitle="Let us know you're coming"
+          title={t("title")}
+          subtitle={t("subtitle")}
           shape="wave"
         />
 
@@ -177,7 +181,7 @@ export default function RSVPPage(): React.ReactElement {
             {/* Deadline Banner */}
             <div className="mb-8 p-4 bg-wedding-coral-50 border border-wedding-coral-200 rounded-lg text-center">
               <p className="text-wedding-coral-600 font-medium">
-                Please respond by <strong>May 15, 2026</strong>
+                {t.rich("respondBy", { date: () => <strong>May 15, 2026</strong> })}
               </p>
             </div>
 
@@ -191,12 +195,12 @@ export default function RSVPPage(): React.ReactElement {
               {/* Guest Information */}
               <div className="space-y-4">
                 <Typography variant="h4" className="font-serif">
-                  Your Information
+                  {t("yourInfo")}
                 </Typography>
 
                 <div>
                   <label className="block text-sm font-medium text-wedding-neutral-700 mb-2">
-                    Full Name
+                    {t("fullName")}
                   </label>
                   <input
                     type="text"
@@ -211,7 +215,7 @@ export default function RSVPPage(): React.ReactElement {
 
                 <div>
                   <label className="block text-sm font-medium text-wedding-neutral-700 mb-2">
-                    Email Address
+                    {t("email")}
                   </label>
                   <input
                     type="email"
@@ -226,7 +230,7 @@ export default function RSVPPage(): React.ReactElement {
 
                 <div>
                   <label className="block text-sm font-medium text-wedding-neutral-700 mb-2">
-                    Number of Guests (including yourself)
+                    {t("guestCount")}
                   </label>
                   <input
                     type="number"
@@ -262,13 +266,13 @@ export default function RSVPPage(): React.ReactElement {
                 {formData.guestCount > 1 && (
                   <div className="space-y-3 mt-4 p-4 bg-wedding-neutral-50 rounded-lg border border-wedding-neutral-200">
                     <p className="text-sm font-medium text-wedding-neutral-700">
-                      Please enter the names of your additional guests:
+                      {t("additionalGuests")}
                     </p>
                     {Array.from({ length: formData.guestCount - 1 }).map(
                       (_, index) => (
                         <div key={index}>
                           <label className="block text-sm text-wedding-neutral-600 mb-1">
-                            Guest {index + 2}
+                            {t("guestLabel", { number: index + 2 })}
                           </label>
                           <input
                             type="text"
@@ -282,7 +286,7 @@ export default function RSVPPage(): React.ReactElement {
                                 guestNames: newGuestNames,
                               });
                             }}
-                            placeholder={`Full name of guest ${index + 2}`}
+                            placeholder={t("guestPlaceholder", { number: index + 2 })}
                             className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all"
                           />
                         </div>
@@ -295,7 +299,7 @@ export default function RSVPPage(): React.ReactElement {
               {/* Attendance */}
               <div className="space-y-4">
                 <Typography variant="h4" className="font-serif">
-                  Will you be joining us?
+                  {t("joiningUs")}
                 </Typography>
 
                 <div className="space-y-3">
@@ -340,11 +344,10 @@ export default function RSVPPage(): React.ReactElement {
               {formData.attendance === "full-weekend" && (
                 <div className="space-y-4">
                   <Typography variant="h4" className="font-serif">
-                    Room Preference
+                    {t("roomPreference")}
                   </Typography>
                   <p className="text-sm text-wedding-neutral-500">
-                    Choose the room type that best fits your group. Prices are
-                    for 2 nights (Friday & Saturday).
+                    {t("roomPreferenceText")}
                   </p>
 
                   <div className="space-y-3">
@@ -376,8 +379,8 @@ export default function RSVPPage(): React.ReactElement {
                               {room.name}
                             </p>
                             <p className="text-sm text-wedding-neutral-500">
-                              {room.beds} bed{room.beds > 1 ? "s" : ""} ·{" "}
-                              {room.quantity} available
+                              {room.beds} {room.beds > 1 ? t("beds") : t("bed")} ·{" "}
+                              {room.quantity} {t("available")}
                             </p>
                           </div>
                         </div>
@@ -410,11 +413,10 @@ export default function RSVPPage(): React.ReactElement {
                       />
                       <div>
                         <p className="font-medium text-wedding-neutral-700">
-                          I prefer to camp (tent/caravan)
+                          {t("campingOption")}
                         </p>
                         <p className="text-sm text-wedding-neutral-500">
-                          Please note: We need to verify with the owners if this
-                          is possible. There may be a small additional fee.
+                          {t("campingOptionText")}
                         </p>
                       </div>
                     </label>
@@ -426,11 +428,10 @@ export default function RSVPPage(): React.ReactElement {
               {formData.attendance && formData.attendance !== "no" && (
                 <div className="space-y-4">
                   <Typography variant="h4" className="font-serif">
-                    Dietary Requirements
+                    {t("dietaryRequirements")}
                   </Typography>
                   <p className="text-sm text-wedding-neutral-500">
-                    Please let us know if you or your guests have any dietary
-                    requirements.
+                    {t("dietaryRequirementsText")}
                   </p>
 
                   <div className="grid grid-cols-2 gap-3">
@@ -479,7 +480,7 @@ export default function RSVPPage(): React.ReactElement {
                           dietaryOther: e.target.value,
                         })
                       }
-                      placeholder="Please specify other dietary requirements..."
+                      placeholder={t("otherPlaceholder")}
                       className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all"
                     />
                   )}
@@ -490,7 +491,7 @@ export default function RSVPPage(): React.ReactElement {
               {formData.attendance && formData.attendance !== "no" && (
                 <div className="space-y-4">
                   <Typography variant="h4" className="font-serif">
-                    Anything else?
+                    {t("anythingElse")}
                   </Typography>
                   <textarea
                     rows={4}
@@ -498,7 +499,7 @@ export default function RSVPPage(): React.ReactElement {
                     onChange={(e) =>
                       setFormData({ ...formData, notes: e.target.value })
                     }
-                    placeholder="Accessibility needs, special requests, or anything else we should know..."
+                    placeholder={t("anythingElsePlaceholder")}
                     className="w-full px-4 py-3 border border-wedding-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-all resize-none"
                   />
                 </div>
@@ -510,7 +511,7 @@ export default function RSVPPage(): React.ReactElement {
                 disabled={isSubmitting || !formData.attendance}
                 className="w-full py-4 bg-wedding-purple text-white font-medium rounded-lg hover:bg-wedding-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Submitting..." : "Submit RSVP"}
+                {isSubmitting ? t("submitting") : t("submit")}
               </button>
             </form>
           </div>

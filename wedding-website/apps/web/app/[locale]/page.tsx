@@ -10,8 +10,12 @@ import {
   Countdown,
 } from "@repo/ui/atoms";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function HomePage(): React.ReactElement {
+  const t = useTranslations("home");
+  const tNav = useTranslations("nav");
+
   return (
     <>
       <Navbar />
@@ -19,13 +23,13 @@ export default function HomePage(): React.ReactElement {
         {/* Full width hero - NO container wrapper */}
         <HeroSection
           coupleNames="Loïc & Wiebke"
-          tagline="Join us for our wedding celebrations"
+          tagline={t("tagline")}
           date={{
             day: 18,
-            month: "July",
+            month: t("month"),
             year: 2026,
           }}
-          location="Château de Blier, Belgium"
+          location={t("location")}
           imageSrc="/images/hero-couple.jpg"
         />
 
@@ -40,7 +44,9 @@ export default function HomePage(): React.ReactElement {
             </div>
 
             <Typography variant="body" color="muted" className="mb-8 text-lg">
-              Counting down <span className="font-script text-5xl">to</span> our special day
+              {t.rich("countdown", {
+                to: () => <span className="font-script text-5xl">{t("to")}</span>,
+              })}
             </Typography>
             <Countdown targetDate={new Date("2026-07-18T15:00:00")} />
           </div>
@@ -68,16 +74,14 @@ export default function HomePage(): React.ReactElement {
               variant="h2"
               className="font-script text-8xl md:text-9xl text-wedding-coral-600 mb-6"
             >
-              We're Getting Married!
+              {t("gettingMarried")}
             </Typography>
             <Typography
               variant="body"
               color="muted"
               className="text-lg leading-relaxed max-w-2xl mx-auto"
             >
-              After years of adventures together, we're finally making it
-              official! We would be honored to have you celebrate with us at the
-              beautiful Château de Blier in the heart of the Belgian Ardennes.
+              {t("welcomeText")}
             </Typography>
 
             {/* Elegant signature */}
@@ -103,7 +107,9 @@ export default function HomePage(): React.ReactElement {
           <div className="container max-w-5xl mx-auto px-4">
             <div className="text-center mb-12">
               <Typography variant="h3" className="font-serif mb-3">
-                The Weekend <span className="font-script text-6xl">at a</span> Glance
+                {t.rich("weekendGlance", {
+                  ata: () => <span className="font-script text-6xl">{t("ata")}</span>,
+                })}
               </Typography>
               <div className="h-px w-16 bg-wedding-coral-400 mx-auto" />
             </div>
@@ -113,19 +119,19 @@ export default function HomePage(): React.ReactElement {
               <Link href="/weekend#friday" className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-wedding-neutral-100 text-center transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1">
                   <p className="text-wedding-coral-500 font-medium tracking-wide text-sm uppercase">
-                    Friday
+                    {t("friday")}
                   </p>
                   <p className="text-7xl font-script text-wedding-neutral-700 mt-2">
-                    July 17
+                    {t("month")} 17
                   </p>
                   <div className="mt-6 space-y-3 text-sm text-wedding-neutral-600">
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-wedding-coral-400">●</span>
-                      <span>5:00 PM · Arrival</span>
+                      <span>5:00 PM · {t("arrival")}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-wedding-coral-400">●</span>
-                      <span>7:00 PM · Welcome Dinner</span>
+                      <span>7:00 PM · {t("welcomeDinner")}</span>
                     </div>
                   </div>
                 </div>
@@ -135,20 +141,20 @@ export default function HomePage(): React.ReactElement {
               <Link href="/weekend#saturday" className="group md:-mt-4">
                 <div className="bg-gradient-to-br from-wedding-coral-500 to-wedding-coral-600 rounded-2xl p-8 shadow-lg text-center text-white transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
                   <p className="text-white/80 font-medium tracking-wide text-sm uppercase">
-                    Saturday
+                    {t("saturday")}
                   </p>
-                  <p className="text-7xl font-script mt-2">July 18</p>
+                  <p className="text-7xl font-script mt-2">{t("month")} 18</p>
                   <div className="mt-3 inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 text-xs font-medium">
-                    <span>✨</span> The Wedding Day
+                    <span>✨</span> {t("theWeddingDay")}
                   </div>
                   <div className="mt-6 space-y-3 text-sm text-white/90">
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-white/60">●</span>
-                      <span>3:00 PM · Ceremony</span>
+                      <span>3:00 PM · {t("ceremony")}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-white/60">●</span>
-                      <span>6:00 PM · Dinner & Party</span>
+                      <span>6:00 PM · {t("dinnerParty")}</span>
                     </div>
                   </div>
                 </div>
@@ -158,19 +164,19 @@ export default function HomePage(): React.ReactElement {
               <Link href="/weekend#sunday" className="group">
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-wedding-neutral-100 text-center transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1">
                   <p className="text-wedding-coral-500 font-medium tracking-wide text-sm uppercase">
-                    Sunday
+                    {t("sunday")}
                   </p>
                   <p className="text-7xl font-script text-wedding-neutral-700 mt-2">
-                    July 19
+                    {t("month")} 19
                   </p>
                   <div className="mt-6 space-y-3 text-sm text-wedding-neutral-600">
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-wedding-coral-400">●</span>
-                      <span>9:00 AM · Breakfast</span>
+                      <span>9:00 AM · {t("breakfast")}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-wedding-coral-400">●</span>
-                      <span>11:00 AM · Farewell</span>
+                      <span>11:00 AM · {t("farewell")}</span>
                     </div>
                   </div>
                 </div>
@@ -183,7 +189,7 @@ export default function HomePage(): React.ReactElement {
                 href="/weekend"
                 className="inline-flex items-center gap-2 text-wedding-coral-500 hover:text-wedding-coral-600 font-medium transition-colors group"
               >
-                View full weekend schedule
+                {t("viewFullSchedule")}
                 <svg
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
                   fill="none"
@@ -212,11 +218,10 @@ export default function HomePage(): React.ReactElement {
                   <DressCodeIcon />
                 </div>
                 <Typography variant="h4" className="mb-3 font-serif">
-                  Dress Code
+                  {t("dressCode")}
                 </Typography>
                 <Typography variant="body" color="muted" className="text-sm">
-                  Formal or semi-formal attire. Feel free to wear any color or
-                  pattern you wish — just maybe not white!
+                  {t("dressCodeText")}
                 </Typography>
               </article>
 
@@ -226,11 +231,10 @@ export default function HomePage(): React.ReactElement {
                   <CameraIcon />
                 </div>
                 <Typography variant="h4" className="mb-3 font-serif">
-                  Photography
+                  {t("photography")}
                 </Typography>
                 <Typography variant="body" color="muted" className="text-sm">
-                  Our guests will be our photographers! Share your pictures via
-                  the QR code at the venue. There's also a fun photo corner!
+                  {t("photographyText")}
                 </Typography>
               </article>
 
@@ -240,11 +244,10 @@ export default function HomePage(): React.ReactElement {
                   <GiftIcon />
                 </div>
                 <Typography variant="h4" className="mb-3 font-serif">
-                  Gifts
+                  {t("gifts")}
                 </Typography>
                 <Typography variant="body" color="muted" className="text-sm">
-                  Your presence is the best gift! If you wish to give something,
-                  we'd appreciate a contribution toward our future plans.
+                  {t("giftsText")}
                 </Typography>
               </article>
 
@@ -255,7 +258,7 @@ export default function HomePage(): React.ReactElement {
               >
                 {/* Deadline badge */}
                 <div className="absolute top-3 right-3 bg-wedding-purple-100 text-wedding-purple-600 text-xs font-semibold px-3 py-1 rounded-full">
-                  By May 15
+                  {t("byDate")}
                 </div>
 
                 <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-wedding-purple-50 border-2 border-wedding-purple-200 flex items-center justify-center text-wedding-purple-500">
@@ -268,13 +271,13 @@ export default function HomePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="mb-3 font-serif">
-                  RSVP
+                  {t("rsvpCard")}
                 </Typography>
                 <Typography variant="body" color="muted" className="text-sm">
-                  Let us know you're coming and choose your room
+                  {t("rsvpCardText")}
                 </Typography>
                 <div className="mt-4 inline-flex items-center gap-2 text-wedding-purple-500 font-medium text-sm group-hover:gap-3 transition-all">
-                  Respond Now
+                  {t("respondNow")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -310,13 +313,12 @@ export default function HomePage(): React.ReactElement {
               {/* Info */}
               <div>
                 <Typography variant="h3" className="font-serif mb-4">
-                  Château <span className="font-script text-6xl">de</span> Blier
+                  {t.rich("chateauTitle", {
+                    de: () => <span className="font-script text-6xl">{t("de")}</span>,
+                  })}
                 </Typography>
                 <Typography variant="body" color="muted" className="mb-6">
-                  A charming 19th-century château nestled in the heart of the
-                  Belgian Ardennes. With its beautiful gardens, rustic
-                  interiors, and peaceful surroundings, it's the perfect setting
-                  for our celebration.
+                  {t("chateauDescription")}
                 </Typography>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-start gap-3">
@@ -325,7 +327,7 @@ export default function HomePage(): React.ReactElement {
                     </div>
                     <div>
                       <p className="font-medium text-wedding-neutral-700">
-                        Address
+                        {t("address")}
                       </p>
                       <p className="text-wedding-neutral-500">
                         Blier 1, 6997 Erezée, Belgium
@@ -338,7 +340,7 @@ export default function HomePage(): React.ReactElement {
                     href="/venue"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-wedding-coral-500 text-white rounded-full text-sm font-medium hover:bg-wedding-coral-600 transition-colors"
                   >
-                    Explore the Venue
+                    {t("exploreVenue")}
                   </Link>
                   <a
                     href="https://maps.google.com/?q=Blier+1,+6997+Erezée,+Belgium"
@@ -346,7 +348,7 @@ export default function HomePage(): React.ReactElement {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 border border-wedding-neutral-300 text-wedding-neutral-700 rounded-full text-sm font-medium hover:bg-wedding-neutral-50 transition-colors"
                   >
-                    Open in Maps
+                    {t("openInMaps")}
                     <svg
                       className="w-4 h-4"
                       fill="none"
@@ -389,24 +391,24 @@ export default function HomePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="font-serif mb-3">
-                  Getting There
+                  {t("gettingThere")}
                 </Typography>
                 <div className="space-y-2 text-sm text-wedding-neutral-600">
                   <p>
-                    <strong>From Brussels:</strong> ~1.5 hours by car
+                    <strong>{t("fromBrussels")}</strong> {t("fromBrusselsTime")}
                   </p>
                   <p>
-                    <strong>From Liège:</strong> ~45 minutes by car
+                    <strong>{t("fromLiege")}</strong> {t("fromLiegeTime")}
                   </p>
                   <p>
-                    <strong>Parking:</strong> Free on-site parking available
+                    <strong>{t("parking")}</strong> {t("parkingText")}
                   </p>
                 </div>
                 <Link
                   href="/venue#getting-there"
                   className="mt-5 inline-flex items-center gap-2 px-4 py-2 border-2 border-wedding-coral-500 text-wedding-coral-500 rounded-full font-medium text-sm hover:bg-wedding-coral-500 hover:text-white transition-colors"
                 >
-                  Get directions
+                  {t("getDirections")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -441,22 +443,24 @@ export default function HomePage(): React.ReactElement {
                   </svg>
                 </div>
                 <Typography variant="h4" className="font-serif mb-3">
-                  Stay <span className="font-script text-5xl">With</span> Us
+                  {t.rich("stayWithUs", {
+                    with: () => <span className="font-script text-5xl">{t("with")}</span>,
+                  })}
                 </Typography>
                 <div className="space-y-2 text-sm text-wedding-neutral-600">
                   <p>
-                    <strong>19 rooms</strong> available on-site
+                    <strong>{t("roomsAvailable")}</strong>
                   </p>
                   <p>
-                    From <strong>€40/person/night</strong>
+                    {t("fromPrice")}
                   </p>
-                  <p>Book your room when you RSVP</p>
+                  <p>{t("bookRoom")}</p>
                 </div>
                 <Link
                   href="/accommodation"
                   className="mt-5 inline-flex items-center gap-2 px-4 py-2 border-2 border-wedding-purple-500 text-wedding-purple-500 rounded-full font-medium text-sm hover:bg-wedding-purple-500 hover:text-white transition-colors"
                 >
-                  View all rooms
+                  {t("viewAllRooms")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -480,13 +484,13 @@ export default function HomePage(): React.ReactElement {
         <section className="py-12 bg-wedding-purple/10">
           <div className="container max-w-2xl mx-auto px-4 text-center">
             <p className="text-wedding-purple-600 font-medium text-lg">
-              Don't forget to RSVP by <strong>May 15, 2026</strong>
+              {t.rich("rsvpReminder", { date: () => <strong>May 15, 2026</strong> })}
             </p>
             <Link
               href="/rsvp"
               className="mt-4 inline-flex items-center gap-2 text-wedding-purple-500 hover:text-wedding-purple-600 font-medium transition-colors"
             >
-              Haven't responded yet? Click here
+              {t("notRespondedYet")}
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -508,10 +512,10 @@ export default function HomePage(): React.ReactElement {
         <section className="py-16 bg-wedding-neutral-50">
           <div className="container max-w-2xl mx-auto px-4 text-center">
             <Typography variant="h3" className="font-serif mb-4">
-              Questions?
+              {t("questions")}
             </Typography>
             <Typography variant="body" color="muted" className="mb-6">
-              Feel free to reach out to us anytime
+              {t("questionsText")}
             </Typography>
             <a
               href="mailto:weddingloicandwiebke@gmail.com"

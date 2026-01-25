@@ -1,16 +1,11 @@
+"use client";
+
 import { Navbar, Footer, PageHero } from "@repo/ui/organisms";
 import { Typography, BackToTop } from "@repo/ui/atoms";
 import { AccommodationNav } from "./AccommodationNav";
 import { AccommodationOverview } from "./AccommodationOverview";
 import { ImageSlider } from "./ImageSlider";
-
-const roomPrices = [
-  { quantity: 1, type: "Single room", beds: 1, price: 60, perBed: 60 },
-  { quantity: 7, type: "Two-bed room", beds: 2, price: 100, perBed: 50 },
-  { quantity: 2, type: "Three-bed room", beds: 3, price: 150, perBed: 50 },
-  { quantity: 8, type: "Four-bed room", beds: 4, price: 160, perBed: 40 },
-  { quantity: 1, type: "Five-bed room", beds: 5, price: 200, perBed: 40 },
-];
+import { useTranslations } from "next-intl";
 
 const chateauImages = [
   { src: "/images/accommodation-7.png", alt: "Château interior" },
@@ -18,15 +13,6 @@ const chateauImages = [
   { src: "/images/accommodation-1.png", alt: "Château room" },
   { src: "/images/accommodation-3.png", alt: "Château dining" },
   { src: "/images/accommodation-4.png", alt: "Château living" },
-];
-
-const chateauFeatures = [
-  { icon: "🚿", label: "Shared Showers", description: "On the corridor" },
-  { icon: "🚽", label: "Shared Toilets", description: "Like a holiday home" },
-  { icon: "🛏️", label: "Shared Rooms", description: "With amazing roomies" },
-  { icon: "🌳", label: "Big Garden", description: "Beautiful grounds" },
-  { icon: "👨‍👩‍👧‍👦", label: "Family Spirit", description: "All together" },
-  { icon: "🏰", label: "Historic Rooms", description: "Rustic & charming" },
 ];
 
 function BedIcon({ className }: { className?: string }) {
@@ -50,14 +36,33 @@ function BedIcon({ className }: { className?: string }) {
 }
 
 export default function AccommodationPage(): React.ReactElement {
+  const t = useTranslations("accommodation");
+
+  const roomPrices = [
+    { quantity: 1, type: t("singleRoom"), beds: 1, price: 60, perBed: 60 },
+    { quantity: 7, type: t("twoBedRoom"), beds: 2, price: 100, perBed: 50 },
+    { quantity: 2, type: t("threeBedRoom"), beds: 3, price: 150, perBed: 50 },
+    { quantity: 8, type: t("fourBedRoom"), beds: 4, price: 160, perBed: 40 },
+    { quantity: 1, type: t("fiveBedRoom"), beds: 5, price: 200, perBed: 40 },
+  ];
+
+  const chateauFeatures = [
+    { icon: "🚿", label: t("sharedShowers"), description: t("sharedShowersDesc") },
+    { icon: "🚽", label: t("sharedToilets"), description: t("sharedToiletsDesc") },
+    { icon: "🛏️", label: t("sharedRooms"), description: t("sharedRoomsDesc") },
+    { icon: "🌳", label: t("bigGarden"), description: t("bigGardenDesc") },
+    { icon: "👨‍👩‍👧‍👦", label: t("familySpirit"), description: t("familySpiritDesc") },
+    { icon: "🏰", label: t("historicRooms"), description: t("historicRoomsDesc") },
+  ];
+
   return (
     <>
       <Navbar />
       <AccommodationNav />
       <main id="main-content">
         <PageHero
-          title="Accommodation"
-          subtitle="Where to stay during the wedding weekend"
+          title={t("title")}
+          subtitle={t("subtitle")}
           shape="diagonal"
         />
 
@@ -70,23 +75,16 @@ export default function AccommodationPage(): React.ReactElement {
               {/* Text Content */}
               <div>
                 <h2 className="font-script text-7xl text-wedding-coral-500 mb-6">
-                  The Château
+                  {t("theChateau")}
                 </h2>
                 <Typography variant="body" color="muted" className="leading-relaxed">
-                  Come and join us for the whole weekend at the Château from
-                  Friday to Sunday with lot's of fun, joy and laughter in a true
-                  family spirit. The château has a total of 20 rooms and 60 beds
-                  which we will rent to our guests. If you are interested to
-                  stay for two nights at the castle, let us know as soon as
-                  possible. Family first, and then we operate on a
-                  first-come-first-serve basis. Only want to spend one night? Do
-                  let us know, we might still have room for you.
+                  {t("chateauIntro")}
                 </Typography>
 
                 {/* Details of your stay - USP Cards */}
                 <div className="mt-8">
                   <h3 className="text-lg font-semibold text-wedding-neutral-700 mb-4">
-                    What to expect
+                    {t("whatToExpect")}
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {chateauFeatures.map((feature) => (
@@ -105,8 +103,7 @@ export default function AccommodationPage(): React.ReactElement {
                     ))}
                   </div>
                   <p className="mt-4 text-sm text-wedding-neutral-500 italic">
-                    Indicate your room preferences when RSVP-ing — we'll do our
-                    best to accommodate!
+                    {t("roomPreferences")}
                   </p>
                 </div>
               </div>
@@ -126,7 +123,7 @@ export default function AccommodationPage(): React.ReactElement {
               {/* Left: Room Prices Card */}
               <div className="bg-white rounded-xl p-6 shadow-sm border border-wedding-neutral-100">
                 <h3 className="text-lg font-semibold text-wedding-neutral-700 mb-6">
-                  Room prices
+                  {t("roomPrices")}
                 </h3>
                 <div className="space-y-3">
                   {roomPrices.map((room) => (
@@ -152,11 +149,11 @@ export default function AccommodationPage(): React.ReactElement {
                           €{room.price}
                         </span>
                         <span className="text-wedding-neutral-500 text-xs">
-                          /night
+                          {t("perNight")}
                         </span>
                         {room.beds > 1 && (
                           <p className="text-xs text-wedding-neutral-400">
-                            €{room.perBed}/bed
+                            €{room.perBed}{t("perBed")}
                           </p>
                         )}
                       </div>
@@ -170,9 +167,7 @@ export default function AccommodationPage(): React.ReactElement {
                     color="muted"
                     className="text-xs italic"
                   >
-                    *If you wish to camp in tents on the property (or with your
-                    caravan), please let us know in advance so that we can
-                    verify with the owners whether this is possible.
+                    {t("campingNote")}
                   </Typography>
                 </div>
               </div>
@@ -192,19 +187,13 @@ export default function AccommodationPage(): React.ReactElement {
               {/* Text Content */}
               <div>
                 <h2 className="font-script text-6xl text-wedding-coral-500 mb-6">
-                  Nearby Camping/Glamping
+                  {t("nearbyCamping")}
                 </h2>
                 <Typography variant="body" color="muted" className="leading-relaxed">
-                  Do you prefer to stay at a more quiet place with more privacy
-                  and calm? Do you like to camp with your caravan or in a tent
-                  or glamp in a luxurious dome, or a safari-tent? No problem,
-                  because another great and nearby accommodation possibility
-                  would be the Camping place "Domaine Le Val de l'Aisne" right
-                  across the wedding location, only 450m away (6 minutes by foot
-                  across the street).
+                  {t("nearbyCampingIntro")}
                 </Typography>
                 <Typography variant="body" color="muted" className="mt-4">
-                  Please consult the webpage directly for more information:{" "}
+                  {t("consultWebpage")}{" "}
                   <a
                     href="https://levaldelaisne.be"
                     target="_blank"
@@ -219,9 +208,7 @@ export default function AccommodationPage(): React.ReactElement {
                   color="muted"
                   className="mt-4 text-sm italic"
                 >
-                  *Should you have difficulties with the language (NL or FR),
-                  please do not hesitate to contact us to help you book your
-                  place.
+                  {t("languageHelp")}
                 </Typography>
               </div>
 
@@ -251,7 +238,7 @@ export default function AccommodationPage(): React.ReactElement {
                   </div>
                 </div>
                 <p className="text-center text-sm text-wedding-neutral-500 mt-4">
-                  6 minutes walk across the street
+                  {t("minutesWalk")}
                 </p>
               </div>
             </div>
@@ -276,18 +263,14 @@ export default function AccommodationPage(): React.ReactElement {
         <section id="airbnb" className="py-16">
           <div className="container max-w-6xl mx-auto px-4">
             <h2 className="font-script text-6xl text-wedding-coral-500 mb-6 text-center">
-              Holiday homes or Airbnbs in the Region
+              {t("holidayHomesTitle")}
             </h2>
             <Typography
               variant="body"
               color="muted"
               className="leading-relaxed text-center max-w-3xl mx-auto"
             >
-              If you prefer to stay in a secluded holiday home with more
-              privacy, you can also check the various possibilities in the Area
-              via AirBnB or Booking.com. However, be aware of the distance to
-              the wedding venue, it might not seem far on the map but commuting
-              in the region sometimes takes more time than expected.
+              {t("holidayHomesIntro")}
             </Typography>
 
             {/* Booking Widget Cards */}
@@ -309,13 +292,13 @@ export default function AccommodationPage(): React.ReactElement {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-wedding-neutral-700 mb-2">
-                  Airbnb
+                  {t("airbnb")}
                 </h3>
                 <p className="text-sm text-wedding-neutral-500 mb-4">
-                  Browse holiday homes and apartments in Erezée
+                  {t("airbnbDesc")}
                 </p>
                 <span className="inline-flex items-center gap-2 text-[#FF5A5F] font-medium text-sm group-hover:gap-3 transition-all">
-                  Search on Airbnb
+                  {t("searchAirbnb")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -349,13 +332,13 @@ export default function AccommodationPage(): React.ReactElement {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-wedding-neutral-700 mb-2">
-                  Booking.com
+                  {t("booking")}
                 </h3>
                 <p className="text-sm text-wedding-neutral-500 mb-4">
-                  Find hotels and B&Bs near Erezée
+                  {t("bookingDesc")}
                 </p>
                 <span className="inline-flex items-center gap-2 text-[#003580] font-medium text-sm group-hover:gap-3 transition-all">
-                  Search on Booking
+                  {t("searchBooking")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -389,13 +372,13 @@ export default function AccommodationPage(): React.ReactElement {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-wedding-neutral-700 mb-2">
-                  Google Maps
+                  {t("googleMaps")}
                 </h3>
                 <p className="text-sm text-wedding-neutral-500 mb-4">
-                  Explore all nearby accommodations
+                  {t("googleMapsDesc")}
                 </p>
                 <span className="inline-flex items-center gap-2 text-[#4285F4] font-medium text-sm group-hover:gap-3 transition-all">
-                  View on Maps
+                  {t("viewOnMaps")}
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -419,11 +402,10 @@ export default function AccommodationPage(): React.ReactElement {
         <section className="py-12 bg-wedding-purple/10">
           <div className="container max-w-2xl mx-auto px-4 text-center">
             <Typography variant="h4" className="font-serif mb-3">
-              Need help booking?
+              {t("needHelpBooking")}
             </Typography>
             <Typography variant="body" color="muted" className="mb-4">
-              If you need assistance with accommodation bookings or have
-              language difficulties, please don't hesitate to contact us.
+              {t("needHelpText")}
             </Typography>
             <a
               href="mailto:weddingloicandwiebke@gmail.com"

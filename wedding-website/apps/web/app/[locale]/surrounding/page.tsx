@@ -1,65 +1,64 @@
+"use client";
+
 import { Navbar, Footer, PageHero } from "@repo/ui/organisms";
 import { Typography, BackToTop } from "@repo/ui/atoms";
-
-const activities = [
-  {
-    name: "Nearby Village",
-    description:
-      "Durbuy is often called the smallest city in the world and is known for its charming medieval streets along the Ourthe River in the Belgian Ardennes. It is a popular destination for outdoor activities like hiking and kayaking, as well as cozy cafés and local restaurants.",
-    imageSrc: "/images/activity-1.png",
-    linkText: null,
-    url: null,
-  },
-  {
-    name: "Kayaking",
-    description:
-      "Sail on the clear water of the Ourthe river, surrounded by the natural beauty of the Ardennes. Paddle through the breathtaking landscapes of the region, while enjoying a moment of relaxation and adventure with family and friends.",
-    imageSrc: "/images/activity-2.png",
-    linkText: "Adventure-valley Kayak",
-    url: "https://www.adventure-valley.be/en/activities/kayak",
-  },
-  {
-    name: "Caves of Hotton",
-    description:
-      "About a short drive away, these fascinating natural caves are one of Wallonia's most impressive underground systems. You can explore stalactite and stalagmite galleries — a great rainy-day activity and a striking contrast to the Ardennes' outdoor scenery.",
-    imageSrc: "/images/activity-3.png",
-    linkText: "Grottes de Hotton",
-    url: "https://grottesdehotton.be/en/home/",
-  },
-  {
-    name: "Treetop Parc",
-    description:
-      "From footbridges to cabins, discover the trail of the parc which is 200 meters long and more than 15 meters high. It allows you and your little ones to discover the forest up close!",
-    imageSrc: "/images/activity-4.png",
-    linkText: "Treetop Parc Chlorophylle",
-    url: "https://www.parcchlorophylle.com/en-GB/",
-  },
-  {
-    name: "Hiking Trips",
-    description:
-      "Go on a hiking trip in the Ardennes, where forested hills, river valleys, and scenic viewpoints create the perfect escape into nature.",
-    imageSrc: "/images/activity-5.png",
-    linkText: "Hiking suggestions",
-    url: "https://www.alltrails.com/belgium/wallonia/liege",
-  },
-  {
-    name: "Animal Parc",
-    description:
-      "This 10 ha park offers you the opportunity to observe the inhabitants of our forests in their natural habitat. You will meet a herd of fallow deer, mouflon, a herd of wild boar, wolves, lynxes, foxes, and eagle-owls...",
-    imageSrc: "/images/activity-6.png",
-    linkText: "Animal parc Gibier Laroche",
-    url: "https://www.parc-gibier-laroche.be/",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function SurroundingPage(): React.ReactElement {
+  const t = useTranslations("surrounding");
+
+  const activities = [
+    {
+      name: t("nearbyVillage"),
+      description: t("nearbyVillageDesc"),
+      imageSrc: "/images/activity-1.png",
+      linkText: null,
+      url: null,
+    },
+    {
+      name: t("kayaking"),
+      description: t("kayakingDesc"),
+      imageSrc: "/images/activity-2.png",
+      linkText: t("kayakingLink"),
+      url: "https://www.adventure-valley.be/en/activities/kayak",
+    },
+    {
+      name: t("cavesHotton"),
+      description: t("cavesHottonDesc"),
+      imageSrc: "/images/activity-3.png",
+      linkText: t("cavesHottonLink"),
+      url: "https://grottesdehotton.be/en/home/",
+    },
+    {
+      name: t("treetopParc"),
+      description: t("treetopParcDesc"),
+      imageSrc: "/images/activity-4.png",
+      linkText: t("treetopParcLink"),
+      url: "https://www.parcchlorophylle.com/en-GB/",
+    },
+    {
+      name: t("hikingTrips"),
+      description: t("hikingTripsDesc"),
+      imageSrc: "/images/activity-5.png",
+      linkText: t("hikingTripsLink"),
+      url: "https://www.alltrails.com/belgium/wallonia/liege",
+    },
+    {
+      name: t("animalParc"),
+      description: t("animalParcDesc"),
+      imageSrc: "/images/activity-6.png",
+      linkText: t("animalParcLink"),
+      url: "https://www.parc-gibier-laroche.be/",
+    },
+  ];
+
   return (
     <>
       <Navbar />
       <main id="main-content">
         <PageHero
-          title="The Surrounding"
-          subtitle="Explore the Belgian Ardennes"
+          title={t("title")}
+          subtitle={t("subtitle")}
           shape="wave"
         />
 
@@ -78,10 +77,7 @@ export default function SurroundingPage(): React.ReactElement {
               color="muted"
               className="text-lg leading-relaxed max-w-2xl mx-auto"
             >
-              The Belgian Ardennes is a beautiful region with plenty to see and
-              do. Whether you love outdoor adventures, exploring caves, or
-              simply enjoying the peaceful countryside, there is something for
-              everyone.
+              {t("intro")}
             </Typography>
           </div>
         </section>
@@ -91,7 +87,9 @@ export default function SurroundingPage(): React.ReactElement {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <Typography variant="h2" className="font-serif mb-3">
-                Things <span className="font-script text-6xl">to</span> Do
+                {t.rich("thingsToDo", {
+                  to: () => <span className="font-script text-6xl">{t("to")}</span>,
+                })}
               </Typography>
               <div className="h-px w-16 bg-wedding-coral-400 mx-auto" />
             </div>
@@ -155,11 +153,10 @@ export default function SurroundingPage(): React.ReactElement {
           <div className="container max-w-2xl mx-auto px-4 text-center">
             <div className="p-6 bg-wedding-coral-50/50 rounded-xl border border-wedding-coral-100">
               <Typography variant="h4" className="font-serif mb-2">
-                Planning to explore?
+                {t("planningToExplore")}
               </Typography>
               <Typography variant="body" color="muted" className="text-sm">
-                If you're staying for the full weekend, Sunday morning is a
-                great time to visit the surrounding area before heading home!
+                {t("planningToExploreText")}
               </Typography>
             </div>
           </div>
