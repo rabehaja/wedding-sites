@@ -260,6 +260,8 @@
     "cantMakeItSub": "Vous nous manquerez !",
     "roomPreference": "Préférence de chambre",
     "roomPreferenceText": "Choisissez le type de chambre qui convient le mieux à votre groupe. Les prix sont pour 2 nuits (vendredi & samedi).",
+    "preferenceNoticeTitle": "À noter",
+    "preferenceNoticeDesc": "En indiquant vos préférences, vous ne réservez pas directement une chambre. Nous collecterons les préférences de tous et attribuerons les chambres en conséquence.",
     "bed": "lit",
     "beds": "lits",
     "available": "disponible(s)",

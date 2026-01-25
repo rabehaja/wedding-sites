@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Navbar, PageHero, Footer } from "@repo/ui/organisms";
-import { Typography } from "@repo/ui/atoms";
+import { Typography, InfoBanner } from "@repo/ui/atoms";
 import { useTranslations } from "next-intl";
 
 export default function RSVPPage(): React.ReactElement {
@@ -352,6 +352,12 @@ export default function RSVPPage(): React.ReactElement {
                   <p className="text-sm text-wedding-neutral-500">
                     {t("roomPreferenceText")}
                   </p>
+
+                  <InfoBanner
+                    title={t("preferenceNoticeTitle")}
+                    description={t("preferenceNoticeDesc")}
+                    className="mt-2"
+                  />
 
                   <div className="space-y-3">
                     {ROOM_TYPES.map((room) => (

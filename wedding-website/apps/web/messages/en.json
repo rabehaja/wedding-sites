@@ -260,6 +260,8 @@
     "cantMakeItSub": "We'll miss you!",
     "roomPreference": "Room Preference",
     "roomPreferenceText": "Choose the room type that best fits your group. Prices are for 2 nights (Friday & Saturday).",
+    "preferenceNoticeTitle": "Please Note",
+    "preferenceNoticeDesc": "By indicating your preferences, you are not booking a room directly. We will collect everyone's preferences and assign rooms accordingly.",
     "bed": "bed",
     "beds": "beds",
     "available": "available",
