@@ -28,7 +28,7 @@ export function HeroSection({
 }: HeroSectionProps): React.ReactElement {
   return (
     <section
-      className={cn("relative h-[60vh] bg-wedding-coral overflow-hidden", className)}
+      className={cn("relative h-[70vh] md:h-[80vh] lg:h-[85vh] bg-wedding-coral overflow-hidden", className)}
       aria-label="Wedding hero section"
     >
       {/* Decorative floral image - top right */}
@@ -54,7 +54,7 @@ export function HeroSection({
       </svg>
 
       {/* Main container with two overlapping rectangles */}
-      <div className="relative w-full h-[60vh] flex items-center">
+      <div className="relative w-full h-[70vh] md:h-[80vh] lg:h-[85vh] flex items-center">
         {/* Centered text overlay */}
         <div className="absolute top-[70px] md:top-[80px] left-0 right-0 flex justify-center z-30 pointer-events-none">
           <div className="text-center text-white [font-kerning:normal] relative">
@@ -73,7 +73,7 @@ export function HeroSection({
 
         {/* Left container - Image with quarter-circle cutout in top-right corner */}
         <div
-          className="absolute left-0 bottom-0 w-[55%] h-[70%] z-10"
+          className="absolute left-0 bottom-0 w-[55%] h-[75%] md:h-[70%] z-10"
           style={{
             clipPath: "url(#leftClip)",
           }}
@@ -84,7 +84,7 @@ export function HeroSection({
               alt={`${coupleNames} photo`}
               fill
               priority
-              className="object-cover object-center scale-[2] translate-y-[120px]"
+              className="object-cover object-center scale-[1.5] md:scale-[1.8] translate-y-[80px] md:translate-y-[100px]"
               containerClassName="w-full h-full"
             />
           </div>
@@ -92,38 +92,38 @@ export function HeroSection({
 
         {/* Right container - Purple background with quarter-circle cutout in top-left corner */}
         <div
-          className="absolute right-0 bottom-0 w-[55%] h-[70%] bg-wedding-purple"
+          className="absolute right-0 bottom-0 w-[55%] h-[75%] md:h-[70%] bg-wedding-purple"
           style={{
             clipPath: "url(#rightClip)",
           }}
         >
           {/* Content inside purple container */}
-          <div className="flex flex-col items-center justify-center h-full text-center gap-20 pl-[50px]">
+          <div className="flex flex-col items-center justify-center h-full text-center gap-8 md:gap-16 lg:gap-20 pl-[20px] md:pl-[50px]">
             {/* Date display - 18 july 26 */}
             <div className="flex flex-col items-center">
               {/* 18 */}
               <span
-                className="text-[46px] font-light text-wedding-coral leading-none font-tenor"
+                className="text-[28px] md:text-[38px] lg:text-[46px] font-light text-wedding-coral leading-none font-tenor"
               >
                 {date.day}
               </span>
               {/* july */}
-              <span className="font-script text-[85px] text-white leading-none -mt-[18px]">
+              <span className="font-script text-[50px] md:text-[70px] lg:text-[85px] text-white leading-none -mt-[10px] md:-mt-[14px] lg:-mt-[18px]">
                 {date.month.toLowerCase()}
               </span>
               {/* 26 */}
               <span
-                className="text-[46px] font-light text-wedding-coral leading-none -mt-6 font-tenor"
+                className="text-[28px] md:text-[38px] lg:text-[46px] font-light text-wedding-coral leading-none -mt-3 md:-mt-5 lg:-mt-6 font-tenor"
               >
                 {String(date.year).slice(-2)}
               </span>
             </div>
 
             {/* Location */}
-            <div className="mt-[50px] text-center relative">
-              <span className="font-script text-[60px] text-white absolute -left-8 -top-6">at</span>
+            <div className="mt-[20px] md:mt-[35px] lg:mt-[50px] text-center relative">
+              <span className="font-script text-[36px] md:text-[48px] lg:text-[60px] text-white absolute -left-4 md:-left-6 lg:-left-8 -top-3 md:-top-4 lg:-top-6">at</span>
               <p
-                className="text-[30px] text-wedding-coral uppercase tracking-wider leading-tight font-thin-serif"
+                className="text-[18px] md:text-[24px] lg:text-[30px] text-wedding-coral uppercase tracking-wider leading-tight font-thin-serif"
               >
                 CHATEAU<br />DE BLIER,<br />BELGIUM
               </p>
