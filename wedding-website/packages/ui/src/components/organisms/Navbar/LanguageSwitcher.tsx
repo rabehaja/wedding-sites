@@ -68,7 +68,7 @@ export function LanguageSwitcher(): React.ReactElement {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-wedding-neutral-200 py-1 z-50">
+        <div className="absolute left-0 lg:right-0 lg:left-auto mt-2 w-32 bg-white rounded-lg shadow-lg border border-wedding-neutral-200 py-1 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}

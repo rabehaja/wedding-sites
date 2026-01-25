@@ -185,8 +185,8 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
         <div
           id="mobile-menu"
           className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300 ease-in-out",
-            isMobileMenuOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+            "lg:hidden transition-all duration-300 ease-in-out",
+            isMobileMenuOpen ? "max-h-[600px] opacity-100 mt-4" : "max-h-0 opacity-0 overflow-hidden"
           )}
         >
           <ul className="flex flex-col gap-2 pb-4">
@@ -214,7 +214,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
               </li>
             ))}
 
-            {/* Language Switcher - Mobile */}
+            {/* Language Switcher - Mobile (moved before RSVP so dropdown doesn't overlap) */}
             <li className="mt-4 pt-4 border-t border-wedding-neutral-200">
               <div className="px-4 py-2">
                 <LanguageSwitcher />
@@ -222,7 +222,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             </li>
 
             {/* RSVP as highlighted CTA button */}
-            <li className="mt-2">
+            <li className="mt-4">
               <Link
                 href={rsvpItem.href}
                 onClick={closeMobileMenu}
