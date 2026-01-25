@@ -248,6 +248,7 @@
     "fullName": "Vollständiger Name",
     "email": "E-Mail-Adresse",
     "guestCount": "Anzahl der Gäste (inkl. euch selbst)",
+    "guests": "Gast/Gäste",
     "additionalGuests": "Bitte gebt die Namen eurer zusätzlichen Gäste an:",
     "guestLabel": "Gast {number}",
     "guestPlaceholder": "Vollständiger Name von Gast {number}",

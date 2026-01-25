@@ -248,6 +248,7 @@
     "fullName": "Nom complet",
     "email": "Adresse e-mail",
     "guestCount": "Nombre d'invités (vous compris)",
+    "guests": "invité(s)",
     "additionalGuests": "Veuillez entrer les noms de vos invités supplémentaires :",
     "guestLabel": "Invité {number}",
     "guestPlaceholder": "Nom complet de l'invité {number}",

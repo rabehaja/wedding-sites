@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Navbar, PageHero, Footer } from "@repo/ui/organisms";
 import { Typography, InfoBanner } from "@repo/ui/atoms";
 import { useTranslations } from "next-intl";
+import { NumberSelector } from "./NumberSelector";
 
 export default function RSVPPage(): React.ReactElement {
   const t = useTranslations("rsvp");
@@ -232,14 +233,10 @@ export default function RSVPPage(): React.ReactElement {
                   <label className="block text-sm font-medium text-wedding-neutral-700 mb-2">
                     {t("guestCount")}
                   </label>
-                  <select
-                    required
+                  <NumberSelector
                     value={formData.guestCount}
-                    onChange={(e) => {
-                      const newCount = parseInt(e.target.value) || 1;
+                    onChange={(newCount) => {
                       const additionalGuests = Math.max(0, newCount - 1);
-
-                      // Resize guestNames array, preserving existing names
                       const newGuestNames = [...formData.guestNames];
                       if (newGuestNames.length < additionalGuests) {
                         while (newGuestNames.length < additionalGuests) {
@@ -248,21 +245,16 @@ export default function RSVPPage(): React.ReactElement {
                       } else {
                         newGuestNames.length = additionalGuests;
                       }
-
                       setFormData({
                         ...formData,
                         guestCount: newCount,
                         guestNames: newGuestNames,
                       });
                     }}
-                    className="w-full px-4 py-2.5 border border-wedding-neutral-200 rounded-lg bg-white text-wedding-neutral-600 font-medium text-sm hover:bg-wedding-neutral-100 focus:outline-none focus:ring-2 focus:ring-wedding-purple-500 focus:border-transparent transition-colors cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23525252%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[right_12px_center] bg-no-repeat pr-10"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                      <option key={num} value={num}>
-                        {num}
-                      </option>
-                    ))}
-                  </select>
+                    min={1}
+                    max={10}
+                    label={t("guests")}
+                  />
                 </div>
 
                 {/* Additional Guest Names - show when guestCount > 1 */}
