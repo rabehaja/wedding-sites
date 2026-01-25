@@ -11,6 +11,9 @@ importers:
       '@lhci/cli':
         specifier: ^0.15.1
         version: 0.15.1
+      '@netlify/plugin-nextjs':
+        specifier: ^5.15.5
+        version: 5.15.5
       prettier:
         specifier: ^3.7.4
         version: 3.7.4
@@ -773,6 +776,10 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@netlify/plugin-nextjs@5.15.5':
+    resolution: {integrity: sha512-Lvix59vHCEfvopILvdfIK2EPe/CrLH5qrIdwYnJbxpp/SSVgklsHpBrfNM9ADTr310r+WJRDz11NcDyHu3iT9w==}
+    engines: {node: '>=18.0.0'}
 
   '@next/env@16.1.0':
     resolution: {integrity: sha512-Dd23XQeFHmhf3KBW76leYVkejHlCdB7erakC2At2apL1N08Bm+dLYNP+nNHh0tzUXfPQcNcXiQyacw0PG4Fcpw==}
@@ -5073,6 +5080,8 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 19.2.2
       react: 19.2.0
+
+  '@netlify/plugin-nextjs@5.15.5': {}
 
   '@next/env@16.1.0': {}
 
