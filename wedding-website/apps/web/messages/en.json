@@ -5,6 +5,7 @@
     "weekend": "THE WEEKEND",
     "accommodation": "ACCOMMODATION",
     "surrounding": "SURROUNDING",
+    "madagascar": "MADAGASCAR",
     "rsvp": "RSVP",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -44,7 +45,7 @@
     "gifts": "Gifts",
     "giftsText": "Your presence is the best gift! If you wish to give something, we'd appreciate a contribution toward our future plans.",
     "rsvpCard": "RSVP",
-    "rsvpCardText": "Let us know you're coming and choose your room",
+    "rsvpCardText": "Let us know you're coming and your accommodation preferences",
     "respondNow": "Respond Now",
     "byDate": "By May 15",
     "chateauTitle": "Château <de></de> Blier",
@@ -124,8 +125,8 @@
     "arrivalDay": "Arrival Day",
     "fridayIntro": "Arrive at Château de Blier from 5PM onwards. We'd really appreciate it if you could lend us a hand to organize the venue — and we'll dine together afterwards!",
     "arrivalCheckinDesc": "Check into your accommodation and take time to explore the beautiful grounds.",
-    "welcomeDrinksDinnerTitle": "Welcome Drinks & Dinner",
-    "welcomeDrinksDinnerDesc": "Join us for casual drinks and dinner together. If you'd like to help prepare the castle for the wedding, we'd love the extra hands!",
+    "welcomeDrinksDinnerTitle": "Evening Plans",
+    "welcomeDrinksDinnerDesc": "Let's spend time together casually or feel free to organize your own plans.",
     "saturdayTitle": "Saturday, <date></date>",
     "weddingDay": "The Wedding Day",
     "saturdayIntro": "The wedding day — let's start with brunch from 9:30 AM before getting ready for the festivities.",
@@ -293,5 +294,25 @@
     "learnMore": "Learn more",
     "viewDetails": "View details",
     "backToTop": "Back to top"
+  },
+  "page-not-found": {
+    "title": "Page Not Found",
+    "subtitle": "Oops! Lost in the Ardennes?",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
+  },
+  "madagascar": {
+    "title": "Madagascar",
+    "subtitle": "14 November 2026",
+    "countdown": "Counting down <to></to> our celebration",
+    "to": "to",
+    "comingSoon": "More Information Coming Soon",
+    "comingSoonText": "We're excited to share more details about our Madagascar celebration. Stay tuned for updates on the venue, accommodations, and activities.",
+    "newsletterTitle": "Stay Updated",
+    "newsletterSubtitle": "Subscribe to receive updates about our Madagascar wedding",
+    "emailPlaceholder": "your@email.com",
+    "subscribe": "Subscribe",
+    "subscribeSuccess": "Thank you! You'll receive updates soon.",
+    "subscribeError": "Please enter a valid email address."
   }
 }

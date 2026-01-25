@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -17,17 +18,6 @@ interface NavItem {
   readonly href: string;
   readonly label: string;
 }
-
-const navItems: NavItem[] = [
-  { href: "/", label: "HOME" },
-  { href: "/venue", label: "THE VENUE" },
-  { href: "/weekend", label: "THE WEEKEND" },
-  { href: "/accommodation", label: "ACCOMMODATION" },
-  { href: "/surrounding", label: "SURROUNDING" },
-];
-
-// RSVP as a separate prominent CTA
-const rsvpItem: NavItem = { href: "/rsvp", label: "RSVP" };
 
 function MenuIcon(): React.ReactElement {
   return (
@@ -77,6 +67,18 @@ interface NavbarProps {
 export function Navbar({ className }: NavbarProps): React.ReactElement {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("nav");
+
+  const navItems: NavItem[] = [
+    { href: "/", label: "HOME" },
+    { href: "/venue", label: t("venue") },
+    { href: "/weekend", label: t("weekend") },
+    { href: "/accommodation", label: t("accommodation") },
+    { href: "/surrounding", label: t("surrounding") },
+    { href: "/madagascar", label: t("madagascar") },
+  ];
+
+  const rsvpItem: NavItem = { href: "/rsvp", label: t("rsvp") };
 
   const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen((prev) => !prev);

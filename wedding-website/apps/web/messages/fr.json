@@ -5,6 +5,7 @@
     "weekend": "LE WEEK-END",
     "accommodation": "HÉBERGEMENT",
     "surrounding": "LES ENVIRONS",
+    "madagascar": "MADAGASCAR",
     "rsvp": "RSVP",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu"
@@ -44,7 +45,7 @@
     "gifts": "Cadeaux",
     "giftsText": "Votre présence est le plus beau cadeau ! Si vous souhaitez offrir quelque chose, nous apprécierions une contribution à nos projets futurs.",
     "rsvpCard": "RSVP",
-    "rsvpCardText": "Confirmez votre présence et choisissez votre chambre",
+    "rsvpCardText": "Confirmez votre présence et vos préférences d'hébergement",
     "respondNow": "Répondre maintenant",
     "byDate": "Avant le 15 mai",
     "chateauTitle": "Château <de></de> Blier",
@@ -124,8 +125,8 @@
     "arrivalDay": "Jour d'arrivée",
     "fridayIntro": "Arrivée au Château de Blier à partir de 17h. Nous apprécierions vraiment si vous pouviez nous donner un coup de main pour organiser le lieu — et nous dînerons ensemble après !",
     "arrivalCheckinDesc": "Installez-vous dans votre hébergement et prenez le temps d'explorer le magnifique domaine.",
-    "welcomeDrinksDinnerTitle": "Apéritif & Dîner de bienvenue",
-    "welcomeDrinksDinnerDesc": "Rejoignez-nous pour des boissons décontractées et un dîner ensemble. Si vous souhaitez aider à préparer le château pour le mariage, nous serions ravis d'avoir de l'aide !",
+    "welcomeDrinksDinnerTitle": "Soirée libre",
+    "welcomeDrinksDinnerDesc": "Passons du temps ensemble de manière décontractée ou n'hésitez pas à organiser vos propres plans.",
     "saturdayTitle": "Samedi <date></date>",
     "weddingDay": "Le jour du mariage",
     "saturdayIntro": "Le jour du mariage — commençons par un brunch à partir de 9h30 avant de nous préparer pour les festivités.",
@@ -293,5 +294,25 @@
     "learnMore": "En savoir plus",
     "viewDetails": "Voir les détails",
     "backToTop": "Retour en haut"
+  },
+  "page-not-found": {
+    "title": "Page introuvable",
+    "subtitle": "Oups ! Perdu dans les Ardennes ?",
+    "message": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil"
+  },
+  "madagascar": {
+    "title": "Madagascar",
+    "subtitle": "14 novembre 2026",
+    "countdown": "Compte à rebours <to></to> notre célébration",
+    "to": "vers",
+    "comingSoon": "Plus d'informations à venir",
+    "comingSoonText": "Nous sommes ravis de partager bientôt plus de détails sur notre célébration à Madagascar. Restez à l'écoute pour des mises à jour sur le lieu, l'hébergement et les activités.",
+    "newsletterTitle": "Restez informés",
+    "newsletterSubtitle": "Abonnez-vous pour recevoir des mises à jour sur notre mariage à Madagascar",
+    "emailPlaceholder": "votre@email.com",
+    "subscribe": "S'abonner",
+    "subscribeSuccess": "Merci ! Vous recevrez bientôt des nouvelles.",
+    "subscribeError": "Veuillez entrer une adresse email valide."
   }
 }

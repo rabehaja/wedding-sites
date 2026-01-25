@@ -1,32 +1,35 @@
 "use client";
 
 import { Typography } from "@repo/ui/atoms";
-
-const accommodationOptions = [
-  {
-    id: "château",
-    icon: "🏰",
-    title: "The Château",
-    description: "Stay with us at the castle",
-    detail: "20 rooms · From €40/person/night",
-  },
-  {
-    id: "camping",
-    icon: "⛺",
-    title: "Camping & Glamping",
-    description: "Nearby at Domaine Le Val de l'Aisne",
-    detail: "450m away · 6 min walk",
-  },
-  {
-    id: "airbnb",
-    icon: "🏠",
-    title: "Holiday Homes",
-    description: "Airbnb & Booking.com options",
-    detail: "More privacy · Various locations",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function AccommodationOverview(): React.ReactElement {
+  const t = useTranslations("accommodation");
+
+  const accommodationOptions = [
+    {
+      id: "château",
+      icon: "🏰",
+      title: t("theChateau"),
+      description: t("stayWithUs"),
+      detail: t("chateauDetail"),
+    },
+    {
+      id: "camping",
+      icon: "⛺",
+      title: t("campingGlamping"),
+      description: t("campingDesc"),
+      detail: t("campingDetail"),
+    },
+    {
+      id: "airbnb",
+      icon: "🏠",
+      title: t("holidayHomes"),
+      description: t("holidayHomesDesc"),
+      detail: t("holidayHomesDetail"),
+    },
+  ];
+
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
@@ -40,10 +43,12 @@ export function AccommodationOverview(): React.ReactElement {
       <div className="container max-w-5xl mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="font-serif text-3xl text-wedding-neutral-700">
-            Where <span className="font-script text-6xl">to</span> Stay
+            {t.rich("whereToStay", {
+              to: () => <span className="font-script text-6xl">{t("to")}</span>,
+            })}
           </h2>
           <Typography variant="body" color="muted" className="mt-2">
-            Choose the accommodation that suits you best
+            {t("chooseAccommodation")}
           </Typography>
         </div>
 
