@@ -51,14 +51,14 @@ export function AccommodationNav(): React.ReactElement | null {
                   .getElementById(section.id)
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                 activeSection === section.id
                   ? "bg-wedding-coral-500 text-white"
                   : "text-wedding-neutral-600 hover:bg-wedding-neutral-100"
               }`}
             >
-              <span className="mr-1.5">{section.icon}</span>
-              {section.label}
+              <span>{section.icon}</span>
+              <span>{section.label}</span>
             </a>
           ))}
         </div>
