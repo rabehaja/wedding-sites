@@ -35,15 +35,15 @@ interface InteractiveMapProps {
  */
 const REGION_PATHS: Record<RegionKey, string> = {
   north:
-    "M 260,245 L 275,225 L 295,195 L 315,155 L 335,120 L 350,95 L 365,85 L 385,100 L 410,130 L 435,165 L 452,195 L 462,230 L 462,245 Z",
+    "M 283,245 L 300,220 L 325,183 L 350,133 L 358,100 Q 380,35 399,35 Q 433,35 473,100 L 480,101 L 510,145 L 528,183 L 530,226 L 525,245 Z",
   east:
     "M 462,245 L 458,290 L 450,325 L 438,360 L 425,395 L 410,425 L 395,455 L 382,480 L 375,500 L 365,500 L 370,245 Z",
   center:
     "M 255,245 L 370,245 L 365,500 L 248,500 Z",
   west:
-    "M 260,245 L 225,270 L 195,300 L 170,335 L 150,370 L 135,405 L 128,440 L 125,475 L 128,500 L 140,500 L 248,500 L 255,245 Z",
+    "M 125,290 Q 125,245 170,245 L 255,245 L 248,500 L 125,500 Z",
   south:
-    "M 140,500 L 138,530 L 140,560 L 145,590 L 152,620 L 160,650 L 170,680 L 182,700 L 195,712 L 210,715 L 230,705 L 250,685 L 270,660 L 290,630 L 310,600 L 335,565 L 355,535 L 375,500 L 248,500 Z",
+    "M 130,500 L 128,550 L 130,580 L 135,610 L 142,640 L 150,670 L 160,700 L 172,720 L 185,732 L 200,735 L 220,725 L 240,705 L 260,680 L 280,650 L 300,620 L 325,585 L 345,555 L 385,500 L 248,500 Z",
 };
 
 const REGION_LABEL_POSITIONS: Record<RegionKey, { x: number; y: number }> = {
@@ -147,7 +147,7 @@ function RegionCard({
       aria-label={region.title}
     >
       <div className="px-5 pt-5 pb-3">
-        <h3 className="font-script text-3xl md:text-4xl text-white">
+        <h3 className="font-thin-serif text-3xl md:text-4xl text-white">
           {region.title}
         </h3>
       </div>
@@ -226,8 +226,8 @@ function MapSvgOverlay({
             <g key={key}>
               <path
                 d={path}
-                fill={isActive ? "rgba(233, 182, 247, 0.45)" : "rgba(233, 182, 247, 0.12)"}
-                stroke={isActive ? "rgba(138, 46, 176, 0.7)" : "rgba(138, 46, 176, 0.35)"}
+                fill={isActive ? "rgba(255, 127, 80, 0.4)" : "rgba(255, 127, 80, 0.15)"}
+                stroke={isActive ? "rgba(220, 80, 40, 0.8)" : "rgba(220, 80, 40, 0.5)"}
                 strokeWidth={isActive ? "3" : "1.5"}
                 strokeDasharray={isActive ? "none" : "8 4"}
                 className="cursor-pointer transition-all duration-300"
@@ -243,10 +243,10 @@ function MapSvgOverlay({
                 textAnchor="middle"
                 dominantBaseline="central"
                 className="pointer-events-none select-none transition-all duration-300"
-                fill={isActive ? "rgba(138, 46, 176, 0.95)" : "rgba(138, 46, 176, 0.6)"}
-                fontSize={isActive ? "22" : "18"}
+                fill={isActive ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.6)"}
+                fontSize={isActive ? "52" : "42"}
                 fontWeight={isActive ? "700" : "600"}
-                fontFamily="sans-serif"
+                fontFamily="'Abramo', cursive"
               >
                 {label}
               </text>
