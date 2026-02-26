@@ -254,7 +254,8 @@ export default async function PlanYourTripPage({
                   </span>
                 ),
               })}
-              defaultText={t("defaultHoverText")}
+              hintText={t("mapClickHint")}
+              closeLabel={t("closeRegion")}
             />
           </div>
         </section>

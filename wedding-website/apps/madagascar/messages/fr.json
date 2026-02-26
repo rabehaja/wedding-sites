@@ -93,7 +93,8 @@
     "regionEastDescription": "Réveillez-vous au cri envoûtant de l'Indri — le plus grand lémurien vivant au monde — résonnant dans la canopée brumeuse de la forêt tropicale d'Andasibe, le parc animalier le plus fascinant de Madagascar. Puis glissez le long du Canal des Pangalanes entre des villages de pêcheurs bordés de palmiers, jusqu'à la côte de la vanille, qui fournit plus de la moitié de la vanille mondiale.",
     "regionSouthTitle": "Le Sud",
     "regionSouthDescription": "Suivez la légendaire Route Nationale 7 vers le sud jusqu'à ce que le « Grand Canyon » de Madagascar apparaisse : le Parc National de l'Isalo, avec ses canyons de grès vertigineux, ses cascades cachées et ses piscines naturelles aux couleurs de pierres précieuses. Terminez votre voyage là où la forêt épineuse rencontre la mer à Ifaty — une côte surréaliste hérissée de cactus qui cède la place à des plages chaudes et décontractées.",
-    "defaultHoverText": "Survolez une région sur la carte pour découvrir ce qu'elle a à offrir",
+    "mapClickHint": "Cliquez sur une région pour en savoir plus",
+    "closeRegion": "Fermer",
     "exploreMap": "Explorez les <accent>Régions</accent> sur la carte",
     "mapAlt": "Carte illustrée de Madagascar montrant les régions Nord, Est, Ouest et Sud"
   },

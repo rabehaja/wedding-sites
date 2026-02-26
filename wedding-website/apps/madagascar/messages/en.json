@@ -93,7 +93,8 @@
     "regionEastDescription": "Wake to the haunting call of the Indri — the world's largest living lemur — echoing through misty rainforest canopy in Andasibe, Madagascar's most rewarding wildlife park. Then glide along the Pangalanes Canal past palm-fringed fishing villages before reaching the vanilla coast, which supplies over half the world's vanilla.",
     "regionSouthTitle": "The South",
     "regionSouthDescription": "Follow the legendary Route Nationale 7 south until Madagascar's 'Grand Canyon' appears: Isalo National Park, with its soaring sandstone canyons, hidden waterfalls, and jewel-toned natural pools. End your journey where the spiny forest meets the sea at Ifaty — a surreal, cactus-studded coast giving way to warm, laid-back beaches.",
-    "defaultHoverText": "Hover over a region on the map to discover what it has to offer",
+    "mapClickHint": "Click on a region for more information",
+    "closeRegion": "Close",
     "exploreMap": "Explore the <accent>Regions</accent> on the map",
     "mapAlt": "Illustrated map of Madagascar showing North, East, West, and South regions"
   },

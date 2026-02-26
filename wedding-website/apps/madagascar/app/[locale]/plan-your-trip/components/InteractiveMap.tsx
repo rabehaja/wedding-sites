@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 
 type RegionKey = "north" | "east" | "center" | "west" | "south";
@@ -21,7 +21,8 @@ interface InteractiveMapProps {
   readonly regions: readonly Region[];
   readonly mapAlt: string;
   readonly exploreText: React.ReactNode;
-  readonly defaultText: string;
+  readonly hintText: string;
+  readonly closeLabel: string;
 }
 
 /**
@@ -72,8 +73,16 @@ function ImageSlider({
     return () => clearInterval(interval);
   }, [images]);
 
+  const goToPrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
   return (
-    <div className="relative w-full h-[280px] md:h-[320px] overflow-hidden">
+    <div className="group relative w-full h-[280px] md:h-[320px] overflow-hidden">
       {images.map((image, index) => (
         <div
           key={image.src}
@@ -91,16 +100,36 @@ function ImageSlider({
         </div>
       ))}
       {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-          {images.map((image, i) => (
-            <div
-              key={image.src}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === currentIndex ? "bg-white scale-125" : "bg-white/50"
-              }`}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            onClick={goToPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            aria-label="Previous image"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            aria-label="Next image"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+            {images.map((image, i) => (
+              <div
+                key={image.src}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  i === currentIndex ? "bg-white scale-125" : "bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
@@ -134,18 +163,51 @@ function RegionCard({
   );
 }
 
+function CurvedArrowHint({
+  text,
+}: {
+  readonly text: string;
+}): React.ReactElement {
+  return (
+    <div className="absolute -top-2 right-0 translate-x-[calc(50%+1rem)] flex items-start gap-3">
+      <svg
+        width="80"
+        height="70"
+        viewBox="0 0 80 70"
+        fill="none"
+        className="text-wedding-coral-400 flex-shrink-0 mt-2"
+      >
+        <path
+          d="M 72,8 Q 45,5 28,22 Q 12,40 6,58"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M 3,50 L 6,60 L 14,55"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
+      <p className="font-script text-5xl xl:text-6xl text-wedding-coral-500 max-w-[280px] leading-tight">
+        {text}
+      </p>
+    </div>
+  );
+}
+
 function MapSvgOverlay({
   activeRegion,
   getRegion,
-  onMouseEnter,
-  onMouseLeave,
   onClick,
   onKeyDown,
 }: {
   readonly activeRegion: RegionKey | null;
   readonly getRegion: (key: RegionKey) => Region;
-  readonly onMouseEnter?: (key: RegionKey) => void;
-  readonly onMouseLeave?: () => void;
   readonly onClick: (key: RegionKey) => void;
   readonly onKeyDown: (e: React.KeyboardEvent, key: RegionKey) => void;
 }): React.ReactElement {
@@ -169,8 +231,6 @@ function MapSvgOverlay({
                 strokeWidth={isActive ? "3" : "1.5"}
                 strokeDasharray={isActive ? "none" : "8 4"}
                 className="cursor-pointer transition-all duration-300"
-                onMouseEnter={() => onMouseEnter?.(key)}
-                onMouseLeave={() => onMouseLeave?.()}
                 onClick={() => onClick(key)}
                 role="button"
                 tabIndex={0}
@@ -202,28 +262,17 @@ export function InteractiveMap({
   regions,
   mapAlt,
   exploreText,
-  defaultText,
+  hintText,
+  closeLabel,
 }: InteractiveMapProps): React.ReactElement {
   const [activeRegion, setActiveRegion] = useState<RegionKey | null>(null);
-  const leaveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleRegionActivate = useCallback((key: RegionKey) => {
-    setActiveRegion((prev) => (prev === key ? null : key));
-  }, []);
-
-  const handleMouseEnter = useCallback((key: RegionKey) => {
-    if (leaveTimeoutRef.current) {
-      clearTimeout(leaveTimeoutRef.current);
-      leaveTimeoutRef.current = null;
-    }
     setActiveRegion(key);
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
-    leaveTimeoutRef.current = setTimeout(() => {
-      setActiveRegion(null);
-      leaveTimeoutRef.current = null;
-    }, 300);
+  const handleClose = useCallback(() => {
+    setActiveRegion(null);
   }, []);
 
   const handleKeyDown = useCallback(
@@ -245,7 +294,6 @@ export function InteractiveMap({
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
     };
   }, []);
 
@@ -262,10 +310,14 @@ export function InteractiveMap({
         <div className="h-px w-16 bg-wedding-coral-400 mx-auto" />
       </div>
 
-      {/* Desktop layout: map left, info right */}
-      <div className="hidden lg:grid lg:grid-cols-[auto_1fr] lg:gap-8 xl:gap-12 lg:items-center">
-        {/* Left: Map (fixed) */}
-        <div className="relative w-[580px] xl:w-[680px] 2xl:w-[750px] flex-shrink-0">
+      {/* Desktop layout: centered map, slides left on click */}
+      <div className="hidden lg:block relative min-h-[700px]">
+        {/* Map — centered by default, left-aligned when a region is active */}
+        <div
+          className={`relative transition-all duration-500 ease-out w-[580px] xl:w-[680px] 2xl:w-[750px] ${
+            activeRegion ? "mr-auto ml-0" : "mx-auto"
+          }`}
+        >
           <Image
             src="/images/madagascar_map_transparent.png"
             alt={mapAlt}
@@ -277,26 +329,41 @@ export function InteractiveMap({
           <MapSvgOverlay
             activeRegion={activeRegion}
             getRegion={getRegion}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             onClick={handleRegionActivate}
             onKeyDown={handleKeyDown}
           />
+
+          {/* Curved arrow hint — visible only when no region is selected */}
+          <div
+            className={`transition-opacity duration-300 ${
+              activeRegion ? "opacity-0 pointer-events-none" : "opacity-100"
+            }`}
+          >
+            <CurvedArrowHint text={hintText} />
+          </div>
         </div>
 
-        {/* Right: Info panel */}
-        <div className="min-h-[500px] flex items-center">
-          {activeRegion ? (
-            <div className="w-full transition-opacity duration-500 ease-out opacity-100">
-              <RegionCard region={getRegion(activeRegion)} />
-            </div>
-          ) : (
-            <div className="w-full flex flex-col items-center justify-center text-center px-8">
-              <p className="font-script text-4xl xl:text-5xl text-wedding-purple-600 leading-relaxed">
-                {defaultText}
-              </p>
-            </div>
-          )}
+        {/* Content panel — slides in from the right */}
+        <div
+          className={`absolute top-0 right-0 bottom-0 flex items-center w-[42%] transition-all duration-500 ease-out ${
+            activeRegion
+              ? "translate-x-0 opacity-100"
+              : "translate-x-[30%] opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="relative w-full">
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="absolute -top-2 right-0 z-10 w-8 h-8 rounded-full bg-white/90 shadow-md flex items-center justify-center text-wedding-neutral-500 hover:text-wedding-neutral-800 hover:bg-white transition-colors"
+              aria-label={closeLabel}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            {activeRegion && <RegionCard region={getRegion(activeRegion)} />}
+          </div>
         </div>
       </div>
 

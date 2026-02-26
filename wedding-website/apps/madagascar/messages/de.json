@@ -93,7 +93,8 @@
     "regionEastDescription": "Erwacht zum eindringlichen Ruf des Indri — des größten lebenden Lemuren der Welt — der durch das neblige Regenwaldblätterdach in Andasibe hallt, Madagaskars lohnenstem Wildpark. Gleitet dann entlang des Pangalanes-Kanals an palmengesäumten Fischerdörfern vorbei bis zur Vanilleküste, die über die Hälfte der weltweiten Vanille liefert.",
     "regionSouthTitle": "Der Süden",
     "regionSouthDescription": "Folgt der legendären Route Nationale 7 nach Süden, bis Madagaskars 'Grand Canyon' erscheint: der Isalo-Nationalpark mit seinen aufragenden Sandsteinschluchten, versteckten Wasserfällen und juwelenfarbenen Naturpools. Beendet eure Reise dort, wo der Dornenwald auf das Meer trifft in Ifaty — eine surreale, kakteenübersäte Küste, die in warme, entspannte Strände übergeht.",
-    "defaultHoverText": "Fahrt über eine Region auf der Karte, um zu entdecken, was sie zu bieten hat",
+    "mapClickHint": "Klickt auf eine Region für mehr Informationen",
+    "closeRegion": "Schließen",
     "exploreMap": "Entdeckt die <accent>Regionen</accent> auf der Karte",
     "mapAlt": "Illustrierte Karte von Madagaskar mit den Regionen Norden, Osten, Westen und Süden"
   },
