@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TravelTipsTabs } from "./components/TravelTipsTabs";
 import { PreparationCard } from "./components/PreparationCard";
 import { AdvisoryBanner } from "./components/AdvisoryBanner";
+import { getNavItems } from "../../../lib/navigation";
 
 interface EssentialTravelTipsPageProps {
   readonly params: Promise<{ locale: string }>;
@@ -174,11 +175,7 @@ export default async function EssentialTravelTipsPage({
   return (
     <>
       <Navbar
-        navItems={[
-          { href: `/${locale}`, label: tNav("home") },
-          { href: `/${locale}/essential-travel-tips`, label: tNav("essentialTravelTips") },
-          { href: `/${locale}/plan-your-trip`, label: tNav("planATour") },
-        ]}
+        navItems={getNavItems(locale, tNav)}
         rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">

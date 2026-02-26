@@ -2,6 +2,7 @@ import { Navbar, Footer, HeroSection } from "@repo/ui/organisms";
 import { Typography, BackToTop, Countdown, InfoBanner } from "@repo/ui/atoms";
 import { Newsletter } from "@repo/ui/molecules";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getNavItems } from "../../lib/navigation";
 
 const MADAGASCAR_WEDDING_DATE = new Date("2026-11-14T15:00:00+03:00");
 
@@ -21,11 +22,7 @@ export default async function HomePage({
   return (
     <>
       <Navbar
-        navItems={[
-          { href: "#home", label: tNav("home") },
-          { href: `/${locale}/essential-travel-tips`, label: tNav("essentialTravelTips") },
-          { href: `/${locale}/plan-your-trip`, label: tNav("planATour") },
-        ]}
+        navItems={getNavItems(locale, tNav)}
         rsvpItem={{ href: "#rsvp", label: tNav("rsvp") }}
       />
       <main id="main-content">

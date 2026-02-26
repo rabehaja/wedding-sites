@@ -3,6 +3,8 @@ import { Typography, BackToTop, InfoBanner } from "@repo/ui/atoms";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { InteractiveMap } from "./components/InteractiveMap";
+import { REGION_IMAGES, REGION_KEY_TO_SLUG } from "./data/regions";
+import { getNavItems } from "../../../lib/navigation";
 
 interface PlanYourTripPageProps {
   readonly params: Promise<{ locale: string }>;
@@ -16,78 +18,38 @@ export default async function PlanYourTripPage({
   const t = await getTranslations("planYourTrip");
   const tNav = await getTranslations("nav");
   const tFooter = await getTranslations("footer");
+  const tRegionPage = await getTranslations("regionPage");
 
-  const regions = [
-    {
-      key: "north" as const,
-      title: t("regionNorthTitle"),
-      description: t("regionNorthDescription"),
-      images: [
-        { src: "/images/travel/north/1.jpg", alt: "Fisherman in Nosy Be" },
-        { src: "/images/travel/north/2.jpg", alt: "Ambatoloaka village, Nosy Be" },
-        { src: "/images/travel/north/3.jpg", alt: "Tsingy Rouge formations" },
-        { src: "/images/travel/north/4.jpg", alt: "Indian Ocean viewpoint" },
-        { src: "/images/travel/north/5.jpg", alt: "Nosy Be coastal village" },
-      ],
-    },
-    {
-      key: "west" as const,
-      title: t("regionWestTitle"),
-      description: t("regionWestDescription"),
-      images: [
-        { src: "/images/travel/west/1.jpg", alt: "Baobab tree, Adansonia grandidieri" },
-        { src: "/images/travel/west/2.jpg", alt: "Avenue of the Baobabs, Morondava" },
-        { src: "/images/travel/west/3.jpg", alt: "Baobab landscape at sunset" },
-        { src: "/images/travel/west/4.jpg", alt: "Baobab trees in Morondava" },
-        { src: "/images/travel/west/5.jpg", alt: "Giant baobab tree" },
-      ],
-    },
-    {
-      key: "center" as const,
-      title: t("regionCenterTitle"),
-      description: t("regionCenterDescription"),
-      images: [
-        { src: "/images/travel/center/1.jpg", alt: "Ambohimanga royal hill" },
-        { src: "/images/travel/center/2.jpg", alt: "Ambohimanga sacred site" },
-        { src: "/images/travel/center/3.jpg", alt: "Ambohimanga UNESCO heritage" },
-        { src: "/images/travel/center/4.jpg", alt: "Royal palace at Ambohimanga" },
-        { src: "/images/travel/center/5.jpg", alt: "Ambohimanga historic grounds" },
-      ],
-    },
-    {
-      key: "east" as const,
-      title: t("regionEastTitle"),
-      description: t("regionEastDescription"),
-      images: [
-        { src: "/images/travel/east/1.jpg", alt: "Indri lemur calling in Andasibe" },
-        { src: "/images/travel/east/2.jpg", alt: "Indri in the rainforest canopy" },
-        { src: "/images/travel/east/3.jpg", alt: "Indri lemur portrait" },
-        { src: "/images/travel/east/4.jpg", alt: "Indri in natural habitat" },
-        { src: "/images/travel/east/5.jpg", alt: "Indri lemur in Andasibe forest" },
-      ],
-    },
-    {
-      key: "south" as const,
-      title: t("regionSouthTitle"),
-      description: t("regionSouthDescription"),
-      images: [
-        { src: "/images/travel/south/1.jpg", alt: "Canyon des Singes, Isalo" },
-        { src: "/images/travel/south/2.jpg", alt: "Isalo Window rock formation" },
-        { src: "/images/travel/south/3.jpg", alt: "Rainbow over Isalo National Park" },
-        { src: "/images/travel/south/4.jpg", alt: "Isalo canyon landscape" },
-        { src: "/images/travel/south/5.jpg", alt: "Canyon des Rats, Isalo" },
-      ],
-    },
-  ];
+  const navItems = getNavItems(locale, tNav);
+
+  const regionKeys = ["north", "west", "center", "east", "south"] as const;
+  const regionTitleKeys = {
+    north: "regionNorthTitle",
+    west: "regionWestTitle",
+    center: "regionCenterTitle",
+    east: "regionEastTitle",
+    south: "regionSouthTitle",
+  } as const;
+  const regionDescKeys = {
+    north: "regionNorthDescription",
+    west: "regionWestDescription",
+    center: "regionCenterDescription",
+    east: "regionEastDescription",
+    south: "regionSouthDescription",
+  } as const;
+
+  const regions = regionKeys.map((key) => ({
+    key,
+    title: t(regionTitleKeys[key]),
+    description: t(regionDescKeys[key]),
+    images: REGION_IMAGES[key],
+    href: `/${locale}/plan-your-trip/${REGION_KEY_TO_SLUG[key]}`,
+  }));
 
   return (
     <>
       <Navbar
-        navItems={[
-          { href: `/${locale}`, label: tNav("home") },
-          { href: `/${locale}/essential-travel-tips`, label: tNav("essentialTravelTips") },
-          { href: `/${locale}/plan-your-trip`, label: tNav("planATour") },
-        ]}
+        navItems={navItems}
         rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">
@@ -256,6 +218,7 @@ export default async function PlanYourTripPage({
               })}
               hintText={t("mapClickHint")}
               closeLabel={t("closeRegion")}
+              learnMoreLabel={tRegionPage("learnMore")}
             />
           </div>
         </section>

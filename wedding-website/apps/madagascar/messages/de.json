@@ -9,7 +9,12 @@
     "planATour": "TOUR PLANEN",
     "rsvp": "RSVP",
     "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schließen"
+    "closeMenu": "Menü schließen",
+    "regionNorth": "DER NORDEN",
+    "regionSouth": "DER SÜDEN",
+    "regionEast": "DER OSTEN",
+    "regionWest": "DER WESTEN",
+    "regionCenter": "DAS ZENTRUM"
   },
   "footer": {
     "home": "Start",
@@ -160,6 +165,11 @@
 
     "healthPrepTitle": "Gesundheit & Medikamente",
     "healthPrepDescription": "Bereitet euch auf Mücken vor: Packt starkes Insektenspray ein und sprecht mit eurem Arzt über Malaria-Tabletten. Stellt eine Reiseapotheke zusammen mit Tabletten gegen Reisekrankheit, Kohletabletten und Imodium."
+  },
+  "regionPage": {
+    "backToMap": "Zurück zur Karte",
+    "galleryTitle": "Galerie",
+    "learnMore": "Mehr erfahren"
   },
   "page-not-found": {
     "title": "Seite nicht gefunden",

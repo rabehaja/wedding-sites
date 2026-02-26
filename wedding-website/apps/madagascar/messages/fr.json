@@ -9,7 +9,12 @@
     "planATour": "PLANIFIER UN TOUR",
     "rsvp": "RSVP",
     "openMenu": "Ouvrir le menu",
-    "closeMenu": "Fermer le menu"
+    "closeMenu": "Fermer le menu",
+    "regionNorth": "LE NORD",
+    "regionSouth": "LE SUD",
+    "regionEast": "L'EST",
+    "regionWest": "L'OUEST",
+    "regionCenter": "LE CENTRE"
   },
   "footer": {
     "home": "Accueil",
@@ -160,6 +165,11 @@
 
     "healthPrepTitle": "Santé & Médicaments",
     "healthPrepDescription": "Préparez-vous contre les moustiques : emportez un répulsif puissant et consultez votre médecin pour des comprimés antipaludéens. Préparez une trousse de voyage avec des médicaments contre le mal des transports, du charbon actif et de l'Imodium."
+  },
+  "regionPage": {
+    "backToMap": "Retour à la carte",
+    "galleryTitle": "Galerie",
+    "learnMore": "En savoir plus"
   },
   "page-not-found": {
     "title": "Page introuvable",

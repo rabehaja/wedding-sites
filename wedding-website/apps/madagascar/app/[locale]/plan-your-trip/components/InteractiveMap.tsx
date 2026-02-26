@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type RegionKey = "north" | "east" | "center" | "west" | "south";
 
@@ -15,6 +16,7 @@ interface Region {
   readonly title: string;
   readonly description: string;
   readonly images: readonly RegionImage[];
+  readonly href: string;
 }
 
 interface InteractiveMapProps {
@@ -23,6 +25,7 @@ interface InteractiveMapProps {
   readonly exploreText: React.ReactNode;
   readonly hintText: string;
   readonly closeLabel: string;
+  readonly learnMoreLabel: string;
 }
 
 /**
@@ -54,110 +57,97 @@ const REGION_LABEL_POSITIONS: Record<RegionKey, { x: number; y: number }> = {
   south: { x: 255, y: 610 },
 };
 
-function ImageSlider({
-  images,
-}: {
-  readonly images: readonly RegionImage[];
-}): React.ReactElement {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [images]);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [images]);
-
-  const goToPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
-
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  }, [images.length]);
-
-  return (
-    <div className="group relative w-full h-[280px] md:h-[320px] overflow-hidden">
-      {images.map((image, index) => (
-        <div
-          key={image.src}
-          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 80vw, 450px"
-          />
-        </div>
-      ))}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={goToPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            aria-label="Previous image"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/30 hover:bg-black/50 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            aria-label="Next image"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-            {images.map((image, i) => (
-              <div
-                key={image.src}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === currentIndex ? "bg-white scale-125" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
 function RegionCard({
   region,
+  learnMoreLabel,
 }: {
   readonly region: Region;
+  readonly learnMoreLabel: string;
 }): React.ReactElement {
+  const [img0, img1, img2, img3] = region.images;
+
   return (
-    <div
-      className="rounded-2xl overflow-hidden bg-wedding-coral-500 shadow-2xl"
-      role="region"
-      aria-label={region.title}
-    >
-      <div className="px-5 pt-5 pb-3">
-        <h3 className="font-thin-serif text-3xl md:text-4xl text-white">
-          {region.title}
-        </h3>
-      </div>
+    <div className="overflow-hidden" role="region" aria-label={region.title}>
+      <div className="lg:flex">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
+          {/* Text content */}
+          <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+            <h3 className="font-thin-serif text-4xl sm:text-5xl tracking-tight text-wedding-neutral-800 pt-4">
+              {region.title}
+            </h3>
+            <p className="mt-6 text-xl/8 text-wedding-neutral-600">
+              {region.description}
+            </p>
+            <div className="mt-10 flex">
+              <Link
+                href={region.href}
+                className="rounded-full bg-wedding-coral-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-wedding-coral-600 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wedding-coral-500"
+              >
+                {learnMoreLabel}
+                <span aria-hidden="true"> &rarr;</span>
+              </Link>
+            </div>
+          </div>
 
-      <ImageSlider images={region.images} />
+          {/* Asymmetric image grid */}
+          <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
+            {img0 && (
+              <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
+                <div className="relative aspect-[7/5] w-[37rem] max-w-none max-sm:w-[30rem] rounded-2xl overflow-hidden">
+                  <Image
+                    src={img0.src}
+                    alt={img0.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 480px, 592px"
+                  />
+                </div>
+              </div>
+            )}
 
-      <div className="p-5">
-        <p className="text-white text-sm md:text-base leading-relaxed">
-          {region.description}
-        </p>
+            <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
+              {img1 && (
+                <div className="order-first flex w-64 max-sm:w-40 flex-none justify-end self-end lg:w-auto">
+                  <div className="relative aspect-[4/3] w-[24rem] max-w-none rounded-2xl overflow-hidden">
+                    <Image
+                      src={img1.src}
+                      alt={img1.alt}
+                      fill
+                      className="object-cover"
+                      sizes="384px"
+                    />
+                  </div>
+                </div>
+              )}
+              {img2 && (
+                <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
+                  <div className="relative aspect-[7/5] w-[37rem] max-w-none max-sm:w-[30rem] rounded-2xl overflow-hidden">
+                    <Image
+                      src={img2.src}
+                      alt={img2.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 480px, 592px"
+                    />
+                  </div>
+                </div>
+              )}
+              {img3 && (
+                <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
+                  <div className="relative aspect-[4/3] w-[24rem] max-w-none rounded-2xl overflow-hidden">
+                    <Image
+                      src={img3.src}
+                      alt={img3.alt}
+                      fill
+                      className="object-cover"
+                      sizes="384px"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -264,6 +254,7 @@ export function InteractiveMap({
   exploreText,
   hintText,
   closeLabel,
+  learnMoreLabel,
 }: InteractiveMapProps): React.ReactElement {
   const [activeRegion, setActiveRegion] = useState<RegionKey | null>(null);
 
@@ -311,11 +302,11 @@ export function InteractiveMap({
       </div>
 
       {/* Desktop layout: centered map, slides left on click */}
-      <div className="hidden lg:block relative min-h-[700px]">
+      <div className="hidden lg:block relative min-h-[700px] overflow-hidden">
         {/* Map — centered by default, left-aligned when a region is active */}
         <div
           className={`relative transition-all duration-500 ease-out w-[580px] xl:w-[680px] 2xl:w-[750px] ${
-            activeRegion ? "mr-auto ml-0" : "mx-auto"
+            activeRegion ? "opacity-0 pointer-events-none" : "mx-auto"
           }`}
         >
           <Image
@@ -345,7 +336,7 @@ export function InteractiveMap({
 
         {/* Content panel — slides in from the right */}
         <div
-          className={`absolute top-0 right-0 bottom-0 flex items-center w-[42%] transition-all duration-500 ease-out ${
+          className={`absolute inset-0 flex items-start px-6 py-8 rounded-2xl transition-all duration-500 ease-out ${
             activeRegion
               ? "translate-x-0 opacity-100"
               : "translate-x-[30%] opacity-0 pointer-events-none"
@@ -362,7 +353,7 @@ export function InteractiveMap({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            {activeRegion && <RegionCard region={getRegion(activeRegion)} />}
+            {activeRegion && <RegionCard region={getRegion(activeRegion)} learnMoreLabel={learnMoreLabel} />}
           </div>
         </div>
       </div>
@@ -386,7 +377,7 @@ export function InteractiveMap({
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-12">
           {regions.map((region) => (
             <div
               key={region.key}
@@ -398,7 +389,7 @@ export function InteractiveMap({
                     : ""
               }`}
             >
-              <RegionCard region={region} />
+              <RegionCard region={region} learnMoreLabel={learnMoreLabel} />
             </div>
           ))}
         </div>

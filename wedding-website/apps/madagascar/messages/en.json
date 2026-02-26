@@ -9,7 +9,12 @@
     "planATour": "PLAN A TOUR",
     "rsvp": "RSVP",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "regionNorth": "THE NORTH",
+    "regionSouth": "THE SOUTH",
+    "regionEast": "THE EAST",
+    "regionWest": "THE WEST",
+    "regionCenter": "THE CENTER"
   },
   "footer": {
     "home": "Home",
@@ -160,6 +165,11 @@
 
     "healthPrepTitle": "Health & Medications",
     "healthPrepDescription": "Prepare for mosquitoes: pack strong insect repellent and talk to your doctor to get malaria pills. Prepare a bag with travel medications including pills against motion sickness, charcoal pills, and Imodium."
+  },
+  "regionPage": {
+    "backToMap": "Back to the map",
+    "galleryTitle": "Gallery",
+    "learnMore": "Learn more"
   },
   "page-not-found": {
     "title": "Page Not Found",

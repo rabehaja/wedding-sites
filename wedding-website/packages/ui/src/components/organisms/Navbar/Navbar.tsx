@@ -9,6 +9,8 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
 } from "../../ui/navigation-menu";
 import { Button } from "../../ui/button";
 import { cn } from "../../../lib/utils";
@@ -17,6 +19,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 interface NavItem {
   readonly href: string;
   readonly label: string;
+  readonly children?: readonly NavItem[];
 }
 
 function MenuIcon(): React.ReactElement {
@@ -66,8 +69,29 @@ interface NavbarProps {
   readonly rsvpItem?: NavItem | null;
 }
 
+function ChevronDown({ className }: { readonly className?: string }): React.ReactElement {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
 export function Navbar({ className, navItems: navItemsProp, rsvpItem: rsvpItemProp }: NavbarProps): React.ReactElement {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const pathname = usePathname();
   const t = useTranslations("nav");
 
@@ -92,7 +116,7 @@ export function Navbar({ className, navItems: navItemsProp, rsvpItem: rsvpItemPr
   return (
     <header
       className={cn(
-        "bg-wedding-cream border-b border-wedding-neutral-200",
+        "relative z-50 bg-wedding-cream border-b border-wedding-neutral-200",
         className
       )}
     >
@@ -114,34 +138,72 @@ export function Navbar({ className, navItems: navItemsProp, rsvpItem: rsvpItemPr
           {/* Desktop Navigation - using shadcn NavigationMenu */}
           <NavigationMenu className="hidden lg:flex" viewport={false}>
             <NavigationMenuList className="gap-6">
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.href}>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href={item.href}
-                      aria-current={pathname === item.href ? "page" : undefined}
+              {navItems.map((item) =>
+                item.children ? (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuTrigger
                       className={cn(
-                        // Base styles
-                        "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif",
-                        // Transitions
+                        "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif bg-transparent",
                         "transition-colors duration-300 motion-reduce:transition-none",
-                        // Focus accessibility
                         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
-                        "hover:bg-transparent focus:bg-transparent",
-                        // Underline pseudo-element
+                        "hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent",
                         "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-wedding-purple-600",
                         "after:transition-all after:duration-300 after:ease-out motion-reduce:after:transition-none",
-                        // Conditional styles
-                        pathname === item.href
+                        pathname.startsWith(item.href)
                           ? "text-wedding-purple-600 font-medium after:w-full"
                           : "text-wedding-purple-500 hover:text-wedding-purple-600 after:w-0 hover:after:w-full"
                       )}
                     >
-                      {item.label}
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
+                      <Link href={item.href}>{item.label}</Link>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="min-w-[200px]">
+                      <ul className="flex flex-col gap-1 p-2">
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={child.href}
+                                className={cn(
+                                  "block px-3 py-2 rounded-md text-sm tracking-wider font-thin-serif whitespace-nowrap",
+                                  "transition-colors duration-200",
+                                  "hover:bg-wedding-purple-50 focus:bg-wedding-purple-50",
+                                  pathname === child.href
+                                    ? "text-wedding-purple-600 font-medium bg-wedding-purple-50"
+                                    : "text-wedding-purple-500 hover:text-wedding-purple-600"
+                                )}
+                              >
+                                {child.label}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={item.href}>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.href}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                        className={cn(
+                          "relative text-sm tracking-widest px-2 py-1 rounded-sm font-thin-serif",
+                          "transition-colors duration-300 motion-reduce:transition-none",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                          "hover:bg-transparent focus:bg-transparent",
+                          "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-wedding-purple-600",
+                          "after:transition-all after:duration-300 after:ease-out motion-reduce:after:transition-none",
+                          pathname === item.href
+                            ? "text-wedding-purple-600 font-medium after:w-full"
+                            : "text-wedding-purple-500 hover:text-wedding-purple-600 after:w-0 hover:after:w-full"
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                )
+              )}
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -195,25 +257,82 @@ export function Navbar({ className, navItems: navItemsProp, rsvpItem: rsvpItemPr
           <ul className="flex flex-col gap-2 pb-4">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={closeMobileMenu}
-                  aria-current={pathname === item.href ? "page" : undefined}
-                  className={cn(
-                    // Base styles
-                    "block py-2 px-4 rounded-md text-sm tracking-widest font-thin-serif",
-                    // Transitions
-                    "transition-all duration-300 motion-reduce:transition-none",
-                    // Focus accessibility
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
-                    // Conditional styles
-                    pathname === item.href
-                      ? "bg-wedding-purple-100 text-wedding-purple-600 font-medium border-l-4 border-wedding-purple-500"
-                      : "text-wedding-purple-500 hover:bg-wedding-purple-50 hover:text-wedding-purple-600"
-                  )}
-                >
-                  {item.label}
-                </Link>
+                {item.children ? (
+                  <>
+                    <div className="flex items-center">
+                      <Link
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        aria-current={pathname === item.href ? "page" : undefined}
+                        className={cn(
+                          "flex-1 block py-2 px-4 rounded-md text-sm tracking-widest font-thin-serif",
+                          "transition-all duration-300 motion-reduce:transition-none",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                          pathname.startsWith(item.href)
+                            ? "bg-wedding-purple-100 text-wedding-purple-600 font-medium border-l-4 border-wedding-purple-500"
+                            : "text-wedding-purple-500 hover:bg-wedding-purple-50 hover:text-wedding-purple-600"
+                        )}
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        onClick={() => setExpandedMobileItem(expandedMobileItem === item.href ? null : item.href)}
+                        className="p-2 text-wedding-purple-500 hover:text-wedding-purple-600"
+                        aria-label={expandedMobileItem === item.href ? "Collapse sub-menu" : "Expand sub-menu"}
+                        aria-expanded={expandedMobileItem === item.href}
+                      >
+                        <ChevronDown
+                          className={cn(
+                            "transition-transform duration-200",
+                            expandedMobileItem === item.href && "rotate-180"
+                          )}
+                        />
+                      </button>
+                    </div>
+                    <ul
+                      className={cn(
+                        "overflow-hidden transition-all duration-300 ease-in-out",
+                        expandedMobileItem === item.href ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+                      )}
+                    >
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={closeMobileMenu}
+                            aria-current={pathname === child.href ? "page" : undefined}
+                            className={cn(
+                              "block py-2 pl-8 pr-4 rounded-md text-sm tracking-widest font-thin-serif",
+                              "transition-all duration-300 motion-reduce:transition-none",
+                              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                              pathname === child.href
+                                ? "text-wedding-purple-600 font-medium"
+                                : "text-wedding-purple-400 hover:text-wedding-purple-600"
+                            )}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={closeMobileMenu}
+                    aria-current={pathname === item.href ? "page" : undefined}
+                    className={cn(
+                      "block py-2 px-4 rounded-md text-sm tracking-widest font-thin-serif",
+                      "transition-all duration-300 motion-reduce:transition-none",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2",
+                      pathname === item.href
+                        ? "bg-wedding-purple-100 text-wedding-purple-600 font-medium border-l-4 border-wedding-purple-500"
+                        : "text-wedding-purple-500 hover:bg-wedding-purple-50 hover:text-wedding-purple-600"
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
 
