@@ -85,9 +85,8 @@ export default async function PlanYourTripPage({
       <Navbar
         navItems={[
           { href: `/${locale}`, label: tNav("home") },
-          { href: `/${locale}#about`, label: tNav("about") },
-          { href: `/${locale}#stay`, label: tNav("stay") },
-          { href: `/${locale}/plan-your-trip`, label: tNav("planYourTrip") },
+          { href: `/${locale}/essential-travel-tips`, label: tNav("essentialTravelTips") },
+          { href: `/${locale}/plan-your-trip`, label: tNav("planATour") },
         ]}
         rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
       />
@@ -264,9 +263,8 @@ export default async function PlanYourTripPage({
         weddingDate="November 14, 2026"
         navItems={[
           { href: `/${locale}`, label: tFooter("home") },
-          { href: `/${locale}#about`, label: tFooter("about") },
-          { href: `/${locale}#stay`, label: tFooter("stay") },
-          { href: `/${locale}/plan-your-trip`, label: tFooter("planYourTrip") },
+          { href: `/${locale}/essential-travel-tips`, label: tFooter("essentialTravelTips") },
+          { href: `/${locale}/plan-your-trip`, label: tFooter("planATour") },
         ]}
       />
       <BackToTop />

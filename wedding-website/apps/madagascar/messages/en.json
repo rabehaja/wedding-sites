@@ -5,6 +5,8 @@
     "stay": "STAY",
     "travel": "TRAVEL",
     "planYourTrip": "PLAN YOUR TRIP",
+    "essentialTravelTips": "TRAVEL TIPS",
+    "planATour": "PLAN A TOUR",
     "rsvp": "RSVP",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -15,7 +17,9 @@
     "stay": "Stay",
     "travel": "Travel",
     "questionsContact": "Questions? Contact us at",
-    "planYourTrip": "Plan your Trip"
+    "planYourTrip": "Plan your Trip",
+    "essentialTravelTips": "Travel Tips",
+    "planATour": "Plan a Tour"
   },
   "home": {
     "tagline": "Join us for our Madagascar celebration",
@@ -92,6 +96,69 @@
     "defaultHoverText": "Hover over a region on the map to discover what it has to offer",
     "exploreMap": "Explore the <accent>Regions</accent> on the map",
     "mapAlt": "Illustrated map of Madagascar showing North, East, West, and South regions"
+  },
+  "essentialTravelTips": {
+    "heroTitle": "MADAGASCAR",
+    "heroSubtitle": "Essential travel tips",
+
+    "whatToExpectTitle": "What to <accent>expect...</accent>",
+    "whatToExpectIntro": "Madagascar is unlike anywhere else — a vast island with extraordinary wildlife, a rich mix of African, Austronesian and Arab cultures, and a beautifully relaxed pace of life. Travelling here is an incredible experience, but it helps to know a few things before you go. Here are our top practical tips so you can travel with confidence.",
+
+    "climateTitle": "Climate",
+    "climateBullet1": "November marks the start of the rainy season — expect hot, humid days with temperatures around 25–32 °C.",
+    "climateBullet2": "Short but intense tropical downpours are common. Pack a lightweight rain jacket or poncho.",
+    "climateBullet3": "Evenings can be surprisingly cool, especially in the highlands around Antananarivo. Bring a light layer.",
+
+    "paymentTitle": "Payment",
+    "paymentBullet1": "Madagascar runs on cash. Bring euros in cash — you'll need them for the visa on arrival and as a backup.",
+    "paymentBullet2": "Check the EUR → Ariary exchange rate before you fly. You can exchange money at the airport or in banks.",
+    "paymentBullet3": "Card payments work in some city hotels and restaurants, but don't rely on them. Mastercard acceptance is patchy — a Visa card (or Revolut) is your safest bet.",
+    "paymentBullet4": "Withdraw cash at ATMs in Antananarivo before heading out of the city. Visa cards work at most machines; Mastercard is hit-or-miss.",
+
+    "povertyTitle": "Poverty",
+    "povertyBullet1": "Madagascar is one of the world's poorest countries. You will see people — including children — asking for money. This can be confronting.",
+    "povertyBullet2": "As hard as it may feel, avoid giving money or food on the street. It can attract unwanted attention and reinforces a cycle that keeps children out of school.",
+    "povertyBullet3": "If you'd like to help, consider donating to a reputable local organisation — we can suggest a few.",
+
+    "safetyTitle": "Safety",
+    "safetyBullet1": "Madagascar is generally safe for tourists, but opportunistic pickpocketing does happen — especially in Antananarivo's busy markets.",
+    "safetyBullet2": "Stick to well-known areas, travel with a guide, and avoid walking around after dark.",
+    "safetyBullet3": "Use hotel-arranged transfers or your tour operator's transport rather than hailing rides on the street.",
+    "safetyBullet4": "Leave flashy jewellery at home and keep phones and cameras out of sight when not in use.",
+
+    "infrastructureTitle": "Infrastructure",
+    "infrastructureBullet1": "Roads outside the capital can be rough — unpaved, potholed, and worse after rain. Long drives take longer than you'd expect.",
+    "infrastructureBullet2": "Motion sickness is common on winding roads. Bring medication if you're prone to it.",
+    "infrastructureBullet3": "Domestic flights exist but delays are the norm rather than the exception.",
+    "infrastructureBullet4": "Build a buffer day or two into your itinerary. Flexibility is the best travel hack here.",
+
+    "healthTitle": "Health",
+    "healthBullet1": "November means mosquitoes. Malaria risk is lower in the highlands but present elsewhere. Talk to your doctor about antimalarial medication and pack a strong DEET-based repellent.",
+    "healthBullet2": "Traveller's diarrhoea is common. Follow the golden rule: cook it, peel it, or skip it. Drink only bottled or boiled water, and avoid ice, unpeeled fruit, and undercooked food.",
+    "healthBullet3": "Pro tip: start taking probiotics a week before your trip, and pack a small kit with Imodium, rehydration salts, and activated charcoal.",
+    "healthBullet4": "Get travel insurance that covers medical evacuation — it's non-negotiable for a destination like Madagascar.",
+    "healthBullet5": "As tempting as they are, don't touch or feed animals — even friendly-looking ones can carry disease.",
+
+    "informTitle": "Inform <accent>yourself</accent>",
+    "informSubtitle": "Come prepared and avoid the unexpected!",
+    "informDescription": "Before booking your trip, please inform yourself about the current situation in the country. The travel and safety directions of the foreign office can give you a good insight regarding risks and safety measures, as well as needed preparations before entering the country.",
+    "advisoryLinkDE": "German Foreign Office",
+    "advisoryLinkNL": "Dutch Foreign Affairs",
+
+    "preparationsTitle": "Essential <accent>preparations</accent>",
+    "preparationsIntro": "You are wondering what you need to prepare for besides booking your travels? Here are some points you should consider before starting your trip.",
+
+    "passportTitle": "Passport",
+    "passportDescription": "Do you still have a passport that is valid for 6 months after entering the country? If not, now is a great time to renew your passport!",
+
+    "visaTitle": "Visa",
+    "visaDescription": "You can get a visa on arrival. Remember to withdraw some cash before the flight to pay for the visa — card payment might not always work, but you can directly pay in EUR.",
+
+    "vaccinationsTitle": "Vaccinations",
+    "vaccinationsDescription": "Though in most cases, there is no compulsory vaccination needed when travelling from Europe, it is worthwhile to inform yourself at a tropical institute or your GP what type of vaccinations are recommended for your travel plans. Better safe than sorry!",
+
+    "healthPrepTitle": "Health & Medications",
+    "healthPrepDescription": "Prepare for mosquitoes: pack strong insect repellent and talk to your doctor to get malaria pills. Prepare a bag with travel medications including pills against motion sickness, charcoal pills, and Imodium."
   },
   "page-not-found": {
     "title": "Page Not Found",

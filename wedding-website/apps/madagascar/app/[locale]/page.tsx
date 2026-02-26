@@ -23,10 +23,8 @@ export default async function HomePage({
       <Navbar
         navItems={[
           { href: "#home", label: tNav("home") },
-          { href: "#about", label: tNav("about") },
-          { href: "#stay", label: tNav("stay") },
-          { href: "#travel", label: tNav("travel") },
-          { href: "/plan-your-trip", label: tNav("planYourTrip") },
+          { href: `/${locale}/essential-travel-tips`, label: tNav("essentialTravelTips") },
+          { href: `/${locale}/plan-your-trip`, label: tNav("planATour") },
         ]}
         rsvpItem={{ href: "#rsvp", label: tNav("rsvp") }}
       />
@@ -314,11 +312,9 @@ export default async function HomePage({
       <Footer
         weddingDate="November 14, 2026"
         navItems={[
-          { href: "#home", label: tFooter("home") },
-          { href: "#about", label: tFooter("about") },
-          { href: "#stay", label: tFooter("stay") },
-          { href: "#travel", label: tFooter("travel") },
-          { href: "/plan-your-trip", label: tFooter("planYourTrip") },
+          { href: `/${locale}`, label: tFooter("home") },
+          { href: `/${locale}/essential-travel-tips`, label: tFooter("essentialTravelTips") },
+          { href: `/${locale}/plan-your-trip`, label: tFooter("planATour") },
         ]}
       />
       <BackToTop />

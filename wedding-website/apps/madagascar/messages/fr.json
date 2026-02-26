@@ -5,6 +5,8 @@
     "stay": "HÉBERGEMENT",
     "travel": "VOYAGES",
     "planYourTrip": "PLANIFIER VOTRE VOYAGE",
+    "essentialTravelTips": "CONSEILS DE VOYAGE",
+    "planATour": "PLANIFIER UN TOUR",
     "rsvp": "RSVP",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu"
@@ -15,7 +17,9 @@
     "stay": "Hébergement",
     "travel": "Voyages",
     "questionsContact": "Des questions ? Contactez-nous à",
-    "planYourTrip": "Planifier votre voyage"
+    "planYourTrip": "Planifier votre voyage",
+    "essentialTravelTips": "Conseils de voyage",
+    "planATour": "Planifier un tour"
   },
   "home": {
     "tagline": "Rejoignez-nous pour notre célébration à Madagascar",
@@ -92,6 +96,69 @@
     "defaultHoverText": "Survolez une région sur la carte pour découvrir ce qu'elle a à offrir",
     "exploreMap": "Explorez les <accent>Régions</accent> sur la carte",
     "mapAlt": "Carte illustrée de Madagascar montrant les régions Nord, Est, Ouest et Sud"
+  },
+  "essentialTravelTips": {
+    "heroTitle": "MADAGASCAR",
+    "heroSubtitle": "Conseils de voyage essentiels",
+
+    "whatToExpectTitle": "À quoi <accent>s'attendre...</accent>",
+    "whatToExpectIntro": "Madagascar est un monde à part — une immense île à la faune extraordinaire, un mélange riche de cultures africaines, austronésiennes et arabes, et un rythme de vie délicieusement tranquille. Y voyager est une expérience incroyable, mais quelques informations pratiques vous aideront à en profiter pleinement. Voici nos conseils essentiels pour voyager en toute sérénité.",
+
+    "climateTitle": "Climat",
+    "climateBullet1": "Novembre marque le début de la saison des pluies — attendez-vous à des journées chaudes et humides, entre 25 et 32 °C.",
+    "climateBullet2": "Des averses tropicales courtes mais intenses sont fréquentes. Emportez une veste de pluie légère ou un poncho.",
+    "climateBullet3": "Les soirées peuvent être étonnamment fraîches, surtout dans les hauts plateaux autour d'Antananarivo. Prévoyez une couche légère.",
+
+    "paymentTitle": "Paiement",
+    "paymentBullet1": "À Madagascar, presque tout se paie en espèces. Apportez des euros en liquide — vous en aurez besoin pour le visa à l'arrivée et en guise de réserve.",
+    "paymentBullet2": "Renseignez-vous sur le taux de change EUR → Ariary avant de partir. Vous pourrez changer de l'argent à l'aéroport ou dans les banques.",
+    "paymentBullet3": "Le paiement par carte fonctionne dans certains hôtels et restaurants en ville, mais ne comptez pas dessus. La Mastercard n'est pas toujours acceptée — une carte Visa (ou Revolut) est le choix le plus sûr.",
+    "paymentBullet4": "Retirez du liquide aux distributeurs d'Antananarivo avant de quitter la ville. Les cartes Visa fonctionnent dans la plupart des distributeurs ; la Mastercard, c'est aléatoire.",
+
+    "povertyTitle": "Pauvreté",
+    "povertyBullet1": "Madagascar est l'un des pays les plus pauvres au monde. Vous verrez des gens — y compris des enfants — demander de l'argent. Cela peut être bouleversant.",
+    "povertyBullet2": "Aussi difficile que cela puisse paraître, évitez de donner de l'argent ou de la nourriture dans la rue. Cela peut attirer une attention indésirable et entretient un cycle qui éloigne les enfants de l'école.",
+    "povertyBullet3": "Si vous souhaitez aider, pensez à faire un don à une organisation locale fiable — nous pouvons vous en recommander quelques-unes.",
+
+    "safetyTitle": "Sécurité",
+    "safetyBullet1": "Madagascar est globalement sûr pour les touristes, mais le vol à la tire existe — surtout dans les marchés animés d'Antananarivo.",
+    "safetyBullet2": "Restez dans les zones connues, voyagez avec un guide et évitez de vous promener après la tombée de la nuit.",
+    "safetyBullet3": "Utilisez les transferts organisés par votre hôtel ou votre tour-opérateur plutôt que de héler un véhicule dans la rue.",
+    "safetyBullet4": "Laissez vos bijoux voyants chez vous et gardez téléphones et appareils photo hors de vue quand vous ne les utilisez pas.",
+
+    "infrastructureTitle": "Infrastructure",
+    "infrastructureBullet1": "Les routes en dehors de la capitale peuvent être difficiles — non goudronnées, pleines de nids-de-poule et encore pires après la pluie. Les longs trajets prennent plus de temps que prévu.",
+    "infrastructureBullet2": "Le mal des transports est courant sur les routes sinueuses. Emportez des médicaments si vous y êtes sujet.",
+    "infrastructureBullet3": "Des vols intérieurs existent, mais les retards sont davantage la norme que l'exception.",
+    "infrastructureBullet4": "Prévoyez un ou deux jours tampons dans votre itinéraire. La flexibilité est le meilleur atout du voyageur ici.",
+
+    "healthTitle": "Santé",
+    "healthBullet1": "Novembre rime avec moustiques. Le risque de paludisme est plus faible sur les hauts plateaux mais présent ailleurs. Consultez votre médecin pour un traitement antipaludéen et emportez un répulsif puissant à base de DEET.",
+    "healthBullet2": "La diarrhée du voyageur est fréquente. La règle d'or : cuisez-le, épluchez-le, ou laissez tomber. Ne buvez que de l'eau en bouteille ou bouillie, et évitez les glaçons, les fruits non épluchés et les aliments crus ou insuffisamment cuits.",
+    "healthBullet3": "Astuce : commencez les probiotiques une semaine avant le départ et emportez un petit kit avec Imodium, sels de réhydratation et charbon actif.",
+    "healthBullet4": "Souscrivez une assurance voyage couvrant l'évacuation médicale — pour une destination comme Madagascar, c'est indispensable.",
+    "healthBullet5": "Aussi tentant que cela puisse être, ne touchez pas les animaux et ne les nourrissez pas — même les plus inoffensifs peuvent être porteurs de maladies.",
+
+    "informTitle": "Informez-<accent>vous</accent>",
+    "informSubtitle": "Venez préparés et évitez les imprévus !",
+    "informDescription": "Avant de réserver votre voyage, veuillez vous informer sur la situation actuelle dans le pays. Les conseils de voyage et de sécurité du ministère des affaires étrangères peuvent vous donner un bon aperçu des risques et des mesures de sécurité, ainsi que des préparations nécessaires avant d'entrer dans le pays.",
+    "advisoryLinkDE": "Ministère allemand des affaires étrangères",
+    "advisoryLinkNL": "Ministère néerlandais des affaires étrangères",
+
+    "preparationsTitle": "Préparations <accent>essentielles</accent>",
+    "preparationsIntro": "Vous vous demandez ce que vous devez préparer en dehors de la réservation de vos voyages ? Voici quelques points à considérer avant de commencer votre voyage.",
+
+    "passportTitle": "Passeport",
+    "passportDescription": "Avez-vous encore un passeport valide 6 mois après l'entrée dans le pays ? Si non, c'est le moment de le renouveler !",
+
+    "visaTitle": "Visa",
+    "visaDescription": "Vous pouvez obtenir un visa à l'arrivée. N'oubliez pas de retirer de l'argent avant le vol pour payer le visa — le paiement par carte ne fonctionne pas toujours, mais vous pouvez payer directement en EUR.",
+
+    "vaccinationsTitle": "Vaccinations",
+    "vaccinationsDescription": "Bien que dans la plupart des cas, aucune vaccination obligatoire ne soit requise en voyageant depuis l'Europe, il est utile de vous renseigner auprès d'un institut de médecine tropicale ou de votre médecin sur les vaccinations recommandées. Mieux vaut prévenir que guérir !",
+
+    "healthPrepTitle": "Santé & Médicaments",
+    "healthPrepDescription": "Préparez-vous contre les moustiques : emportez un répulsif puissant et consultez votre médecin pour des comprimés antipaludéens. Préparez une trousse de voyage avec des médicaments contre le mal des transports, du charbon actif et de l'Imodium."
   },
   "page-not-found": {
     "title": "Page introuvable",

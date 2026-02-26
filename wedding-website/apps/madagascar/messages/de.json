@@ -5,6 +5,8 @@
     "stay": "UNTERKUNFT",
     "travel": "REISEN",
     "planYourTrip": "REISE PLANEN",
+    "essentialTravelTips": "REISETIPPS",
+    "planATour": "TOUR PLANEN",
     "rsvp": "RSVP",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen"
@@ -15,7 +17,9 @@
     "stay": "Unterkunft",
     "travel": "Reisen",
     "questionsContact": "Fragen? Kontaktiere uns unter",
-    "planYourTrip": "Reise planen"
+    "planYourTrip": "Reise planen",
+    "essentialTravelTips": "Reisetipps",
+    "planATour": "Tour planen"
   },
   "home": {
     "tagline": "Feiert mit uns unsere Madagaskar-Feier",
@@ -92,6 +96,69 @@
     "defaultHoverText": "Fahrt über eine Region auf der Karte, um zu entdecken, was sie zu bieten hat",
     "exploreMap": "Entdeckt die <accent>Regionen</accent> auf der Karte",
     "mapAlt": "Illustrierte Karte von Madagaskar mit den Regionen Norden, Osten, Westen und Süden"
+  },
+  "essentialTravelTips": {
+    "heroTitle": "MADAGASKAR",
+    "heroSubtitle": "Wichtige Reisetipps",
+
+    "whatToExpectTitle": "Was euch <accent>erwartet...</accent>",
+    "whatToExpectIntro": "Madagaskar ist einzigartig — eine riesige Insel mit außergewöhnlicher Tierwelt, einer reichen Mischung aus afrikanischen, austronesischen und arabischen Kulturen und einem wunderbar entspannten Lebensrhythmus. Hier zu reisen ist ein unglaubliches Erlebnis, aber es hilft, ein paar Dinge vorher zu wissen. Hier sind unsere wichtigsten praktischen Tipps, damit ihr entspannt reisen könnt.",
+
+    "climateTitle": "Klima",
+    "climateBullet1": "Im November beginnt die Regenzeit — erwartet heiße, feuchte Tage mit Temperaturen um 25–32 °C.",
+    "climateBullet2": "Kurze, aber heftige tropische Regenschauer sind häufig. Packt eine leichte Regenjacke oder einen Poncho ein.",
+    "climateBullet3": "Abends kann es überraschend kühl werden, besonders im Hochland rund um Antananarivo. Nehmt eine leichte Jacke mit.",
+
+    "paymentTitle": "Bezahlung",
+    "paymentBullet1": "In Madagaskar läuft fast alles in bar. Bringt Euro in bar mit — ihr braucht sie für das Visum bei Ankunft und als Reserve.",
+    "paymentBullet2": "Informiert euch vor dem Flug über den Wechselkurs EUR → Ariary. Geld wechseln könnt ihr am Flughafen oder in Banken.",
+    "paymentBullet3": "Kartenzahlung funktioniert in einigen Hotels und Restaurants in der Stadt, aber verlasst euch nicht darauf. Mastercard wird nicht überall akzeptiert — eine Visa-Karte (oder Revolut) ist die sicherste Wahl.",
+    "paymentBullet4": "Hebt in Antananarivo Bargeld am Automaten ab, bevor ihr die Stadt verlasst. Visa-Karten funktionieren an den meisten Automaten; Mastercard ist Glückssache.",
+
+    "povertyTitle": "Armut",
+    "povertyBullet1": "Madagaskar gehört zu den ärmsten Ländern der Welt. Ihr werdet Menschen — auch Kinder — sehen, die um Geld bitten. Das kann sehr berührend sein.",
+    "povertyBullet2": "So schwer es auch fällt: Gebt auf der Straße kein Geld oder Essen. Es kann ungewollte Aufmerksamkeit erregen und hält ein System aufrecht, das Kinder vom Schulbesuch abhält.",
+    "povertyBullet3": "Wenn ihr helfen möchtet, spendet lieber an eine seriöse lokale Organisation — wir können euch ein paar empfehlen.",
+
+    "safetyTitle": "Sicherheit",
+    "safetyBullet1": "Madagaskar ist für Touristen grundsätzlich sicher, aber Taschendiebstahl kommt vor — besonders auf den belebten Märkten in Antananarivo.",
+    "safetyBullet2": "Bleibt in bekannten Gegenden, reist mit einem Guide und meidet Spaziergänge nach Einbruch der Dunkelheit.",
+    "safetyBullet3": "Nutzt Transfers eures Hotels oder eures Reiseveranstalters, statt auf der Straße ein Fahrzeug zu suchen.",
+    "safetyBullet4": "Lasst auffälligen Schmuck zu Hause und haltet Handys und Kameras außer Sichtweite, wenn ihr sie nicht benutzt.",
+
+    "infrastructureTitle": "Infrastruktur",
+    "infrastructureBullet1": "Straßen außerhalb der Hauptstadt können holprig sein — ungepflastert, voller Schlaglöcher und nach Regen noch schlimmer. Lange Fahrten dauern länger als gedacht.",
+    "infrastructureBullet2": "Reisekrankheit ist auf kurvenreichen Straßen keine Seltenheit. Nehmt Tabletten mit, falls ihr anfällig seid.",
+    "infrastructureBullet3": "Inlandsflüge gibt es, aber Verspätungen sind eher die Regel als die Ausnahme.",
+    "infrastructureBullet4": "Plant ein oder zwei Puffertage in eure Reiseroute ein. Flexibilität ist hier der beste Reise-Hack.",
+
+    "healthTitle": "Gesundheit",
+    "healthBullet1": "November heißt Mückensaison. Das Malariarisiko ist im Hochland niedriger, aber anderswo vorhanden. Sprecht mit eurem Arzt über Malaria-Prophylaxe und packt ein starkes DEET-Repellent ein.",
+    "healthBullet2": "Reisedurchfall ist häufig. Die goldene Regel: Koch es, schäl es, oder lass es. Trinkt nur abgefülltes oder abgekochtes Wasser und meidet Eiswürfel, ungeschältes Obst und rohe oder halbgare Speisen.",
+    "healthBullet3": "Pro-Tipp: Beginnt eine Woche vor der Reise mit Probiotika und packt ein kleines Set mit Imodium, Elektrolytpulver und Kohletabletten ein.",
+    "healthBullet4": "Schließt eine Reiseversicherung ab, die medizinische Evakuierung abdeckt — für ein Reiseziel wie Madagaskar ist das unverzichtbar.",
+    "healthBullet5": "So verlockend sie auch sind: Fasst keine Tiere an und füttert sie nicht — selbst friedlich aussehende Tiere können Krankheiten übertragen.",
+
+    "informTitle": "Informiert <accent>euch</accent>",
+    "informSubtitle": "Kommt vorbereitet und vermeidet das Unerwartete!",
+    "informDescription": "Bevor ihr eure Reise bucht, informiert euch bitte über die aktuelle Lage im Land. Die Reise- und Sicherheitshinweise des Auswärtigen Amtes geben euch einen guten Überblick über Risiken und Sicherheitsmaßnahmen sowie notwendige Vorbereitungen vor der Einreise.",
+    "advisoryLinkDE": "Auswärtiges Amt",
+    "advisoryLinkNL": "Niederländisches Außenministerium",
+
+    "preparationsTitle": "Wichtige <accent>Vorbereitungen</accent>",
+    "preparationsIntro": "Ihr fragt euch, was ihr neben der Buchung eurer Reise noch vorbereiten müsst? Hier sind einige Punkte, die ihr vor Reiseantritt beachten solltet.",
+
+    "passportTitle": "Reisepass",
+    "passportDescription": "Habt ihr noch einen Reisepass, der nach der Einreise noch 6 Monate gültig ist? Wenn nicht, ist jetzt ein guter Zeitpunkt, euren Reisepass zu erneuern!",
+
+    "visaTitle": "Visum",
+    "visaDescription": "Ihr könnt ein Visum bei der Ankunft erhalten. Denkt daran, vor dem Flug etwas Bargeld abzuheben, um das Visum zu bezahlen — Kartenzahlung funktioniert nicht immer, aber ihr könnt direkt in EUR bezahlen.",
+
+    "vaccinationsTitle": "Impfungen",
+    "vaccinationsDescription": "Obwohl in den meisten Fällen keine Pflichtimpfungen bei Reisen aus Europa erforderlich sind, lohnt es sich, sich bei einem Tropeninstitut oder eurem Hausarzt zu informieren, welche Impfungen für eure Reisepläne empfohlen werden. Besser auf Nummer sicher gehen!",
+
+    "healthPrepTitle": "Gesundheit & Medikamente",
+    "healthPrepDescription": "Bereitet euch auf Mücken vor: Packt starkes Insektenspray ein und sprecht mit eurem Arzt über Malaria-Tabletten. Stellt eine Reiseapotheke zusammen mit Tabletten gegen Reisekrankheit, Kohletabletten und Imodium."
   },
   "page-not-found": {
     "title": "Seite nicht gefunden",
