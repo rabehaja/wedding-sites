@@ -12,6 +12,7 @@ interface HeroSectionProps {
     readonly year: number;
   };
   readonly location: string;
+  readonly locationLines?: readonly string[];
   readonly imageSrc: string;
   readonly ctaHref?: string;
   readonly ctaLabel?: string;
@@ -19,10 +20,13 @@ interface HeroSectionProps {
   readonly className?: string;
 }
 
+const defaultLocationLines = ["CHATEAU", "DE BLIER,", "BELGIUM"];
+
 export function HeroSection({
   coupleNames,
   date,
   location,
+  locationLines = defaultLocationLines,
   imageSrc,
   className,
 }: HeroSectionProps): React.ReactElement {
@@ -125,7 +129,12 @@ export function HeroSection({
               <p
                 className="text-[18px] md:text-[24px] lg:text-[30px] text-wedding-coral uppercase tracking-wider leading-tight font-thin-serif"
               >
-                CHATEAU<br />DE BLIER,<br />BELGIUM
+                {locationLines.map((line, i) => (
+                  <span key={i}>
+                    {i > 0 && <br />}
+                    {line}
+                  </span>
+                ))}
               </p>
             </div>
           </div>

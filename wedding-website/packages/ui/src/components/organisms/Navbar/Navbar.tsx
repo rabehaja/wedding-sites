@@ -62,14 +62,16 @@ function CloseIcon(): React.ReactElement {
 
 interface NavbarProps {
   readonly className?: string;
+  readonly navItems?: readonly NavItem[];
+  readonly rsvpItem?: NavItem | null;
 }
 
-export function Navbar({ className }: NavbarProps): React.ReactElement {
+export function Navbar({ className, navItems: navItemsProp, rsvpItem: rsvpItemProp }: NavbarProps): React.ReactElement {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("nav");
 
-  const navItems: NavItem[] = [
+  const navItems = navItemsProp ?? [
     { href: "/", label: "HOME" },
     { href: "/venue", label: t("venue") },
     { href: "/weekend", label: t("weekend") },
@@ -77,8 +79,7 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
     { href: "/surrounding", label: t("surrounding") },
     { href: "/madagascar", label: t("madagascar") },
   ];
-
-  const rsvpItem: NavItem = { href: "/rsvp", label: t("rsvp") };
+  const rsvpItem = rsvpItemProp !== undefined ? rsvpItemProp : { href: "/rsvp", label: t("rsvp") };
 
   const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -152,19 +153,21 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             </div>
 
             {/* RSVP CTA Button - Desktop */}
-            <Link
-              href={rsvpItem.href}
-              className={cn(
-                "hidden lg:inline-flex px-5 py-2 rounded-full font-medium text-sm tracking-wide",
-                "transition-all duration-300",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
-                pathname === rsvpItem.href
-                  ? "bg-wedding-coral-600 text-white"
-                  : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600 hover:scale-105"
-              )}
-            >
-              {rsvpItem.label}
-            </Link>
+            {rsvpItem && (
+              <Link
+                href={rsvpItem.href}
+                className={cn(
+                  "hidden lg:inline-flex px-5 py-2 rounded-full font-medium text-sm tracking-wide",
+                  "transition-all duration-300",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
+                  pathname === rsvpItem.href
+                    ? "bg-wedding-coral-600 text-white"
+                    : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600 hover:scale-105"
+                )}
+              >
+                {rsvpItem.label}
+              </Link>
+            )}
 
             {/* Mobile Menu Button - using shadcn Button */}
             <Button
@@ -222,22 +225,24 @@ export function Navbar({ className }: NavbarProps): React.ReactElement {
             </li>
 
             {/* RSVP as highlighted CTA button */}
-            <li className="mt-4">
-              <Link
-                href={rsvpItem.href}
-                onClick={closeMobileMenu}
-                className={cn(
-                  "block py-3 px-4 rounded-lg text-center font-medium text-sm tracking-widest",
-                  "transition-all duration-300",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
-                  pathname === rsvpItem.href
-                    ? "bg-wedding-coral-600 text-white"
-                    : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600"
-                )}
-              >
-                {rsvpItem.label}
-              </Link>
-            </li>
+            {rsvpItem && (
+              <li className="mt-4">
+                <Link
+                  href={rsvpItem.href}
+                  onClick={closeMobileMenu}
+                  className={cn(
+                    "block py-3 px-4 rounded-lg text-center font-medium text-sm tracking-widest",
+                    "transition-all duration-300",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2",
+                    pathname === rsvpItem.href
+                      ? "bg-wedding-coral-600 text-white"
+                      : "bg-wedding-coral-500 text-white hover:bg-wedding-coral-600"
+                  )}
+                >
+                  {rsvpItem.label}
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

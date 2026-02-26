@@ -1,0 +1,341 @@
+"use client";
+
+import { useState, useCallback, useEffect, useRef } from "react";
+import Image from "next/image";
+
+type RegionKey = "north" | "east" | "center" | "west" | "south";
+
+interface RegionImage {
+  readonly src: string;
+  readonly alt: string;
+}
+
+interface Region {
+  readonly key: RegionKey;
+  readonly title: string;
+  readonly description: string;
+  readonly images: readonly RegionImage[];
+}
+
+interface InteractiveMapProps {
+  readonly regions: readonly Region[];
+  readonly mapAlt: string;
+  readonly exploreText: React.ReactNode;
+  readonly defaultText: string;
+}
+
+/**
+ * SVG polygon paths for each region of the Madagascar map.
+ * Paths trace the actual island coastline on outer edges and use shared
+ * internal boundary lines where regions meet.
+ *
+ * The viewBox is 580x800. The island outline spans roughly:
+ *   Top: y≈85  Bottom: y≈715  Left: x≈125  Right: x≈462
+ */
+const REGION_PATHS: Record<RegionKey, string> = {
+  north:
+    "M 260,245 L 275,225 L 295,195 L 315,155 L 335,120 L 350,95 L 365,85 L 385,100 L 410,130 L 435,165 L 452,195 L 462,230 L 462,245 Z",
+  east:
+    "M 462,245 L 458,290 L 450,325 L 438,360 L 425,395 L 410,425 L 395,455 L 382,480 L 375,500 L 365,500 L 370,245 Z",
+  center:
+    "M 255,245 L 370,245 L 365,500 L 248,500 Z",
+  west:
+    "M 260,245 L 225,270 L 195,300 L 170,335 L 150,370 L 135,405 L 128,440 L 125,475 L 128,500 L 140,500 L 248,500 L 255,245 Z",
+  south:
+    "M 140,500 L 138,530 L 140,560 L 145,590 L 152,620 L 160,650 L 170,680 L 182,700 L 195,712 L 210,715 L 230,705 L 250,685 L 270,660 L 290,630 L 310,600 L 335,565 L 355,535 L 375,500 L 248,500 Z",
+};
+
+const REGION_LABEL_POSITIONS: Record<RegionKey, { x: number; y: number }> = {
+  north: { x: 385, y: 170 },
+  east: { x: 418, y: 370 },
+  center: { x: 310, y: 370 },
+  west: { x: 185, y: 390 },
+  south: { x: 255, y: 610 },
+};
+
+function ImageSlider({
+  images,
+}: {
+  readonly images: readonly RegionImage[];
+}): React.ReactElement {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images]);
+
+  return (
+    <div className="relative w-full h-[280px] md:h-[320px] overflow-hidden">
+      {images.map((image, index) => (
+        <div
+          key={image.src}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 80vw, 450px"
+          />
+        </div>
+      ))}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((image, i) => (
+            <div
+              key={image.src}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === currentIndex ? "bg-white scale-125" : "bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RegionCard({
+  region,
+}: {
+  readonly region: Region;
+}): React.ReactElement {
+  return (
+    <div
+      className="rounded-2xl overflow-hidden bg-wedding-coral-500 shadow-2xl"
+      role="region"
+      aria-label={region.title}
+    >
+      <div className="px-5 pt-5 pb-3">
+        <h3 className="font-script text-3xl md:text-4xl text-white">
+          {region.title}
+        </h3>
+      </div>
+
+      <ImageSlider images={region.images} />
+
+      <div className="p-5">
+        <p className="text-white text-sm md:text-base leading-relaxed">
+          {region.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function MapSvgOverlay({
+  activeRegion,
+  getRegion,
+  onMouseEnter,
+  onMouseLeave,
+  onClick,
+  onKeyDown,
+}: {
+  readonly activeRegion: RegionKey | null;
+  readonly getRegion: (key: RegionKey) => Region;
+  readonly onMouseEnter?: (key: RegionKey) => void;
+  readonly onMouseLeave?: () => void;
+  readonly onClick: (key: RegionKey) => void;
+  readonly onKeyDown: (e: React.KeyboardEvent, key: RegionKey) => void;
+}): React.ReactElement {
+  return (
+    <svg
+      viewBox="0 0 580 800"
+      className="absolute inset-0 w-full h-full"
+    >
+      {(Object.entries(REGION_PATHS) as [RegionKey, string][]).map(
+        ([key, path]) => {
+          const isActive = activeRegion === key;
+          const label = getRegion(key).title;
+          const pos = REGION_LABEL_POSITIONS[key];
+
+          return (
+            <g key={key}>
+              <path
+                d={path}
+                fill={isActive ? "rgba(233, 182, 247, 0.45)" : "rgba(233, 182, 247, 0.12)"}
+                stroke={isActive ? "rgba(138, 46, 176, 0.7)" : "rgba(138, 46, 176, 0.35)"}
+                strokeWidth={isActive ? "3" : "1.5"}
+                strokeDasharray={isActive ? "none" : "8 4"}
+                className="cursor-pointer transition-all duration-300"
+                onMouseEnter={() => onMouseEnter?.(key)}
+                onMouseLeave={() => onMouseLeave?.()}
+                onClick={() => onClick(key)}
+                role="button"
+                tabIndex={0}
+                aria-label={label}
+                onKeyDown={(e) => onKeyDown(e, key)}
+              />
+              <text
+                x={pos.x}
+                y={pos.y}
+                textAnchor="middle"
+                dominantBaseline="central"
+                className="pointer-events-none select-none transition-all duration-300"
+                fill={isActive ? "rgba(138, 46, 176, 0.95)" : "rgba(138, 46, 176, 0.6)"}
+                fontSize={isActive ? "22" : "18"}
+                fontWeight={isActive ? "700" : "600"}
+                fontFamily="sans-serif"
+              >
+                {label}
+              </text>
+            </g>
+          );
+        }
+      )}
+    </svg>
+  );
+}
+
+export function InteractiveMap({
+  regions,
+  mapAlt,
+  exploreText,
+  defaultText,
+}: InteractiveMapProps): React.ReactElement {
+  const [activeRegion, setActiveRegion] = useState<RegionKey | null>(null);
+  const leaveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleRegionActivate = useCallback((key: RegionKey) => {
+    setActiveRegion((prev) => (prev === key ? null : key));
+  }, []);
+
+  const handleMouseEnter = useCallback((key: RegionKey) => {
+    if (leaveTimeoutRef.current) {
+      clearTimeout(leaveTimeoutRef.current);
+      leaveTimeoutRef.current = null;
+    }
+    setActiveRegion(key);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    leaveTimeoutRef.current = setTimeout(() => {
+      setActiveRegion(null);
+      leaveTimeoutRef.current = null;
+    }, 300);
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent, key: RegionKey) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleRegionActivate(key);
+      } else if (e.key === "Escape") {
+        setActiveRegion(null);
+      }
+    },
+    [handleRegionActivate]
+  );
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveRegion(null);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      if (leaveTimeoutRef.current) clearTimeout(leaveTimeoutRef.current);
+    };
+  }, []);
+
+  const getRegion = (key: RegionKey): Region =>
+    regions.find((r) => r.key === key)!;
+
+  return (
+    <div>
+      {/* Explore hint */}
+      <div className="text-center mb-12">
+        <h2 className="font-serif text-2xl md:text-3xl font-semibold leading-snug text-wedding-neutral-700 mb-3">
+          {exploreText}
+        </h2>
+        <div className="h-px w-16 bg-wedding-coral-400 mx-auto" />
+      </div>
+
+      {/* Desktop layout: map left, info right */}
+      <div className="hidden lg:grid lg:grid-cols-[auto_1fr] lg:gap-8 xl:gap-12 lg:items-center">
+        {/* Left: Map (fixed) */}
+        <div className="relative w-[580px] xl:w-[680px] 2xl:w-[750px] flex-shrink-0">
+          <Image
+            src="/images/madagascar_map_transparent.png"
+            alt={mapAlt}
+            width={580}
+            height={800}
+            className="w-full h-auto"
+            sizes="750px"
+          />
+          <MapSvgOverlay
+            activeRegion={activeRegion}
+            getRegion={getRegion}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={handleRegionActivate}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+
+        {/* Right: Info panel */}
+        <div className="min-h-[500px] flex items-center">
+          {activeRegion ? (
+            <div className="w-full transition-opacity duration-500 ease-out opacity-100">
+              <RegionCard region={getRegion(activeRegion)} />
+            </div>
+          ) : (
+            <div className="w-full flex flex-col items-center justify-center text-center px-8">
+              <p className="font-script text-4xl xl:text-5xl text-wedding-purple-600 leading-relaxed">
+                {defaultText}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Mobile/Tablet layout: map on top, cards stacked below */}
+      <div className="lg:hidden">
+        <div className="relative w-[90%] max-w-[570px] mx-auto mb-10">
+          <Image
+            src="/images/madagascar_map_transparent.png"
+            alt={mapAlt}
+            width={580}
+            height={800}
+            className="w-full h-auto"
+            sizes="570px"
+          />
+          <MapSvgOverlay
+            activeRegion={activeRegion}
+            getRegion={getRegion}
+            onClick={handleRegionActivate}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {regions.map((region) => (
+            <div
+              key={region.key}
+              className={`transition-all duration-300 ${
+                activeRegion === region.key
+                  ? "ring-2 ring-wedding-coral-400 ring-offset-2 ring-offset-wedding-purple-100 rounded-2xl"
+                  : activeRegion
+                    ? "opacity-40"
+                    : ""
+              }`}
+            >
+              <RegionCard region={region} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -2,18 +2,32 @@ import { Typography } from "../../atoms/Typography";
 import { WeddingLink } from "../../atoms/WeddingLink";
 import { cn } from "../../../lib/utils";
 
+interface FooterNavItem {
+  readonly href: string;
+  readonly label: string;
+}
+
 interface FooterProps {
   readonly coupleNames?: string;
   readonly weddingDate?: string;
   readonly email?: string;
   readonly className?: string;
+  readonly navItems?: readonly FooterNavItem[];
 }
+
+const defaultNavItems: FooterNavItem[] = [
+  { href: "/", label: "Home" },
+  { href: "/venue", label: "Venue" },
+  { href: "/wedding", label: "Wedding" },
+  { href: "/accommodation", label: "Accommodation" },
+];
 
 export function Footer({
   coupleNames = "Loic & Wiebke",
   weddingDate = "July 18, 2026",
   email = "weddingloicandwiebke@gmail.com",
   className,
+  navItems = defaultNavItems,
 }: FooterProps): React.ReactElement {
   return (
     <footer
@@ -26,7 +40,9 @@ export function Footer({
       <img
         src="/images/floral-decoration.png"
         alt=""
-        className="absolute bottom-0 left-0 w-48 md:w-64 lg:w-80 h-auto z-0 rotate-90 "
+        width={320}
+        height={320}
+        className="absolute bottom-0 left-0 w-48 md:w-64 lg:w-80 h-auto z-0 rotate-90"
         aria-hidden="true"
       />
       <div className="container mx-auto px-4 relative z-10">
@@ -40,18 +56,11 @@ export function Footer({
           </Typography>
 
           <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-4 md:gap-8">
-            <WeddingLink href="/" variant="nav" className="text-wedding-neutral-200 hover:text-white">
-              Home
-            </WeddingLink>
-            <WeddingLink href="/venue" variant="nav" className="text-wedding-neutral-200 hover:text-white">
-              Venue
-            </WeddingLink>
-            <WeddingLink href="/wedding" variant="nav" className="text-wedding-neutral-200 hover:text-white">
-              Wedding
-            </WeddingLink>
-            <WeddingLink href="/accommodation" variant="nav" className="text-wedding-neutral-200 hover:text-white">
-              Accommodation
-            </WeddingLink>
+            {navItems.map((item) => (
+              <WeddingLink key={item.href} href={item.href} variant="nav" className="text-wedding-neutral-200 hover:text-white">
+                {item.label}
+              </WeddingLink>
+            ))}
           </nav>
 
           <div className="pt-4 border-t border-wedding-neutral-600 w-full max-w-md">
