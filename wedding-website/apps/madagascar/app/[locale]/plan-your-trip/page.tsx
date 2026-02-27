@@ -184,7 +184,7 @@ export default async function PlanYourTripPage({
                   {t("paragraph3")}
                 </Typography>
                 <a
-                  href="mailto:weddingloicandwiebke@gmail.com?subject=Madagascar%20Tours"
+                  href={`/${locale}/rsvp`}
                   className="inline-flex items-center gap-2 px-6 py-3 border-2 border-wedding-coral-500 text-wedding-coral-500 rounded-full text-sm font-medium hover:bg-wedding-coral-500 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-coral-500 focus-visible:ring-offset-2"
                 >
                   {t("card3Cta")}
