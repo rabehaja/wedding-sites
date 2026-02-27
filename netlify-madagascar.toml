@@ -1,0 +1,12 @@
+[build]
+base = "wedding-website"
+command = "pnpm --filter madagascar build"
+publish = "apps/madagascar/.next"
+
+[build.environment]
+NODE_VERSION = "20"
+PNPM_VERSION = "9.0.0"
+NEXT_PUBLIC_RSVP_URL = "https://script.google.com/macros/s/AKfycbweXLa8zGJ67kP2bQygBT6zg4n35ASCJ1wmqC7omJHsDh66kNKArBC07-UjTrbYSUQC/exec"
+
+[[plugins]]
+package = "@netlify/plugin-nextjs"

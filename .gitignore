@@ -18,9 +18,9 @@ dist
 # Vercel
 .vercel
 
-# Env files
-.env
-.env.*
+# Env files (keep .env tracked, ignore local overrides)
+.env.local
+.env*.local
 
 # Testing
 coverage

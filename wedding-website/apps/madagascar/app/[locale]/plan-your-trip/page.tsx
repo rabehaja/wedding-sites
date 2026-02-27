@@ -50,7 +50,7 @@ export default async function PlanYourTripPage({
     <>
       <Navbar
         navItems={navItems}
-        rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
+        rsvpItem={{ href: `/${locale}/rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">
         {/* Hero */}
@@ -204,7 +204,7 @@ export default async function PlanYourTripPage({
         </section>
 
         {/* Interactive Map Section */}
-        <section className="py-16 md:py-24 bg-wedding-purple-100">
+        <section id="map" className="py-16 md:py-24 bg-wedding-purple-100">
           <div className="container max-w-7xl mx-auto px-4">
             <InteractiveMap
               regions={regions}

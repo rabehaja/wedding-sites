@@ -5,12 +5,9 @@ node_modules
 .pnp
 .pnp.js
 
-# Local env files
-.env
+# Local env files (keep .env tracked, ignore local overrides)
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
 # Testing
 coverage

@@ -67,7 +67,7 @@ function RegionCard({
   const [img0, img1, img2, img3] = region.images;
 
   return (
-    <div className="overflow-hidden" role="region" aria-label={region.title}>
+    <div className="overflow-visible" role="region" aria-label={region.title}>
       <div className="lg:flex">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
           {/* Text content */}
@@ -302,7 +302,7 @@ export function InteractiveMap({
       </div>
 
       {/* Desktop layout: centered map, slides left on click */}
-      <div className="hidden lg:block relative min-h-[700px] overflow-hidden">
+      <div className={`hidden lg:block relative transition-all duration-500 ease-out ${activeRegion ? "min-h-[1100px]" : "min-h-[700px]"}`}>
         {/* Map — centered by default, left-aligned when a region is active */}
         <div
           className={`relative transition-all duration-500 ease-out w-[580px] xl:w-[680px] 2xl:w-[750px] ${
@@ -336,7 +336,7 @@ export function InteractiveMap({
 
         {/* Content panel — slides in from the right */}
         <div
-          className={`absolute inset-0 flex items-start px-6 py-8 rounded-2xl transition-all duration-500 ease-out ${
+          className={`absolute inset-x-0 top-0 flex items-start px-6 py-8 rounded-2xl transition-all duration-500 ease-out ${
             activeRegion
               ? "translate-x-0 opacity-100"
               : "translate-x-[30%] opacity-0 pointer-events-none"

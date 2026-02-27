@@ -23,7 +23,7 @@ export default async function HomePage({
     <>
       <Navbar
         navItems={getNavItems(locale, tNav)}
-        rsvpItem={{ href: "#rsvp", label: tNav("rsvp") }}
+        rsvpItem={{ href: `/${locale}/rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">
         {/* Hero */}
@@ -131,7 +131,7 @@ export default async function HomePage({
               </Typography>
 
               <a
-                href="mailto:weddingloicandwiebke@gmail.com?subject=Madagascar%20RSVP"
+                href={`/${locale}/rsvp`}
                 className="inline-flex items-center justify-center px-8 py-4 min-w-[200px] btn-gradient text-white rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl font-semibold text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-wedding-purple-500 focus-visible:ring-offset-2"
               >
                 {t("rsvpButton")}

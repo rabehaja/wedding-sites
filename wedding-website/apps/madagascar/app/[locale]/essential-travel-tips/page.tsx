@@ -176,7 +176,7 @@ export default async function EssentialTravelTipsPage({
     <>
       <Navbar
         navItems={getNavItems(locale, tNav)}
-        rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
+        rsvpItem={{ href: `/${locale}/rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">
         {/* Hero */}

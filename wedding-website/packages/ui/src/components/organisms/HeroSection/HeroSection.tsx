@@ -113,7 +113,7 @@ export function HeroSection({
               </span>
               {/* july */}
               <span className="font-script text-[50px] md:text-[70px] lg:text-[85px] text-white leading-none -mt-[10px] md:-mt-[14px] lg:-mt-[18px]">
-                {date.month.toLowerCase()}
+                {date.month}
               </span>
               {/* 26 */}
               <span

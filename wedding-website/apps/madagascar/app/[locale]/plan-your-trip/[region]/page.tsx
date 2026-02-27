@@ -65,7 +65,7 @@ export default async function RegionPage({
     <>
       <Navbar
         navItems={navItems}
-        rsvpItem={{ href: `/${locale}#rsvp`, label: tNav("rsvp") }}
+        rsvpItem={{ href: `/${locale}/rsvp`, label: tNav("rsvp") }}
       />
       <main id="main-content">
         {/* Hero */}
@@ -101,7 +101,7 @@ export default async function RegionPage({
 
             <div className="mt-10">
               <Link
-                href={`/${locale}/plan-your-trip`}
+                href={`/${locale}/plan-your-trip#map`}
                 className="inline-flex items-center gap-2 text-wedding-coral-500 hover:text-wedding-coral-600 font-medium transition-colors"
               >
                 <svg
